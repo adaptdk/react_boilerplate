@@ -21,7 +21,7 @@ class App extends Component {
               <nav>
                 <ul>
                   <li>
-                    <Link to="/frontpage">Frontpage</Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
                     <Link to="/about">About</Link>
