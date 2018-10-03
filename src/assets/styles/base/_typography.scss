@@ -1,0 +1,19 @@
+// Creates the default typography settings
+@include respTypo((
+  p: ($fz-normal),
+  h1: ($fz-h1, $fz-h1*1.15),
+  h2: ($fz-h2, $fz-h2*1.15),
+  h3: ($fz-h3, $fz-h3*1.15),
+  h4: ($fz-h4, $fz-h4*1.15),
+  h5: ($fz-h5, $fz-h5*1.15),
+  h6: ($fz-h6, $fz-h6*1.15),
+));
+
+// Paragraph
+p {
+  margin: 0;
+
+  + p {
+    margin-top: $fz-normal/1.25;
+  }
+}

@@ -1,0 +1,17 @@
+//
+// This is used both for the root scss files (main.scss, critical.scss etc),
+// but also for the scss components, which are not inside of the roots.
+// Fonts
+@import "settings-fonts";
+
+// Typography and Fonts settings
+@import "settings-typography";
+
+// Colors settings
+@import "settings-color";
+
+// Layout and appearance settings
+@import "settings-layout";
+
+// Mixins
+@import "../mixins/mixins";

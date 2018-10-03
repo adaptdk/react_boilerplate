@@ -1,0 +1,24 @@
+// Primary Colours
+$c-orange:          #E94E1B;                // Orange
+$c-peach:           #EF7A39;                // Peach
+
+// Secondary Colours
+$c-white:           #FFFFFF;                // White
+$c-lightBlue:       #B5CDDB;                // Light Blue
+$c-turquoise:       #0DA8BF;                // Turquoise
+$c-darkBlue:        #00374F;                // Dark Blue
+$c-black:           #09181C;                // Black
+
+// Greys
+$c-grey:            #888888;                // Base Grey
+$c-darkGrey:        darken($c-grey, 35%);   // Dark Grey
+$c-mediumGrey:      lighten($c-grey, 20%);  // Medium Grey
+$c-lightGrey:       lighten($c-grey, 30%);  // Light Grey
+$c-lighterGrey:     lighten($c-grey, 35%);  // Lighter Grey
+
+// Fonts
+$c-font:            $c-black;
+
+// Overlay colors
+$c-overlay:         rgba(0, 0, 0, 0.5);
+$c-transparent:     rgba(255, 255, 255, 0);
