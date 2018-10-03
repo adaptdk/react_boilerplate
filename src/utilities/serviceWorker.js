@@ -67,11 +67,6 @@ function registerValidSW(swUrl, config) {
               // available; please refresh." message in your web app.
               console.log('New content is available; please refresh.');
 
-              if ('caches' in window) {
-                console.log('Cache is Supported')
-                console.log(window)
-              }
-
               // Execute callback
               if (config.onUpdate) {
                 config.onUpdate(registration);
@@ -90,6 +85,12 @@ function registerValidSW(swUrl, config) {
           }
         };
       };
+
+      if ('caches' in window) {
+        console.log('Cache is Supported')
+        console.log(window)
+      }
+
     })
     .catch(error => {
       console.error('Error during service worker registration:', error);
