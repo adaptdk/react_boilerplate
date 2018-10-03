@@ -8,8 +8,6 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
-import { serviceWorkerCache } from 'utilities/serviceWorker/cache';
-
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -89,7 +87,14 @@ function registerValidSW(swUrl, config) {
       };
 
       if ('caches' in window) {
-        serviceWorkerCache(window.caches);
+        window.self.addEventListener('fetch', function(event) {
+          console.log(event.request.url);
+          event.respondWith(
+            caches.match(event.request).then(function(response) {
+              return response || fetch(event.request);
+            })
+          );
+        });
       }
 
     })
