@@ -1,27 +1,22 @@
-// @flow
-import { handleActions } from 'redux-actions';
+// Constants
 import * as types from 'constants/App';
 
-const initialState = {
-  isModalActive: false,
-};
+// Initial state
+const initialState = { key: 'value' };
 
-const appHandler = (state, action) => {
+// App Reducer
+const app = (state = { ...initialState }, action) => {
+  const { payload } = action;
   switch (action.type) {
-    case types.APP_MODAL_STATE:
+    case types.APP_UPDATE_TITLE:
       return {
         ...state,
+        title: payload,
+        // Your reducer
       };
     default:
-      return {};
+      return state;
   }
 };
 
-const App = handleActions({
-  [types.APP_MODAL_STATE]: (state, action) => ({
-    ...state,
-    ...appHandler(state, action),
-  }),
-}, initialState);
-
-export default App;
+export default app;

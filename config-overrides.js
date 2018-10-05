@@ -1,47 +1,22 @@
 /* config-overrides.js */
 
-// Plugins
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-// Loaders
-const scssLoader = require('./config/loaders/scss');
+// Loading Configs
+const commonConfig = require('./config/webpack.config.common');
+const prodConfig = require('./config/webpack.config.prod');
+const devConfig = require('./config/webpack.config.dev');
 
 module.exports = function override(config, env) {
-
-  // Constants
-  const isProduction = env === 'production';
 
   // Settings
   const settings = {
     bundleAnalyzer: false,
   };
 
-  // Resolve
-  config.resolve = {
-    ...config.resolve,
-    modules: [
-      ...config.resolve.modules,
-      './src',
-    ],
+  config = {
+    ...commonConfig(config, env, settings),
+    ...env === 'production' ? prodConfig(config, env, settings) : {},
+    ...env === 'development' ? devConfig(config, env, settings) : {},
   };
-
-  // Module
-  config.module = {
-    ...config.module,
-    rules: [
-      ...config.module.rules,
-      { ...scssLoader },
-    ]
-  };
-
-  // Plugins
-  config.plugins = [
-    ...config.plugins,
-    // Bundle Analyzer
-    ...(isProduction && settings.bundleAnalyzer) ? [
-      new BundleAnalyzerPlugin()
-    ] : []
-  ];
 
   return config;
 };

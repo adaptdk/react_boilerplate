@@ -21,7 +21,8 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test"
+    "test": "react-app-rewired test",
+    "release": "release-it"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@adaptagency/fe_tools": "^1.2.4",
     "autoprefixer": "^9.1.5",
+    "eslint-config-airbnb": "^17.1.0",
     "postcss-calc": "^6.0.2",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-inline-svg": "^3.1.1",

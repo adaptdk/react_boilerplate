@@ -13,6 +13,7 @@ const configureStore = (initialState = {}) => {
 
   const persistConfig = {
     key: 'root',
+    blacklist: ['app'],
     storage,
   };
 
