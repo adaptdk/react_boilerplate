@@ -25,6 +25,11 @@ yarn build
 yarn test
 ```
 
+### Configuration
+Following configs can be edited in `config-overrides.js`
+- `isDevEmbedded`: Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.
+- `isProdEmbedded`: Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.
+
 ## 🛠 Maintenance of React Boilerplate
 ### Version numbering.
 **1.2.3**
@@ -32,19 +37,19 @@ yarn test
 - x.1.x = Major Changes (New features)
 - x.x.1 = Minor Changes (Patches)
 
-### Updating 
-#### Patch Updating 
+### Updating
+#### Patch Updating
 *If you add `-n` after it skips all questions*
 ```bash
 yarn release
 ```
 
-#### Minor Updating 
+#### Minor Updating
 ```bash
 yarn release minor
 ```
 
-#### Major Updating 
+#### Major Updating
 ```bash
 yarn release major
 ```
