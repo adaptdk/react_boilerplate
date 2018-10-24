@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^4.9.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "node-sass": "^4.9.4",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^5.0.7",
     "react-router-config": "^4.4.0-beta.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.3",
+    "react-scripts": "^2.0.5",
     "redu": "^1.0.1",
-    "redux": "^4.0.0",
-    "redux-actions": "^2.6.1",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.3",
     "redux-persist": "^5.10.0",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0"
@@ -34,15 +34,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@adaptagency/fe_tools": "^1.2.4",
-    "autoprefixer": "^9.1.5",
+    "@adaptagency/fe_tools": "^1.6.2",
+    "autoprefixer": "^9.3.0",
     "eslint-config-airbnb": "^17.1.0",
-    "postcss-calc": "^6.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "postcss-calc": "7.0.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-inline-svg": "^3.1.1",
     "react-app-rewired": "^1.6.2",
-    "release-it": "^7.6.1",
-    "webpack-bundle-analyzer": "^3.0.2",
+    "release-it": "^7.6.2",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-delete-after-emit": "^1.0.5"
   }
 }
