@@ -1,8 +1,12 @@
 // Plugins
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
 
-module.exports = function(config, env, settings) {
+// Paths
+const paths = require('./paths');
 
+module.exports = function (config, env, settings) {
   /*
    * Insert your production specific configuration here.
    */
@@ -12,8 +16,19 @@ module.exports = function(config, env, settings) {
     ...config.plugins,
     // Bundle Analyzer
     ...settings.bundleAnalyzer ? [
-      new BundleAnalyzerPlugin()
-    ] : []
+      new BundleAnalyzerPlugin(),
+    ] : [],
+
+    // Use the correct index.html template.
+    new HtmlWebpackPlugin({
+      inject: !settings.isProdEmbedded,
+      template: settings.isProdEmbedded ? paths.appHtml : paths.appHtmlFull,
+    }),
+
+    // Delete the index-full.html file after build.
+    new WebpackDeleteAfterEmit({
+      globs: ['index-full.html'],
+    }),
   ];
 
   return config;
