@@ -26,8 +26,10 @@ yarn test
 ```
 
 ### 📦 Packages
+
+This is the format, but needs to be updated with the right information
 | Features | Base | Variant 1 | Variant 2 |
-| -------- | ---- | --------- | --------- |
+| :-------- | :----: | :---------: | :---------: |
 | Redux       | ✅ | ✅ | ❌ |
 | Router      | ❌ | ✅ | ✅ |
 | CSS Modules | ❌ | ❌ | ✅ |
