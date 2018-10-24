@@ -25,7 +25,14 @@ yarn build
 yarn test
 ```
 
-### Configuration
+### 📦 Packages
+| Features | Base | Variant 1 | Variant 2 |
+| -------- | ---- | --------- | --------- |
+| Redux       | ✅ | ✅ | ❌ |
+| Router      | ❌ | ✅ | ✅ |
+| CSS Modules | ❌ | ❌ | ✅ |
+
+### 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
 - `bundleAnalyzer`: Set this to true to Analyze the Node Packages included in the build product.
 - `isDevEmbedded`: Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.
