@@ -9,7 +9,7 @@ Run the setup to quickly get started with your project.
 If you've got an empty git repository URL ready, the setup can prepare the git repo for you as well.
 
 ### Dependencies
-- [Yarm](https://yarnpkg.com/en/docs/install)
+- [Yarn](https://yarnpkg.com/en/docs/install)
 ```console
 yarn setup
 ```
