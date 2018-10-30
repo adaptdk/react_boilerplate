@@ -9,6 +9,9 @@
 # production
 /build
 
+# editors
+.history
+
 # misc
 .DS_Store
 .env.local
