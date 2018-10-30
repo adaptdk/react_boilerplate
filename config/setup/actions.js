@@ -59,7 +59,7 @@ const finishSetup = (project, variants) => {
   // Checkout the selected packages branch
     exec(`git checkout ${project.branch}`);
   }
-  // Rename the folder to the project name
+  // Rename the folder to the project nam
   // if (!executeConfig.preserveFolder && project && project.name) {
   //   fs.rename('../react_boilerplate', `../${project.name}`, (err) => {
   //     if (err) throw err;
