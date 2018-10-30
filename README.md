@@ -1,5 +1,3 @@
-SIMPLE REPO
-
 ## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
