@@ -7,7 +7,7 @@ This is the format, but needs to be updated with the right information
 
 | Features       | Base | Simple | Complex |
 | :------------- | :--: | :----: | :-----: |
-| Status | WIP | WIP | WIP |
+| Status | **WIP** | **WIP** | **WIP** |
 | Project Size (kb) | `~54kb` | `~54kb` | N/A |
 | Redux | ❌ | ✅ | ✅ |
 | Redux Persistor | ❌ | ❌ | ✅ |
