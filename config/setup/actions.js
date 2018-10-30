@@ -2,12 +2,10 @@
 
 const prompt = require('prompt');
 const { exec } = require('child_process');
-const fs = require('fs');
 
 // Constants
 const { packages } = require('./packages');
 const { schema } = require('./schema');
-const { syncFunc } = require('./utils');
 
 // Utilities
 const {
