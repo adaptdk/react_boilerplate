@@ -2,12 +2,10 @@
 
 const prompt = require('prompt');
 const { exec } = require('child_process');
-const fs = require('fs');
 
 // Constants
 const { packages } = require('./packages');
 const { schema } = require('./schema');
-const { syncFunc } = require('./utils');
 
 // Utilities
 const {
@@ -59,12 +57,9 @@ const finishSetup = (project, variants) => {
   // Checkout the selected packages branch
     exec(`git checkout ${project.branch}`);
   }
-  // Rename the folder to the project nam
-  // if (!executeConfig.preserveFolder && project && project.name) {
-  //   fs.rename('../react_boilerplate', `../${project.name}`, (err) => {
-  //     if (err) throw err;
-  //   });
-  // }
+
+  // Todo: Make the finalizer step also rename folder, and add the title in the different files, head tags and so forth.
+
   // Install the modules
   if (executeConfig.install) {
     exec('yarn install');
