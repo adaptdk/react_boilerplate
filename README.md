@@ -1,6 +1,25 @@
 ## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
+### 📦 Packages
+
+This is the format, but needs to be updated with the right information
+
+| Features       | Base | Simple | Complex |
+| :------------- | :--: | :----: | :-----: |
+| Status | **WIP** | **WIP** | **WIP** |
+| Project Size (kb) | `~54kb` | `~54kb` | N/A |
+| Redux | ❌ | ✅ | ✅ |
+| Redux Persistor | ❌ | ❌ | ✅ |
+| Router | ❌ | ✅ | ✅ |
+| React-Loadable | ❌ | ✅ | ✅ |
+| Polyfills | ✅ | ✅ | ✅ |
+| Scss | ✅ | ✅ | ✅ |
+| ServiceWorker | ✅ | ✅ | ✅ |
+| Critical CSS | ✅ | ✅ | ✅ |
+
+✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
+
 ### Dependencies
 - [Yarn](https://yarnpkg.com/en/docs/install)
 - [NodeJs](https://nodejs.org/en/download/)
@@ -27,8 +46,7 @@ yarn build
 ```console
 yarn test
 ```
-
-### Configuration
+### 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
 
 | Setting | Type | Description |
@@ -60,5 +78,7 @@ yarn release minor
 ```bash
 yarn release major
 ```
+
+![React Boilerplate Temporary Logo](http://www.iconninja.com/files/337/330/565/package-icon.png)
 
 Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
