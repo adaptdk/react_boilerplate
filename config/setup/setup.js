@@ -35,7 +35,8 @@ Make sure that you don't have any uncommited changes before running the yarn set
 `);
 
 const project = {
-  name: null,
+  machine: null,
+  title: null,
   ownRepo: null,
   branch: null,
 };

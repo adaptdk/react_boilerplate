@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 const colors = require('colors/safe');
-const { exec } = require('child_process');
+const fs = require('fs');
 
 // Color Functions
 const color = {
@@ -18,8 +18,30 @@ const checks = {
   isYes: value => value === 'y' || value === 'ye' || value === 'yes',
 };
 
+
+const fileReadWriteAsync = (match, value, filePath) => {
+  // The file path is relative to the root
+  fs.readFile(filePath, 'utf-8', (err, data) => {
+    if (err) throw err;
+    const find = new RegExp(match, 'gm');
+    const newValue = data.replace(find, value);
+    fs.writeFile(filePath, newValue, 'utf-8', (err) => {
+      if (err) throw err;
+    });
+  })
+};
+
+filesReadWriteAsync = array => {
+  try {
+    array.forEach(item => fileReadWriteAsync(item.match, item.replace, item.file));
+  } catch (err) {
+    throw err;
+  }
+};
+
 // Exporting
 module.exports = {
   ...color,
   ...checks,
+  filesReadWriteAsync,
 };

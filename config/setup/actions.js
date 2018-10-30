@@ -9,14 +9,15 @@ const { schema } = require('./schema');
 
 // Utilities
 const {
+  filesReadWriteAsync,
   bold,
   dim,
   error,
   highlight,
-  underline,
-  warn,
   isNo,
   isYes,
+  underline,
+  warn,
 } = require('./utils');
 
 // When you've exit the setup
@@ -42,26 +43,38 @@ const finishSetup = (project, variants) => {
     removeGit: variants && variants.removeGit || false,
   };
 
-  // If they don't want to add they custom git repo yet but want to remove git, then just remove it.
+  // If they don't want to add Git, but want to remove it.
   if (executeConfig.removeGit && !executeConfig.git) {
     exec('rm -rf .git');
   }
 
+  // If they want to add git, then clone it down and replace the Boilerplates git.
   if (executeConfig.git && project && project.ownRepo) {
-  // Change the git remote to the custom inputted repository
-    exec(`rm -rf .git && 
-    git clone --no-checkout ${project.ownRepo} .gitTemp && 
-    mv ./.gitTemp/.git ./.git && 
+    exec(`rm -rf .git &&
+    git clone --no-checkout ${project.ownRepo} .gitTemp &&
+    mv ./.gitTemp/.git ./.git &&
     rm -rf .gitTemp`);
   }
 
-  // Todo: Make the finalizer step also rename folder, and add the title in the different files, head tags and so forth.
+  // Strings to replace in the project. like Project Title and Machine name in Like package.json / index.html
+  filesReadWriteAsync([
+    {
+      match: '%project_title%',
+      replace: project.title,
+      file: 'public/index-full.html',
+    },
+    {
+      match: 'project_title',
+      replace: project.machine,
+      file: 'package.json',
+    },
+  ]);
 
-  // If the package have specific modules, make sure we'll install those
+  // If the selected package have specific modules, make sure we'll install those
   if (executeConfig.install) {
     exec('yarn install');
   }
-  
+
   // Remove setup folders
   if (executeConfig.removeSetup) {
     exec('rm -rf ./config/setup');
@@ -90,10 +103,17 @@ const getProjectName = (project, func) => {
   console.log(bold('What\'s the name of your project?'));
 
   prompt.get(schema.name, (err, result) => {
-    if (result && result.name) {
+    if (result) {
 
-      // Save the name in the Project object
-      project.name = result.name;
+      if (result.machine) {
+        // Save the machine name in the Project object
+        project.machine = result.machine;
+      }
+
+      if (result.title) {
+        // Save the project title in the Project object
+        project.title = result.title;
+      }
 
       // Save the name as a variable
       console.log(`
@@ -129,10 +149,8 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
       const activePackage = packages.find(variant => variant.id === result.package);
       if (!!activePackage && !!func) {
 
-        // Store the branch name
-        project.name = result.name;
         // Checkout the selected branch
-        exec(`git checkout ${result.name}`);
+        exec(`git checkout ${activePackage.branch}`);
 
         console.log(`
 📦 Amazing! You've select the ${highlight(activePackage.title)} package.

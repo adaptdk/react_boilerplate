@@ -6,9 +6,16 @@ const { isYes, isNo } = require('./utils');
 const schema = {
   name: {
     properties: {
-      name: {
-        message: 'Name must be only letters and dashes',
-        pattern: /^[a-zA-Z-]+$/,
+      machine: {
+        description: 'Machine name [only lowercase]',
+        message: 'Name must be only be lowercase letters',
+        pattern: /^[a-z]+$/,
+        required: true,
+      },
+      title: {
+        description: 'Project title [only letters]',
+        message: 'Name must be only letters',
+        pattern: /^[a-zA-Z-\s]+$/,
         required: true,
       },
     },
@@ -40,7 +47,7 @@ const schema = {
         description: 'Alright, what\'s the SSH url for your git repo? [git@github.com:user/repo.git]',
         pattern: /^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$/,
         message: 'You need to enter a valid git repository URL. like [git@github.com:user/repo.git]',
-        ask: () => console.log(prompt.history('addOwnRepo') && isYes(prompt.history('addOwnRepo').value)) || prompt.history('addOwnRepo') && isYes(prompt.history('addOwnRepo').value),
+        ask: () => prompt.history('addOwnRepo') && isYes(prompt.history('addOwnRepo').value),
       },
     },
   },
