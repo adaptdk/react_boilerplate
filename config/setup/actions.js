@@ -46,16 +46,12 @@ const finishSetup = (project, variants) => {
   if (executeConfig.removeGit && !executeConfig.git) {
     exec('mv .git .git.bk ');
   }
-  if (executeConfig.git && project && project.branch && project.ownRepo) {
+  if (executeConfig.git && project && project.ownRepo) {
   // Change the git remote to the custom inputted repository
-    exec(`git checkout ${project.branch} && 
-    mv .git .git.bk && 
+    exec(`mv .git .git.bk && 
     git clone --no-checkout ${project.ownRepo} .gitTemp && 
     mv ./.gitTemp/.git ./.git && 
     rm -rf .gitTemp`);
-  } else {
-  // Checkout the selected packages branch
-    exec(`git checkout ${project.branch}`);
   }
 
   // Todo: Make the finalizer step also rename folder, and add the title in the different files, head tags and so forth.
@@ -131,8 +127,10 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
       const activePackage = packages.find(variant => variant.id === result.package);
       if (!!activePackage && !!func) {
 
-        // Save the Selected Package
-        project.branch = activePackage.branch;
+        // Store the branch name
+        project.name = result.name;
+        // Checkout the selected branch
+        exec(`git checkout ${result.name}`);
 
         console.log(`
 📦 Amazing! You've select the ${highlight(activePackage.title)} package.
