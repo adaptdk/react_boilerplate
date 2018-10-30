@@ -1,17 +1,15 @@
 ## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
-## ⚙ Get started
-
-### Setup
-Run the setup to quickly get started with your project.
-
-If you've got an empty git repository URL ready, the setup can prepare the git repo for you as well.
-
 ### Dependencies
 - [Yarn](https://yarnpkg.com/en/docs/install)
 - [NodeJs](https://nodejs.org/en/download/)
+
+## ⚙ Get started
+### Setup
 ```console
+git clone git@github.com:adaptdk/react_boilerplate.git projectName
+cd projectName
 yarn setup
 ```
 
