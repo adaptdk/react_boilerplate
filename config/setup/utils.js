@@ -3,15 +3,6 @@
 const colors = require('colors/safe');
 const { exec } = require('child_process');
 
-const syncFunc = func => {
-  func = function(cmd, callback) {
-    exec(cmd, (error, stdout, stderr) => {
-      if (error) throw error;
-      callback(stdout);
-    });
-  }
-};
-
 // Color Functions
 const color = {
   bold: value => colors.bold(value),
@@ -31,5 +22,4 @@ const checks = {
 module.exports = {
   ...color,
   ...checks,
-  syncFunc,
 };
