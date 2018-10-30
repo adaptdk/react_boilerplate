@@ -44,11 +44,12 @@ const finishSetup = (project, variants) => {
 
   // If they don't want to add they custom git repo yet but want to remove git, then just remove it.
   if (executeConfig.removeGit && !executeConfig.git) {
-    exec('mv .git .git.bk ');
+    exec('rm -rf .git');
   }
+
   if (executeConfig.git && project && project.ownRepo) {
   // Change the git remote to the custom inputted repository
-    exec(`mv .git .git.bk && 
+    exec(`rm -rf .git && 
     git clone --no-checkout ${project.ownRepo} .gitTemp && 
     mv ./.gitTemp/.git ./.git && 
     rm -rf .gitTemp`);
@@ -56,13 +57,14 @@ const finishSetup = (project, variants) => {
 
   // Todo: Make the finalizer step also rename folder, and add the title in the different files, head tags and so forth.
 
-  // Install the modules
+  // If the package have specific modules, make sure we'll install those
   if (executeConfig.install) {
     exec('yarn install');
   }
+  
   // Remove setup folders
   if (executeConfig.removeSetup) {
-    exec('mv ./config/setup ./config/setup.bk');
+    exec('rm -rf ./config/setup');
   }
 
   console.log(`
