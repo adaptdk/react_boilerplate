@@ -1,6 +1,14 @@
 ## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
+## 🏎 Quick Start
+```console
+git clone git@github.com:adaptdk/react_boilerplate.git my-project
+cd my-project
+yarn setup
+```
+This will ask install your modules, ask you some questions and setup your project based on those answers.
+
 ### 📦 Packages
 
 This is the format, but needs to be updated with the right information
@@ -8,15 +16,16 @@ This is the format, but needs to be updated with the right information
 | Features       | Base | Simple | Complex |
 | :------------- | :--: | :----: | :-----: |
 | Status | **WIP** | **WIP** | **WIP** |
-| Project Size (kb) | `~54kb` | `~54kb` | N/A |
-| Redux | ❌ | ✅ | ✅ |
-| Redux Persistor | ❌ | ❌ | ✅ |
-| Router | ❌ | ✅ | ✅ |
-| React-Loadable | ❌ | ✅ | ✅ |
-| Polyfills | ✅ | ✅ | ✅ |
-| Scss | ✅ | ✅ | ✅ |
-| ServiceWorker | ✅ | ✅ | ✅ |
-| Critical CSS | ✅ | ✅ | ✅ |
+| **Project Size (kb)** | `~54kb` | `~54kb` | N/A |
+| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ | ✅ |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ❌ | ✅ |
+| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ | ✅ |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ | ✅ |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ | ✅ |
+| **Scss** | ✅ | ✅ | ✅ |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ | ✅ |
+| **Critical CSS** | ✅ | ✅ | ✅ |
+| **Autoprefixer** | ✅ | ✅ | ✅ |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
@@ -25,13 +34,6 @@ This is the format, but needs to be updated with the right information
 - [NodeJs](https://nodejs.org/en/download/)
 
 ## ⚙ Get started
-### Setup
-```console
-git clone git@github.com:adaptdk/react_boilerplate.git projectName
-cd projectName
-yarn setup
-```
-
 ### Developing
 ```console
 yarn start
