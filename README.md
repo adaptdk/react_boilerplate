@@ -3,50 +3,15 @@ SIMPLE REPO
 ## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
-## Install flow
-```
-Name your project
-[name]
-
-Select package.
-1
-2
-3
-4
-
-Git Repository
-remove and
-
-Add your own?
-replace with empty git repo
-
-Install
-
-remove setup files?
-
-Commands
-yarn start
-
-yarn build
-
-tryg
-2 simple
-y
-y git@github.com:adaptdk/react_boilerplate.git (empty)
-
-installer
-prompt yarn
-
-
-Good luck
-```
-
-
 ## ⚙ Get started
 
-- Dependency === `yarn`
-
 ### Setup
+Run the setup to quickly get started with your project.
+
+If you've got an empty git repository URL ready, the setup can prepare the git repo for you as well.
+
+### Dependencies
+- [Yarm](https://yarnpkg.com/en/docs/install)
 ```console
 yarn setup
 ```
