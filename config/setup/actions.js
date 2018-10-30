@@ -59,12 +59,9 @@ const finishSetup = (project, variants) => {
   // Checkout the selected packages branch
     exec(`git checkout ${project.branch}`);
   }
-  // Rename the folder to the project name
-  // if (!executeConfig.preserveFolder && project && project.name) {
-  //   fs.rename('../react_boilerplate', `../${project.name}`, (err) => {
-  //     if (err) throw err;
-  //   });
-  // }
+  
+  // Todo: Make the finalizer step also rename folder, and add the title in the different files, head tags and so forth.
+  
   // Install the modules
   if (executeConfig.install) {
     exec('yarn install');
