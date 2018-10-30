@@ -1,7 +1,5 @@
 /* eslint-disable */
 const prompt = require('prompt');
-const { exec } = require('child_process');
-    exec('yarn install');
 
 // Actions
 const {
@@ -46,9 +44,6 @@ const project = {
 getProjectName(project, () => {
   // Then Get Packages
   getPackages(project, () => {
-    // Silently in the background, start installing modules through yarn.
-    exec('yarn install');
-
     // Configure Git - Removing / Adding
     setupGit(project, () => {
       console.log(`
