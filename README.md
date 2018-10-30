@@ -10,6 +10,7 @@ If you've got an empty git repository URL ready, the setup can prepare the git r
 
 ### Dependencies
 - [Yarn](https://yarnpkg.com/en/docs/install)
+- [NodeJs](https://nodejs.org/en/download/)
 ```console
 yarn setup
 ```
@@ -31,9 +32,12 @@ yarn test
 
 ### Configuration
 Following configs can be edited in `config-overrides.js`
-- `bundleAnalyzer`: Set this to true to Analyze the Node Packages included in the build product.
-- `isDevEmbedded`: Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.
-- `isProdEmbedded`: Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.
+
+| Setting | Type | Description |
+| :-------- | :----: | :--------- |
+| **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product. |
+| **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
+| **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 
 ## 🛠 Maintenance of React Boilerplate
 ### Version numbering.
