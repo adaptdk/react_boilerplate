@@ -1,4 +1,4 @@
-# 💡 What is it?
+## 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
 ## 🏎 Quick Start
@@ -9,15 +9,52 @@ yarn setup
 ```
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
-### Dependencies
-- [Yarn](https://yarnpkg.com/en/docs/install)
-- [NodeJs](https://nodejs.org/en/download/)
-
 <p align="center">
-<img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
+  <img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
 </p>
 
-## 📦 Packages
+## ⚙ Get started
+
+Inside the newly created project, you can run some built-in commands:
+
+### `npm start` or `yarn start`
+
+Runs the app in development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will automatically reload if you make changes to the code.<br>
+You will see the build errors and lint warnings in the console.
+
+<p align='center'>
+<img src='https://cdn.rawgit.com/marionebl/create-react-app/9f62826/screencast-error.svg' width='600' alt='Build errors'>
+</p>
+
+### `npm test` or `yarn test`
+
+Runs the test watcher in an interactive mode.<br>
+By default, runs tests related to files changed since the last commit.
+
+[Read more about testing.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+
+### `npm run build` or `yarn build`
+
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+
+Your app is ready to be deployed.
+
+### 👌 Quality and Performance
+This project ships with an all green LightHouse audit, include PWA features.
+
+Continuously while development keep running the audit to monitor how your features are impacting your score, will help you develop great applications.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/readme/doc/LightHouse-Audit.jpg?token=APWiOisYr34d0h796_AJLG_qf6AgvS29ks5b4sCWwA%3D%3D" alt="LightHouse Audit">
+</p>
+
+### 📦 Packages
 
 This is the format, but needs to be updated with the right information
 
@@ -37,23 +74,12 @@ This is the format, but needs to be updated with the right information
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
-## ⚙ Get started
-### Developing
-```console
-yarn start
-```
+### Dependencies
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [NodeJs](https://nodejs.org/en/download/)
 
-### Production Build
-```console
-yarn build
-```
 
-### Jest Testing
-```console
-yarn test
-```
-
-## 🎛 Configuration
+### 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
 
 | Setting | Type | Description |
@@ -62,7 +88,5 @@ Following configs can be edited in `config-overrides.js`
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 
-
-![React Boilerplate Temporary Logo](http://www.iconninja.com/files/337/330/565/package-icon.png)
 
 Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
