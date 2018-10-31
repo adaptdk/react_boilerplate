@@ -5,10 +5,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 // Utils
 import * as serviceWorker from 'utilities/serviceWorker';
-import { store, persistor } from 'state/store';
+import { store, persistor } from 'utilities/configureStore';
 
 // Container
-import App from 'views/containers/App';
+import App from 'containers/App/index';
 
 // Styles
 import 'assets/styles/critical.scss';

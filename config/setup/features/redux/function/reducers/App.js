@@ -1,5 +1,5 @@
 // Constants
-import * as types from 'constants/App';
+import * as types from '../constants/App';
 
 // Initial state
 const initialState = { key: 'value' };

@@ -1,11 +1,12 @@
-import { renderRoutes } from 'react-router-config';
+// Components
+import AppRoot from '../components/Routes/AppRoot';
+import NotFound from '../components/Routes/NotFound';
 
 // Containers
-import Frontpage from 'views/containers/Frontpage';
-import NotFound from 'views/containers/NotFound';
+import Frontpage from '../containers/Frontpage/index'
 
 const routes = [{
-  component: props => renderRoutes(props.route.routes),
+  component: AppRoot,
   routes: [
     {
       path: '/',

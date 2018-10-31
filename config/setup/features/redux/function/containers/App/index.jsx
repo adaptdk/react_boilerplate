@@ -7,10 +7,10 @@ import { renderRoutes } from 'react-router-config';
 // Actions
 import {
   updateTitleAction,
-} from 'actions/App';
+} from '../../actions/App';
 
 // Constants
-import routes from 'constants/Routes';
+import routes from '../../constants/Routes';
 
 class App extends Component {
   state = {
