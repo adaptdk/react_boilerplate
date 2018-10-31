@@ -23,22 +23,22 @@ prompt.start();
 console.log(`${dim(`${bold('Thanks for using React Boilerplate.')}
 If you run into trouble, don't hesitate to write an issue or contact one of the maintainers.
 
+Make sure that you don't have any uncommited changes before running the yarn setup.
+
 ${bold('Github Link')}
 ${underline('https://github.com/adaptdk/react_boilerplate/issues')}
 
 ${bold('Maintainers')}
 [mads-thines] Mads Thines - mads.thines@adaptagency.com
 [ChrEsb] Christian Esbensen - ces@adaptagency.com
-
-Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
-Make sure that you don't have any uncommited changes before running the yarn setup.
-`);
+`)}`);
 
 const project = {
   machine: null,
   title: null,
   ownRepo: null,
   branch: null,
+  features: [],
 };
 
 // Get Project Name

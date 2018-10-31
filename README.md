@@ -1,4 +1,4 @@
-## 💡 What is it?
+# 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
 
 ## 🏎 Quick Start
@@ -9,11 +9,15 @@ yarn setup
 ```
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
+### Dependencies
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [NodeJs](https://nodejs.org/en/download/)
+
 <p align="center">
 <img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
 </p>
 
-### 📦 Packages
+## 📦 Packages
 
 This is the format, but needs to be updated with the right information
 
@@ -33,10 +37,6 @@ This is the format, but needs to be updated with the right information
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
-### Dependencies
-- [Yarn](https://yarnpkg.com/en/docs/install)
-- [NodeJs](https://nodejs.org/en/download/)
-
 ## ⚙ Get started
 ### Developing
 ```console
@@ -52,7 +52,8 @@ yarn build
 ```console
 yarn test
 ```
-### 🎛 Configuration
+
+## 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
 
 | Setting | Type | Description |
@@ -61,29 +62,6 @@ Following configs can be edited in `config-overrides.js`
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 
-## 🛠 Maintenance of React Boilerplate
-### Version numbering.
-**1.2.3**
-- 1.x.x = Compatibility Breaking Changes
-- x.1.x = Major Changes (New features)
-- x.x.1 = Minor Changes (Patches)
-
-### Updating
-#### Patch Updating
-*If you add `-n` after it skips all questions*
-```bash
-yarn release
-```
-
-#### Minor Updating
-```bash
-yarn release minor
-```
-
-#### Major Updating
-```bash
-yarn release major
-```
 
 ![React Boilerplate Temporary Logo](http://www.iconninja.com/files/337/330/565/package-icon.png)
 

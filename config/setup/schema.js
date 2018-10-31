@@ -53,6 +53,21 @@ const schema = {
   },
 };
 
+// Packages Extra Questions
+const featureSchema = {
+  redux: {
+    properties: {
+      codeStructure: {
+        description: 'Which code structure do you prefer?',
+        message: 'You must select a feature by entering it\'s number [0-9]',
+        pattern: /[0-9]/,
+        required: true,
+      },
+    },
+  },
+};
+
 module.exports = {
   schema,
+  featureSchema,
 };

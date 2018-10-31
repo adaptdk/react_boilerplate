@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
@@ -34,8 +34,8 @@ class App extends Component {
     const { title } = this.props;
     return (
       <div className="app">
-        {/* Router */}
-        <Router>
+        <BrowserRouter>
+
           <main>
 
             {/* Header */}
@@ -76,7 +76,7 @@ class App extends Component {
             {renderRoutes(routes)}
 
           </main>
-        </Router>
+        </BrowserRouter>
       </div>
     );
   }
@@ -92,3 +92,4 @@ export default connect(state => {
     updateTitleAction,
   }, dispatch),
 }))(App);
+
