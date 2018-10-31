@@ -13,32 +13,7 @@ This will ask install your modules, ask you some questions and setup your projec
   <img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
 </p>
 
-### 📦 Packages
-
-This is the format, but needs to be updated with the right information
-
-| Features       | Base | Simple | Complex |
-| :------------- | :--: | :----: | :-----: |
-| Status | **WIP** | **WIP** | **WIP** |
-| **Project Size (kb)** | `~54kb` | `~54kb` | N/A |
-| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ | ✅ |
-| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ❌ | ✅ |
-| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ | ✅ |
-| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ | ✅ |
-| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ | ✅ |
-| **Scss** | ✅ | ✅ | ✅ |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ | ✅ |
-| **Critical CSS** | ✅ | ✅ | ✅ |
-| **Autoprefixer** | ✅ | ✅ | ✅ |
-
-✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
-
-### Dependencies
-- [Yarn](https://yarnpkg.com/en/docs/install)
-- [NodeJs](https://nodejs.org/en/download/)
-
 ## ⚙ Get started
-
 
 Inside the newly created project, you can run some built-in commands:
 
@@ -78,6 +53,30 @@ Continuously while development keep running the audit to monitor how your featur
 <p align="center">
   <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/readme/doc/LightHouse-Audit.jpg?token=APWiOisYr34d0h796_AJLG_qf6AgvS29ks5b4sCWwA%3D%3D" alt="LightHouse Audit">
 </p>
+
+### 📦 Packages
+
+This is the format, but needs to be updated with the right information
+
+| Features       | Base | Simple | Complex |
+| :------------- | :--: | :----: | :-----: |
+| Status | **WIP** | **WIP** | **WIP** |
+| **Project Size (kb)** | `~54kb` | `~54kb` | N/A |
+| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ | ✅ |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ❌ | ✅ |
+| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ | ✅ |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ | ✅ |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ | ✅ |
+| **Scss** | ✅ | ✅ | ✅ |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ | ✅ |
+| **Critical CSS** | ✅ | ✅ | ✅ |
+| **Autoprefixer** | ✅ | ✅ | ✅ |
+
+✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
+
+### Dependencies
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [NodeJs](https://nodejs.org/en/download/)
 
 
 ### 🎛 Configuration
