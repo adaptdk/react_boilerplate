@@ -10,7 +10,7 @@ yarn setup
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
 <p align="center">
-<img src="https://media.giphy.com/media/YjhpXWJIl6z1antAuu/giphy.gif" alt="Intro Video">
+<img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
 </p>
 
 ### 📦 Packages
