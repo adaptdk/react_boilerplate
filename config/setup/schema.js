@@ -1,6 +1,6 @@
 const prompt = require('prompt');
 
-const { isYes, isNo } = require('./utils');
+const { isYes } = require('./utils');
 
 // The Questions
 const schema = {
@@ -24,7 +24,9 @@ const schema = {
     properties: {
       package: {
         message: 'You must select a package by entering it\'s number [0-9]',
+        description: 'Which package do you want to setup? [1 is default]',
         pattern: /[0-9]/,
+        default: '1',
         required: true,
       },
     },
@@ -58,9 +60,10 @@ const featureSchema = {
   redux: {
     properties: {
       codeStructure: {
-        description: 'Which code structure do you prefer?',
+        description: 'Which code structure do you prefer? [1 is default]',
         message: 'You must select a feature by entering it\'s number [0-9]',
         pattern: /[0-9]/,
+        default: '1',
         required: true,
       },
     },

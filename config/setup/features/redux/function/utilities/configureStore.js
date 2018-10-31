@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 // Importing Middlewares
 import { middlewares } from 'middlewares/middlewares';
-import rootReducer from '../reducers/Root';
+import rootReducer from 'reducers/Root';
 
 // Configure The Store
 const configureStore = (initialState = {}) => {

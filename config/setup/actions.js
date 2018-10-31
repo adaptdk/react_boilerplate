@@ -72,7 +72,7 @@ ${dim(
   });
 
   console.log(`
-${bold('Which package do you want to install?')} 
+${bold('Which package do you want to install?')}
 ${dim('Select it by writing it\'s key [0-9]')}`);
 
   prompt.get(schema.packages, (err, result) => {
@@ -111,21 +111,25 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
  * @returns {function}
  */
 const getFeatures = (project, selectedFeatures, func) => {
-  // Specific prompt for the different features
-  if (selectedFeatures.includes('redux')) {
+  selectedFeatures.forEach((question, index) => {
     console.log(`
-The package you've selected includes ${highlight('Redux')}.
-${dim(`Read more about code structure here ${underline('https://redux.js.org/faq/codestructure#code-structure')}`)}
+The package you've selected includes ${highlight(question)}.`);
+    if (selectedFeatures.includes('redux')) {
+      console.log(`${dim(
+        `Read more about code structure here ${underline('https://redux.js.org/faq/codestructure#code-structure')}`)}
 
 ${bold('Now, this is the available code structures?')}
-1 Function
-2 Ducks
+`);
 
+      features.redux.forEach(feature => {
+        console.log(`${feature.id} ${feature.title}`);
+      });
+
+      console.log(`
 ${bold('Which code structure do you prefer?')}
 ${dim('Select it by writing it\'s key [0-9]')}`)
-  }
+    }
 
-  selectedFeatures.forEach((question, index) => {
     // If the feature both is defined in the schema and have it's own information in packages.js
     if (featureSchema.hasOwnProperty(question) && features.hasOwnProperty(question)) {
       prompt.get(featureSchema[question], (err, result) => {
@@ -136,6 +140,9 @@ ${dim('Select it by writing it\'s key [0-9]')}`)
             const selectedFeature = features[question].find(feature => feature.id === result[item]);
             if (!!selectedFeature && !!func) {
               project.features.push(selectedFeature.name);
+
+              console.log(`
+You've selected ${highlight(selectedFeature.name)}`);
 
               // If it's the last feature we're looping over, and we've received the results, then fire the next func.
               if (selectedFeatures.length === index + 1) {
@@ -160,7 +167,8 @@ ${dim('Select it by writing it\'s key [0-9]')}`)
  * @returns {function}
  */
 const setupGit = (project, func) => {
-  console.log(`
+  console.log(
+    `
 
 ${bold('😉  Awesome! Let\'s setup git, shall we?')}
 
@@ -172,14 +180,17 @@ We'll now ask you a few questions to create the ideal start for your project.`);
       // If you don't want to remove local git.
       if (isNo(result.removeLocal) && !isYes(result.addOwnRepo)) {
         console.log(highlight(`
+
 Alright, we\'ll keep the boilerplate repository, and start setting up
-`));
+
+  `));
         return finishSetup(project);
       }
 
       // If you want to remove local git, but don't want to add your own.
       if (isYes(result.removeLocal) && isNo(result.addOwnRepo)) {
         console.log(highlight(`
+
 Alright, we\'ll delete the boilerplate repository, and start setting up
 `));
         return finishSetup(project, { removeGit: true });
@@ -217,6 +228,8 @@ const finishSetup = (project, variants) => {
   if (executeConfig.removeGit && !executeConfig.git) {
     exec('rm -rf .git');
   }
+
+  console.log(project)
 
   // If they want to add git, then clone it down and replace the Boilerplates git.
   if (executeConfig.git && project && project.ownRepo) {

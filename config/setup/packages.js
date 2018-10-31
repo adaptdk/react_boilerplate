@@ -29,13 +29,13 @@ const features = {
   redux: [
     {
       id: '1',
-      title: 'Function',
-      name: 'function',
+      title: 'Ducks',
+      name: 'ducks',
     },
     {
       id: '2',
-      title: 'Ducks',
-      name: 'ducks',
+      title: 'Function',
+      name: 'function',
     },
   ]
 };

@@ -1,9 +1,9 @@
 // Components
-import AppRoot from '../components/Routes/AppRoot';
-import NotFound from '../components/Routes/NotFound';
+import AppRoot from 'components/Routes/AppRoot';
+import NotFound from 'components/Routes/NotFound';
 
 // Containers
-import Frontpage from '../containers/Frontpage/index'
+import Frontpage from 'containers/Frontpage/index'
 
 const routes = [{
   component: AppRoot,
