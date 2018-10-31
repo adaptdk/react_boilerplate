@@ -62,6 +62,7 @@ Continuously while development keep running the audit to monitor how your featur
   <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/readme/doc/LightHouse-Audit.jpg?token=APWiOisYr34d0h796_AJLG_qf6AgvS29ks5b4sCWwA%3D%3D" alt="LightHouse Audit">
 </p>
 
+
 ### 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
 
@@ -71,27 +72,5 @@ Following configs can be edited in `config-overrides.js`
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 
-## 🛠 Maintenance of React Boilerplate
-### Version numbering.
-**1.2.3**
-- 1.x.x = Compatibility Breaking Changes
-- x.1.x = Major Changes (New features)
-- x.x.1 = Minor Changes (Patches)
 
-### Updating
-#### Patch Updating
-*If you add `-n` after it skips all questions*
-```bash
-yarn release
-```
-
-#### Minor Updating
-```bash
-yarn release minor
-```
-
-#### Major Updating
-```bash
-yarn release major
-```
 Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
