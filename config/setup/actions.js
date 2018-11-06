@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 
 // Constants
 const { packages, features } = require('./packages');
-const { schema, featureSchema } = require('./schema');
+const { schema } = require('./schema');
 
 // Utilities
 const {
@@ -72,7 +72,7 @@ ${dim(
   });
 
   console.log(`
-${bold('Which package do you want to install?')} 
+${bold('Which package do you want to install?')}
 ${dim('Select it by writing it\'s key [0-9]')}`);
 
   prompt.get(schema.packages, (err, result) => {
@@ -87,8 +87,8 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
 
 📦  Amazing! You've select the ${highlight(selectedPackage.title)} package.`);
 
-        if (selectedPackage.hasOwnProperty('feature')) {
-          getFeatures(project, selectedPackage.feature, func);
+        if (selectedPackage.hasOwnProperty('features')) {
+          getFeatures(project, selectedPackage.features, func);
         } else {
           if (!!func) return func();
         }
@@ -111,46 +111,41 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
  * @returns {function}
  */
 const getFeatures = (project, selectedFeatures, func) => {
-  // Specific prompt for the different features
-  if (selectedFeatures.includes('redux')) {
-    console.log(`
-The package you've selected includes ${highlight('Redux')}.
-${dim(`Read more about code structure here ${underline('https://redux.js.org/faq/codestructure#code-structure')}`)}
-
-${bold('Now, this is the available code structures?')}
-1 Function
-2 Ducks
-
-${bold('Which code structure do you prefer?')}
-${dim('Select it by writing it\'s key [0-9]')}`)
-  }
-
   selectedFeatures.forEach((question, index) => {
-    // If the feature both is defined in the schema and have it's own information in packages.js
-    if (featureSchema.hasOwnProperty(question) && features.hasOwnProperty(question)) {
-      prompt.get(featureSchema[question], (err, result) => {
-        if (result) {
 
-          // Loop over each feature and save the feature name so we can use the data in the finalizing step.
-          Object.keys(result).forEach(item => {
-            const selectedFeature = features[question].find(feature => feature.id === result[item]);
-            if (!!selectedFeature && !!func) {
-              project.features.push(selectedFeature.name);
+    const filteredFeature = Object.entries(features).find(
+      feature => feature[0] === question
+    )[1];
 
-              // If it's the last feature we're looping over, and we've received the results, then fire the next func.
-              if (selectedFeatures.length === index + 1) {
-                if (!!func) return func();
-              }
-            } else {
-              // If the key you've entered doesn't exist. Try again.
-              console.log(error('The key you\'ve entered doesn\'t exists'));
-              getFeatures(project, selectedFeatures, func);
-            }
-          });
+    // Then output each variant
+    console.log(`
+${bold('This is the features available variants')}
+${dim(filteredFeature.predescription)}
+`);
+
+    filteredFeature.variants.forEach(variant => {
+      console.log(`${variant.id} ${variant.title}`);
+    });
+    console.log('');
+
+    prompt.get(filteredFeature, (err, result) => {
+      if (result) {
+        if (result.question) {
+          // Save the selected variant to the global project object so we can handle on it later in the finish func.
+          project.features[question] = filteredFeature.variants.find(variant => variant.id === result.question);
+
+          if (selectedFeatures.length === index + 1 && !!func) {
+            return func();
+          }
         }
-      })
+      }
+    });
+
+    if (selectedFeatures.length !== index + 1 && !!func) {
+      // If this is not the last feature then add an empty line
+      console.log('')
     }
-  });
+  })
 };
 
 /**
@@ -160,9 +155,10 @@ ${dim('Select it by writing it\'s key [0-9]')}`)
  * @returns {function}
  */
 const setupGit = (project, func) => {
-  console.log(`
+  console.log(
+    `
 
-${bold('😉  Awesome! Let\'s setup git, shall we?')}
+${bold('📄  Awesome! Let\'s setup git, shall we?')}
 
 We'll now ask you a few questions to create the ideal start for your project.`);
 
@@ -172,14 +168,17 @@ We'll now ask you a few questions to create the ideal start for your project.`);
       // If you don't want to remove local git.
       if (isNo(result.removeLocal) && !isYes(result.addOwnRepo)) {
         console.log(highlight(`
+
 Alright, we\'ll keep the boilerplate repository, and start setting up
-`));
+
+  `));
         return finishSetup(project);
       }
 
       // If you want to remove local git, but don't want to add your own.
       if (isYes(result.removeLocal) && isNo(result.addOwnRepo)) {
         console.log(highlight(`
+
 Alright, we\'ll delete the boilerplate repository, and start setting up
 `));
         return finishSetup(project, { removeGit: true });
@@ -204,7 +203,6 @@ Alright, we\'ll delete the boilerplate repository, and start setting up
  * @returns {function}
  */
 const finishSetup = (project, variants) => {
-  console.log(project.features)
   const executeConfig = {
     git: variants && variants.git || false,
     install: variants && variants.install || true,
@@ -212,12 +210,10 @@ const finishSetup = (project, variants) => {
     removeSetup: variants && variants.removeSetup || true,
     removeGit: variants && variants.removeGit || false,
   };
-
   // If they don't want to add Git, but want to remove it.
   if (executeConfig.removeGit && !executeConfig.git) {
     exec('rm -rf .git');
   }
-
   // If they want to add git, then clone it down and replace the Boilerplates git.
   if (executeConfig.git && project && project.ownRepo) {
     exec(`rm -rf .git &&
@@ -225,7 +221,6 @@ const finishSetup = (project, variants) => {
     mv ./.gitTemp/.git ./.git &&
     rm -rf .gitTemp`);
   }
-
   // Strings to replace in the project. like Project Title and Machine name in Like package.json / index.html
   filesReadWriteAsync([
     // Renames Titles in Index.html
@@ -249,12 +244,10 @@ const finishSetup = (project, variants) => {
       file: 'package.json',
     },
   ]);
-
   // If the selected package have specific modules, make sure we'll install those
   if (executeConfig.install) {
     exec('yarn install');
   }
-
   // Remove setup folders
   if (executeConfig.removeSetup) {
     exec('rm -rf ./config/setup');

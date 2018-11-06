@@ -1,3 +1,8 @@
+// Utilities
+const {
+  underline,
+} = require('./utils');
+
 // Read more about the different packages here: https://github.com/adaptdk/react_boilerplate
 // The different packages
 const packages = [
@@ -10,34 +15,38 @@ const packages = [
     id: '2',
     title: 'Simple',
     branch: 'simple',
-    feature: [
-      'redux',
-    ]
   },
   {
     id: '3',
     title: 'Complex',
     branch: 'complex',
-    feature: [
+    // If you want to ask extra questions based on features, you can add them like this, and then in the getFeatures().
+    features: [
       'redux',
-    ]
+    ],
   },
 ];
 
 // Features that have multiple structures
 const features = {
-  redux: [
-    {
-      id: '1',
-      title: 'Function',
-      name: 'function',
-    },
-    {
-      id: '2',
-      title: 'Ducks',
-      name: 'ducks',
-    },
-  ]
+  redux: {
+    predescription: `Read more about code structure here ${underline('https://redux.js.org/faq/codestructure#code-structure')}`,
+    description: 'Which code structure of Redux do you want?',
+    pattern: /[0-9]/,
+    message: 'The key you\'ve entered doesn\'t exists',
+    variants: [
+      {
+        id: '1',
+        title: 'Ducks',
+        name: 'ducks',
+      },
+      {
+        id: '2',
+        title: 'Function',
+        name: 'function',
+      },
+    ],
+  },
 };
 
 module.exports = {

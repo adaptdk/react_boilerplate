@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Plugins
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,6 +9,7 @@ const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
 const paths = require('./paths');
 
 module.exports = function (config, env, settings) {
+
   /*
    * Insert your production specific configuration here.
    */

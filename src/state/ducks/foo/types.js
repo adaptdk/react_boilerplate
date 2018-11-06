@@ -1,4 +1,4 @@
-const CONSTANT = "app/duck/QUACK";
+const CONSTANT = 'foo/TYPE';
 
 export default {
   CONSTANT,
