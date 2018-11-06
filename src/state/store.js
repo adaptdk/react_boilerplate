@@ -29,7 +29,6 @@ const configureStore = (initialState = {}) => {
     );
   }
 
-  // If Not Production
   // Enable DevTools if browser extension is installed
   let enhancer;
   if (window.__REDUX_DEVTOOLS_EXTENSION__) {
