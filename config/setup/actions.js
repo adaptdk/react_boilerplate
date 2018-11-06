@@ -113,9 +113,7 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
 const getFeatures = (project, selectedFeatures, func) => {
   selectedFeatures.forEach((question, index) => {
 
-    const filteredFeature = Object.entries(features).find(
-      feature => feature[0] === question
-    )[1];
+    const filteredFeature = Object.entries(features).find(feature => feature[0] === question)[1];
 
     // Then output each variant
     console.log(`
@@ -229,18 +227,12 @@ const finishSetup = (project, variants) => {
       replace: project.title,
       file: 'public/index-full.html',
     },
-    // Renames Titles in package.json
+    // Renames Titles and setup script from package.json
     {
-      match: 'project_title',
-      replace: project.machine,
-      file: 'package.json',
-    },
-    // Removes Setup scripts from package.json
-    {
-      match: `
+      match: ['project_title', `
     "presetup": "yarn install",
-    "setup": "node config/setup/setup.js",`,
-      replace: '',
+    "setup": "node config/setup/setup.js",`],
+      replace: [project.machine, ''],
       file: 'package.json',
     },
   ]);
