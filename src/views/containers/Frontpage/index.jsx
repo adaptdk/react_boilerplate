@@ -9,6 +9,7 @@ class Frontpage extends Component {
     const { onClick } = this.props;
     return (
       <div className="page page-frontpage">
+
         <h1>
           Home
         </h1>
@@ -31,4 +32,3 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Frontpage);
-

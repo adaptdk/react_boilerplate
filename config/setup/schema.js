@@ -35,13 +35,13 @@ const schema = {
     properties: {
       removeLocal: {
         description: 'Do you want to remove the boilerplate git repository? [y/n]',
-        message: 'Answer with either yes, y, no or no.',
+        message: 'Answer with either yes, y, no or n.',
         pattern: /^(yes|y|no|n)/,
         required: true,
       },
       addOwnRepo: {
         description: 'Awesome! Would you like to add your own empty git repo? [y/n]',
-        message: 'Answer with either yes, y, no or no.',
+        message: 'Answer with either yes, y, no or n.',
         pattern: /^(yes|y|no|n)/,
         ask: () => prompt.history('removeLocal') && isYes(prompt.history('removeLocal').value),
       },
@@ -55,22 +55,6 @@ const schema = {
   },
 };
 
-// Packages Extra Questions
-const featureSchema = {
-  redux: {
-    properties: {
-      codeStructure: {
-        description: 'Which code structure do you prefer? [1 is default]',
-        message: 'You must select a feature by entering it\'s number [0-9]',
-        pattern: /[0-9]/,
-        default: '1',
-        required: true,
-      },
-    },
-  },
-};
-
 module.exports = {
   schema,
-  featureSchema,
 };
