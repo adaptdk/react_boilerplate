@@ -10,7 +10,7 @@ yarn setup
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
 <p align="center">
-  <img src="https://media.giphy.com/media/9J8VoAXRJ5gtjxxLjm/giphy.gif" alt="Intro Video">
+  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/docs/doc/setup-intro-video.gif?token=APWiOp_OQJvk2uDLjqfi0MiDPrEaCLPOks5b6vy-wA%3D%3D" alt="Intro Video">
 </p>
 
 # ⚙ Get started
@@ -51,7 +51,7 @@ This project ships with an all green LightHouse audit, include PWA features.
 Continuously while development keep running the audit to monitor how your features are impacting your score, will help you develop great applications.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/readme/doc/LightHouse-Audit.jpg?token=APWiOisYr34d0h796_AJLG_qf6AgvS29ks5b4sCWwA%3D%3D" alt="LightHouse Audit">
+  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/docs/doc/LightHouse-Audit.jpg?token=APWiOomvEvnCx4kDbaleAMcYSW6T0UqPks5b6vy6wA%3D%3D" alt="LightHouse Audit">
 </p>
 
 ## 📦 Packages
