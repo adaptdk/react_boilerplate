@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Loaders
 const scssLoader = require('./loaders/scss');
 
@@ -22,7 +24,7 @@ module.exports = function(config, env, settings) {
     rules: [
       ...config.module.rules,
       { ...scssLoader },
-    ]
+    ],
   };
 
   return config;

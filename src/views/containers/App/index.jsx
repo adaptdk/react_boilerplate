@@ -1,40 +1,46 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
-// Constants
-import routes from 'constants/Routes';
+// Containers
+import Frontpage from 'views/containers/Frontpage';
+import NotFound from 'views/containers/NotFound';
 
 // Components
 import Loading from 'views/components/Loading';
+import Header from 'views/components/Header';
 
+// Code Splitting Components
 const Footer = Loadable({
   loader: () => import('views/components/Footer'),
-  loading: Loading,
-});
-
-const Header = Loadable({
-  loader: () => import('views/components/Header'),
   loading: Loading,
 });
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
+      <Router>
+        <div className="app">
 
-        <Header />
+          <Header />
 
-        <main>
-          <Router>
-            {renderRoutes(routes)}
-          </Router>
-        </main>
+          <main>
+            <Switch>
+              <Route
+                path="/"
+                component={Frontpage}
+                exact
+              />
+              <Route
+                component={NotFound}
+              />
+            </Switch>
+          </main>
 
-        <Footer />
+          <Footer />
 
-      </div>
+        </div>
+      </Router>
     );
   }
 }

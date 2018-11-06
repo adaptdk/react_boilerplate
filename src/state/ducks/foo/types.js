@@ -1,4 +1,4 @@
-const CONSTANT = "duck/TYPE";
+const CONSTANT = 'foo/TYPE';
 
 export default {
   CONSTANT,

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
@@ -9,6 +11,7 @@ const eslintLoader = require('./loaders/scss');
 const paths = require('./paths');
 
 module.exports = function (config, env, settings) {
+
   /*
    * Insert your development specific configuration here.
    */

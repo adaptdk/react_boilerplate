@@ -1,10 +1,10 @@
 import types from './types';
 
-export const duckAction = value => ({
+export const fooAction = value => ({
   type: types.CONSTANT,
-  payload: value
+  payload: value,
 });
 
 export default {
-  duckAction,
+  fooAction,
 };

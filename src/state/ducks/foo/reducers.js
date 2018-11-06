@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import types from './types';
 
-const duck = (state = {
+const foo = (state = {
   isActive: false,
 }, action) => {
   const { payload } = action;
@@ -16,8 +16,8 @@ const duck = (state = {
   }
 };
 
-const duckReducer = combineReducers({
-  duck,
+const fooReducer = combineReducers({
+  foo,
 });
 
-export default duckReducer;
+export default fooReducer;
