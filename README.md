@@ -61,7 +61,7 @@ This is the format, but needs to be updated with the right information
 | Features       | Base | Simple | Complex |
 | :------------- | :--: | :----: | :-----: |
 | Status | **WIP** | **WIP** | **WIP** |
-| **Project Size (kb)** | `~54kb` | `~54kb` | `~55kb` |
+| **Project Size (kb)** | `~37kb` | `~54kb` | `~55kb` |
 | **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ | ✅ |
 | **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ❌ | ✅ |
 | **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ | ✅ |
