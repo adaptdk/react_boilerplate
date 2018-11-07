@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
-// Actions
-import { fooOperations } from 'state/ducks/foo';
 
 class Frontpage extends Component {
-  static defaultProps = {
-    clickedValue: '1',
+  state = {
+    clickedValue: 1,
   };
 
-  static propTypes = {
-    onClick: PropTypes.func,
-    clickedValue: PropTypes.string,
+  onClick = value => {
+    this.setState({
+      clickedValue: value,
+    });
   };
 
   render() {
-    const { onClick, clickedValue } = this.props;
+    const { clickedValue } = this.state;
 
     return (
       <div className="page page-frontpage">
@@ -25,21 +21,13 @@ class Frontpage extends Component {
           Home {clickedValue}
         </h1>
 
-        <button type="button" onClick={() => onClick('1')}>1</button>
-        <button type="button" onClick={() => onClick('2')}>2</button>
-        <button type="button" onClick={() => onClick('3')}>3</button>
+        <button type="button" onClick={() => this.onClick('1')}>1</button>
+        <button type="button" onClick={() => this.onClick('2')}>2</button>
+        <button type="button" onClick={() => this.onClick('3')}>3</button>
 
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  clickedValue: state.foo.foo.value,
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: value => dispatch(fooOperations.fooAction(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Frontpage);
+export default Frontpage;

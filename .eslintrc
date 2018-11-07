@@ -28,7 +28,8 @@
     "jsx-quotes": 0,
     "linebreak-style": 0,
     "max-len": [
-      "warn", {
+      "warn",
+      {
         "code": 120,
         "ignoreComments": true
       }
