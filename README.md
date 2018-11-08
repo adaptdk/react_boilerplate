@@ -58,19 +58,19 @@ Continuously while development keep running the audit to monitor how your featur
 
 This is the format, but needs to be updated with the right information
 
-| Features       | Base | Simple | Complex |
-| :------------- | :--: | :----: | :-----: |
-| Status | **WIP** | **WIP** | **WIP** |
-| **Project Size (kb)** | `~37kb` | `~54kb` | `~55kb` |
-| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ | ✅ |
-| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ❌ | ✅ |
-| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ | ✅ |
-| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ | ✅ |
-| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ | ✅ |
-| **Scss** | ✅ | ✅ | ✅ |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ | ✅ |
-| **Critical CSS** | ✅ | ✅ | ✅ |
-| **Autoprefixer** | ✅ | ✅ | ✅ |
+| Features       | Base | Complex |
+| :------------- | :--: | :-----: |
+| Status | **WIP** | **WIP** |
+| **Project Size (kb)** | `~37kb` | `~55kb` |
+| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ✅ |
+| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ |
+| **Scss** | ✅ | ✅ |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ |
+| **Critical CSS** | ✅ | ✅ |
+| **Autoprefixer** | ✅ | ✅ |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
