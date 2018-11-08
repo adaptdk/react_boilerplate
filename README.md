@@ -10,7 +10,7 @@ yarn setup
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/docs/doc/setup-intro-video.gif?token=APWiOp_OQJvk2uDLjqfi0MiDPrEaCLPOks5b6vy-wA%3D%3D" alt="Intro Video">
+  <img src="https://raw.githubusercontent.com/adaptdk/react_boilerplate/docs/doc/setup-intro-video.gif?token=APWiOp_OQJvk2uDLjqfi0MiDPrEaCLPOks5b6vy-wA%3D%3D" alt="Intro Video" width="500">
 </p>
 
 # ⚙ Get started
