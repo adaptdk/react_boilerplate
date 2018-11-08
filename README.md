@@ -1,5 +1,5 @@
 # 💡 What is it?
-React Boilerplate aims to extends create-react-app with custom webpack config, and adding modules we use for every project.
+React Boilerplate aims to extends create-react-app with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
 
 # 🏎 Quick Start
 ```console
