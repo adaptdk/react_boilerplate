@@ -1,9 +1,13 @@
+/* eslint-disable */
 /* config-overrides.js */
+const rewireEslint = require('react-app-rewire-eslint');
 
 // Loading Configs
 const commonConfig = require('./config/webpack.config.common');
 const prodConfig = require('./config/webpack.config.prod');
 const devConfig = require('./config/webpack.config.dev');
+
+const eslintConfig = require('./config/loaders/eslint');
 
 module.exports = function override(config, env) {
 
@@ -19,11 +23,15 @@ module.exports = function override(config, env) {
     isProdEmbedded: false,
   };
 
+  // Loading Env Config
   config = {
     ...commonConfig(config, env, settings),
     ...env === 'production' ? prodConfig(config, env, settings) : {},
     ...env === 'development' ? devConfig(config, env, settings) : {},
   };
+
+  // Loading Eslint Rewire
+  config = rewireEslint(config, env, eslintConfig);
 
   return config;
 };
