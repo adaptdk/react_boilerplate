@@ -3,7 +3,7 @@
 // Loaders
 const scssLoader = require('./loaders/scss');
 
-module.exports = function(config, env, settings) {
+module.exports = function (config, env, settings) {
 
   /*
    * Insert your shared configuration here.

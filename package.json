@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adaptagency/fe_tools": "^1.6.2",
+    "@adaptagency/fe_tools": "^1.6.4",
     "node-sass": "^4.9.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
