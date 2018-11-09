@@ -31,12 +31,13 @@ const fileReadWriteAsync = (match, replace, filePath) => {
   try {
     fs.readFile(filePath, 'utf-8', (err, data) => {
       if (err) throw err;
-      let find, newValue;
+      let find,
+        newValue;
 
       // if the match is an array, then we'll have to do multiple find replace.
       if (Array.isArray(match)) {
         if (!Array.isArray(replace)) {
-          throw 'Both your match and values have to be an Array in order for multiple replace to work.'
+          throw 'Both your match and values have to be an Array in order for multiple replace to work.';
         }
 
         if (match.length !== replace.length) {
@@ -54,7 +55,7 @@ const fileReadWriteAsync = (match, replace, filePath) => {
           ));
         });
         find.forEach(matched => {
-          newValue = newValue.replace(matched.matching, matched.replacing)
+          newValue = newValue.replace(matched.matching, matched.replacing);
         });
       } else {
         find = new RegExp(match, 'gm');
@@ -64,7 +65,7 @@ const fileReadWriteAsync = (match, replace, filePath) => {
       fs.writeFile(filePath, newValue, 'utf-8', (err) => {
         if (err) throw err;
       });
-    })
+    });
   } catch (err) {
     throw err;
   }
@@ -75,7 +76,7 @@ const fileReadWriteAsync = (match, replace, filePath) => {
  * @param {array} array     The array that should executed on
  * @returns {null}
  */
-filesReadWriteAsync = array => {
+const filesReadWriteAsync = array => {
   try {
     array.forEach(item => fileReadWriteAsync(item.match, item.replace, item.file));
   } catch (err) {
