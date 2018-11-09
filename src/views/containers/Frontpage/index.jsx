@@ -21,9 +21,7 @@ class Frontpage extends Component {
     return (
       <div className="page page-frontpage">
 
-        <h1>
-          Home {clickedValue}
-        </h1>
+        <h1>Home {clickedValue}</h1>
 
         <button type="button" onClick={() => onClick('1')}>1</button>
         <button type="button" onClick={() => onClick('2')}>2</button>
@@ -34,11 +32,11 @@ class Frontpage extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   clickedValue: state.foo.foo.value,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   onClick: value => dispatch(fooOperations.fooAction(value)),
 });
 

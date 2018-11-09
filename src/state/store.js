@@ -1,4 +1,9 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+  combineReducers,
+} from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -31,10 +36,10 @@ const configureStore = (initialState = {}) => {
 
   // Enable DevTools if browser extension is installed
   let enhancer;
-  if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+  if (window.__REDUX_DEVTOOLS_EXTENSION__) { // eslint-disable-line
     enhancer = compose(
       middleware,
-      window.__REDUX_DEVTOOLS_EXTENSION__()
+      window.__REDUX_DEVTOOLS_EXTENSION__() // eslint-disable-line
     );
   } else {
     enhancer = compose(middleware);
@@ -47,7 +52,7 @@ const configureStore = (initialState = {}) => {
   );
 };
 
-const store = configureStore(window.__INITIAL_STATE__);
+const store = configureStore(window.__INITIAL_STATE__); // eslint-disable-line
 const persistor = persistStore(store);
 
 export { store, persistor };

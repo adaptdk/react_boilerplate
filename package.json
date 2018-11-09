@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "test": "react-app-rewired test --modulePaths=src",
     "presetup": "yarn install",
     "setup": "node config/setup/setup.js",
     "release": "release-it"
@@ -49,6 +49,7 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-inline-svg": "^3.1.1",
     "prompt": "1.0.0",
+    "react-app-rewire-eslint": "^0.2.3",
     "react-app-rewired": "^1.6.2",
     "release-it": "^7.6.2",
     "webpack": "4.19.1",
