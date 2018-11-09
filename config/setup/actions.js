@@ -249,6 +249,22 @@ const finishSetup = (project, variants) => {
       file: 'package.json',
     },
   ]);
+
+  function promiseFromChildProcess(child) {
+    return new Promise(function (resolve, reject) {
+      child.addListener("error", reject);
+      child.addListener("exit", resolve);
+    });
+  }
+  // Remove setup folders
+  if (executeConfig.removeSetup) {
+    delay += increment;
+    setTimeout(() => {
+      console.log(`
+☑️  Finally, removing the setup files...`);
+    }, delay);
+    exec('rm -rf ./config/setup');
+  }
   // If the selected package have specific modules, make sure we'll install those
   if (executeConfig.install) {
     delay += increment;
@@ -258,19 +274,10 @@ const finishSetup = (project, variants) => {
     }, delay);
     exec('yarn install');
   }
-  // Remove setup folders
-  if (executeConfig.removeSetup) {
-    delay += increment;
-    setTimeout(() => {
-      console.log(`
-☑️  ...and finally, removing the setup files`);
-    }, delay);
-    exec('rm -rf ./config/setup');
-  }
 
   setTimeout(() => {
     console.log(`
-❤️   Great! We'll start setting up your project.
+❤️   We'll start setting up your project.
 Thank you for using the boilerplate for your React project.
 
 ${bold('Here\'s some quick commands to get you started.')}
@@ -279,6 +286,8 @@ yarn start
 
 ${underline('Production Build')}
 yarn build
+
+Loading...
 `);
   }, delay + increment);
 };
