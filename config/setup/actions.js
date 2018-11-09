@@ -113,7 +113,8 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
 const getFeatures = (project, selectedFeatures, func) => {
   selectedFeatures.forEach((question, index) => {
 
-    const filteredFeature = Object.entries(features).find(feature => feature[0] === question)[1];
+    const filteredFeature = Object.entries(features)
+      .find(feature => feature[0] === question)[1];
 
     // Then output each variant
     console.log(`
@@ -168,7 +169,6 @@ We'll now ask you a few questions to create the ideal start for your project.`);
         console.log(highlight(`
 
 Alright, we\'ll keep the boilerplate repository, and start setting up
-
   `));
         return finishSetup(project);
       }
@@ -208,16 +208,25 @@ const finishSetup = (project, variants) => {
     removeSetup: variants && variants.removeSetup || true,
     removeGit: variants && variants.removeGit || false,
   };
+  // Adding Timeout for comments, for a smoother experience while installing
+  let delay = 0;
+  const increment = 750;
   // If they don't want to add Git, but want to remove it.
   if (executeConfig.removeGit && !executeConfig.git) {
-    console.log(`
+    delay += increment;
+    setTimeout(() => {
+      console.log(`
 ☑️  Removing the boilerplate git...`);
+    }, delay);
     exec('rm -rf .git');
   }
   // If they want to add git, then clone it down and replace the Boilerplates git.
   if (executeConfig.git && project && project.ownRepo) {
-    console.log(`
+    delay += increment;
+    setTimeout(() => {
+      console.log(`
 ☑️  Removing the boilerplate git and cloning down your repository...`);
+    }, delay);
     exec(`rm -rf .git &&
     git clone --no-checkout ${project.ownRepo} .gitTemp &&
     mv ./.gitTemp/.git ./.git &&
@@ -242,18 +251,25 @@ const finishSetup = (project, variants) => {
   ]);
   // If the selected package have specific modules, make sure we'll install those
   if (executeConfig.install) {
-    console.log(`
+    delay += increment;
+    setTimeout(() => {
+      console.log(`
 ☑️  Install the modules needed for the selected package...`);
+    }, delay);
     exec('yarn install');
   }
   // Remove setup folders
   if (executeConfig.removeSetup) {
-    console.log(`
+    delay += increment;
+    setTimeout(() => {
+      console.log(`
 ☑️  ...and finally, removing the setup files`);
+    }, delay);
     exec('rm -rf ./config/setup');
   }
 
-  console.log(`
+  setTimeout(() => {
+    console.log(`
 ❤️   Great! We'll start setting up your project.
 Thank you for using the boilerplate for your React project.
 
@@ -264,6 +280,7 @@ yarn start
 ${underline('Production Build')}
 yarn build
 `);
+  }, delay + increment);
 };
 
 // When you've exit the setup
