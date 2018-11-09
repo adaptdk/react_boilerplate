@@ -141,9 +141,9 @@ ${dim(filteredFeature.predescription)}
 
     if (selectedFeatures.length !== index + 1 && !!func) {
       // If this is not the last feature then add an empty line
-      console.log('')
+      console.log('');
     }
-  })
+  });
 };
 
 /**
@@ -210,10 +210,14 @@ const finishSetup = (project, variants) => {
   };
   // If they don't want to add Git, but want to remove it.
   if (executeConfig.removeGit && !executeConfig.git) {
+    console.log(`
+☑️  Removing the boilerplate git...`);
     exec('rm -rf .git');
   }
   // If they want to add git, then clone it down and replace the Boilerplates git.
   if (executeConfig.git && project && project.ownRepo) {
+    console.log(`
+☑️  Removing the boilerplate git and cloning down your repository...`);
     exec(`rm -rf .git &&
     git clone --no-checkout ${project.ownRepo} .gitTemp &&
     mv ./.gitTemp/.git ./.git &&
@@ -238,10 +242,14 @@ const finishSetup = (project, variants) => {
   ]);
   // If the selected package have specific modules, make sure we'll install those
   if (executeConfig.install) {
+    console.log(`
+☑️  Install the modules needed for the selected package...`);
     exec('yarn install');
   }
   // Remove setup folders
   if (executeConfig.removeSetup) {
+    console.log(`
+☑️  ...and finally, removing the setup files`);
     exec('rm -rf ./config/setup');
   }
 
