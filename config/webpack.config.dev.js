@@ -4,9 +4,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
 
-// Loaders
-const eslintLoader = require('./loaders/scss');
-
 // Paths
 const paths = require('./paths');
 

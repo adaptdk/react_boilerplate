@@ -11,7 +11,7 @@ import { store, persistor } from 'state/store';
 import App from 'views/containers/App';
 
 // Styles
-import 'assets/styles/critical.scss';
+import 'assets/styles/critical.crit.scss';
 import 'assets/styles/main.scss';
 
 ReactDOM.render(
