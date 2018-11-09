@@ -13,11 +13,6 @@ const packages = [
   },
   {
     id: '2',
-    title: 'Simple',
-    branch: 'simple',
-  },
-  {
-    id: '3',
     title: 'Complex',
     branch: 'complex',
     // If you want to ask extra questions based on features, you can add them like this, and then in the getFeatures().
