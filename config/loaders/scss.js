@@ -5,8 +5,19 @@ const postcssInlineSvg = require('postcss-inline-svg');
 const paths = require('../paths');
 
 const scssLoader = {
-  test: /\.scss$/,
+  test: /\.(sa|sc|c)ss$/,
   use: [
+    {
+      loader: 'style-loader',
+    },
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: true,
+        modules: true,
+        localIdentName: '[local]___[hash:base64:5]',
+      },
+    },
     {
       loader: 'postcss-loader',
       options: {
@@ -37,6 +48,6 @@ const scssLoader = {
   ],
 };
 
-module.export = {
+module.exports = {
   scssLoader,
 };

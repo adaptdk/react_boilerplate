@@ -1,7 +1,10 @@
 /* eslint-disable */
 
 // Loaders
-const scssLoader = require('./loaders/scss');
+const { scssLoader } = require('./loaders/scss');
+
+// Utilities
+const { getIndexOfObjProperty, filterOutLoaders } = require('./utilities/utilities');
 
 module.exports = function (config, env, settings) {
 
@@ -19,13 +22,21 @@ module.exports = function (config, env, settings) {
   };
 
   // Module
-  config.module = {
-    ...config.module,
-    rules: [
-      ...config.module.rules,
-      { ...scssLoader },
-    ],
-  };
+  // Find index of OneOf
+  const oneOfIndex = getIndexOfObjProperty(config.module.rules, 'oneOf');
+  console.log(oneOfIndex);
+  let rulesOneOf = config.module.rules[oneOfIndex].oneOf;
+
+  // Filter Out loaders we don't want from CRA.
+  // const excludeLoaders = ['/\\.(scss|sass)$/'];
+  // rulesOneOf = filterOutLoaders(rulesOneOf, excludeLoaders);
+
+  // getIndexOfObjProperty(config.module.rules[oneOfIndex].oneOf, '/\\.(scss|sass)$/');
+  // Add your ownFilters
+  // rulesOneOf.push({ ...scssLoader });
+
+  // Manipulate the real oneOf loaders list with the new manipulated
+  // config.module.rules[oneOfIndex].oneOf = rulesOneOf;
 
   return config;
 };
