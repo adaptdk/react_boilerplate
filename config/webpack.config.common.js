@@ -1,13 +1,11 @@
 /* eslint-disable */
+const { getLoader, loaderNameMatches } = require('react-app-rewired');
+const { isProd: isProdUtils } = require('./utilities/utilities');
 
 // Loaders
-const { scssLoader } = require('./loaders/scss');
+const { stylesLoaders } = require('./loaders/styles');
 
-// Utilities
-const { getIndexOfObjProperty, filterOutLoaders } = require('./utilities/utilities');
-
-module.exports = function (config, env, settings) {
-
+module.exports = function(config, env, settings) {
   /*
    * Insert your shared configuration here.
    */
@@ -15,28 +13,26 @@ module.exports = function (config, env, settings) {
   // Resolve
   config.resolve = {
     ...config.resolve,
-    modules: [
-      ...config.resolve.modules,
-      './src',
-    ],
+    modules: [...config.resolve.modules, './src'],
   };
 
-  // Module
-  // Find index of OneOf
-  const oneOfIndex = getIndexOfObjProperty(config.module.rules, 'oneOf');
-  console.log(oneOfIndex);
-  let rulesOneOf = config.module.rules[oneOfIndex].oneOf;
+  // Modules
+  // Apply loaders
+  // We need to exclude the stylesheet extensions from the file-loader, so webpack know they're styles
+  const fileLoader = getLoader(config.module.rules, rule => loaderNameMatches(rule, 'file-loader'));
+  fileLoader.exclude.push([/\.(sa|sc|c)ss$/, /\.crit\.(sa|sc|c)ss$/]);
 
-  // Filter Out loaders we don't want from CRA.
-  // const excludeLoaders = ['/\\.(scss|sass)$/'];
-  // rulesOneOf = filterOutLoaders(rulesOneOf, excludeLoaders);
+  // Get the Style Loaders from the loader folder
+  const styles = stylesLoaders(isProdUtils(env));
 
-  // getIndexOfObjProperty(config.module.rules[oneOfIndex].oneOf, '/\\.(scss|sass)$/');
-  // Add your ownFilters
-  // rulesOneOf.push({ ...scssLoader });
-
-  // Manipulate the real oneOf loaders list with the new manipulated
-  // config.module.rules[oneOfIndex].oneOf = rulesOneOf;
+  // Add the Style Loaders to the config.module.rules list.
+  // Depending on whether there's a oneOf
+  const oneOfRule = config.module.rules.find(rule => !!rule.oneOf);
+  if (oneOfRule) {
+    oneOfRule.oneOf.unshift(...styles);
+  } else {
+    config.module.rules.push(...styles);
+  }
 
   return config;
 };

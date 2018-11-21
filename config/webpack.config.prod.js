@@ -2,25 +2,49 @@
 
 // Plugins
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Paths
 const paths = require('./paths');
 
-module.exports = function (config, env, settings) {
+module.exports = function (config, isProd, settings) {
 
   /*
    * Insert your production specific configuration here.
    */
 
+     // Optimizations
+  config.optimization = {
+    ...config.optimization,
+    minimizer: [
+      ...config.optimization.minimizer,
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+  };
+
   // Plugins
   config.plugins = [
     ...config.plugins,
+
     // Bundle Analyzer
     ...settings.bundleAnalyzer ? [
       new BundleAnalyzerPlugin(),
     ] : [],
+
+    //  Minify CSS Etract Plugin
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+    }),
 
     // Use the correct index.html template.
     new HtmlWebpackPlugin({

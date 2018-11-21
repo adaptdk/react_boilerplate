@@ -1,24 +1,38 @@
 /**
- * When you don't know the index of the object in an array, then you can use this
- * @param {array} array               The Array to want to manipulate.
- * @param {string} match              The string matching the property name of the array's objects you're looping over
- * @returns {array}
+ * Get the index of an object in a array
+ * @param {array} array         The Array to want to check.
+ * @param {string} match        The string matching the property name of the array's object
+ * @param {string} ascendant    If you want to check on an ascendant of the arrays item.
+ * @returns {number}
  */
-const getIndexOfObjProperty = (array, match) => {
-  let index;
-  array.forEach((rule, i) => {
-    if (rule[match]) index = i;
-  });
-  return index;
+const getIndex = (array, match, ascendant) => {
+  if (ascendant) {
+    return array.findIndex(item => !!item[ascendant][match]);
+  }
+  return array.findIndex(item => !!item[match]);
 };
 
-const filterOutLoaders = (loaders, filter) => loaders.filter(
-  loader => !(!Array.isArray(loader.test) && loader.test
-    && filter.includes(loader.test.toString())
-  )
-);
+/**
+ * Filter Out the Loaders that you don't need
+ * @param {array} loaders  The loaders you want to filter
+ * @returns {array}
+ */
+const filterOutLoaders = (loaders, filter, ascendant) => {
+  if (ascendant) {
+    return loaders.filter(loader => !(
+      loader[ascendant] && !Array.isArray(loader[ascendant]) && filter.includes(loader[ascendant].toString()))
+    );
+  }
+  return loaders.filter(loader => loader && filter.includes(loader.toString()));
+};
+
+const isProd = env => env === 'production';
+
+const isDev = env => env === 'development';
 
 module.exports = {
-  getIndexOfObjProperty,
+  getIndex,
   filterOutLoaders,
+  isProd,
+  isDev,
 };
