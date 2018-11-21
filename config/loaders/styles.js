@@ -37,8 +37,8 @@ const baseStyleLoader = [
   },
 ];
 
-const critLoader = isProd => ({
-  test: /\.crit\.(sa|sc)ss$/,
+const styleLoader = isProd => ({
+  test: /(?<!\.crit)\.(sa|sc)ss$/,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     'css-loader', 
@@ -46,11 +46,10 @@ const critLoader = isProd => ({
   ],
 });
 
-const styleLoader = isProd => ({
-  test: /(?<!\.crit)\.(sa|sc)ss$/,
+const critLoader = isProd => ({
+  test: /\.crit\.(sa|sc)ss$/,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    MiniCssExtractPlugin.loader, 
     'css-loader', 
     ...baseStyleLoader
   ],
@@ -74,8 +73,8 @@ const cssModulesLoader = isProd => ({
 
 module.exports = {
   stylesLoaders: isProd => [
+    styleLoader(isProd),
     critLoader(isProd),
     cssModulesLoader(isProd),
-    styleLoader(isProd),
   ]
 };
