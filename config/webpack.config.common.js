@@ -6,6 +6,7 @@ const { isProd: isProdUtils } = require('./utilities/utilities');
 const { stylesLoaders } = require('./loaders/styles');
 
 module.exports = function(config, env, settings) {
+  const isProd = isProdUtils(env);
   /*
    * Insert your shared configuration here.
    */
@@ -23,7 +24,7 @@ module.exports = function(config, env, settings) {
   fileLoader.exclude.push([/\.(sa|sc|c)ss$/, /\.crit\.(sa|sc|c)ss$/]);
 
   // Get the Style Loaders from the loader folder
-  const styles = stylesLoaders(isProdUtils(env));
+  const styles = stylesLoaders(isProd);
 
   // Add the Style Loaders to the config.module.rules list.
   // Depending on whether there's a oneOf

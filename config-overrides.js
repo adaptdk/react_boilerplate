@@ -1,7 +1,6 @@
 /* eslint-disable */
 /* config-overrides.js */
 const rewireEslint = require('react-app-rewire-eslint');
-const rewireSass = require('react-app-rewire-scss');
 
 // Utilities
 const { isProd: isProdUtils, isDev: isDevUtils } = require('./config/utilities/utilities');

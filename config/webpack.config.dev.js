@@ -13,23 +13,6 @@ module.exports = function(config, isDev, settings) {
    * Insert your development specific configuration here.
    */
 
-  // Optimizations
-  config.optimization = {
-    ...config.optimization,
-    splitChunks: {
-      ...config.optimization.splitChunks,
-      cacheGroups: {
-        ...config.optimization.splitChunks.cacheGroups,
-        styles: {
-          name: 'styles',
-          test: /\.(sa|sc)ss$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  };
-
   config.plugins = [
     ...config.plugins,
 

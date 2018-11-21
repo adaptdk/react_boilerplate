@@ -6,7 +6,9 @@ const postcssFlexbugs = require('postcss-flexbugs-fixes');
 const postcssInlineSvg = require('postcss-inline-svg');
 const paths = require('../paths');
 
-const baseStyleLoader = [
+// Config
+// PostCSS Config
+const postcssConfig = [
   {
     loader: 'postcss-loader',
     options: {
@@ -27,7 +29,11 @@ const baseStyleLoader = [
         }),
       ],
     },
-  },
+  }
+];
+
+// Sass/Scss Config
+const sassConfig = [
   'sass-loader',
   {
     loader: 'sass-resources-loader',
@@ -37,25 +43,20 @@ const baseStyleLoader = [
   },
 ];
 
-const styleLoader = isProd => ({
-  test: /(?<!\.crit)\.(sa|sc)ss$/,
+// Loaders
+// Sass/Scss Loader
+const sassLoader = isProd => ({
+  test: /\.(sa|sc)ss$/,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    'css-loader', 
-    ...baseStyleLoader
+    'css-loader',
+    ...postcssConfig,
+    ...sassConfig
   ],
 });
 
-const critLoader = isProd => ({
-  test: /\.crit\.(sa|sc)ss$/,
-  use: [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    'css-loader', 
-    ...baseStyleLoader
-  ],
-});
-
-const cssModulesLoader = isProd => ({
+// CSS Loader (Including CSS Modules)
+const cssLoader = isProd => ({
   test: /\.css$/,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -67,14 +68,15 @@ const cssModulesLoader = isProd => ({
         localIdentName: '[local]__[hash:base64:5]',
       },
     },
-    ...baseStyleLoader,
+    ...postcssConfig,
+    ...sassConfig,
   ],
 });
 
+// Collect and export
 module.exports = {
   stylesLoaders: isProd => [
-    styleLoader(isProd),
-    critLoader(isProd),
-    cssModulesLoader(isProd),
-  ]
+    sassLoader(isProd), 
+    cssLoader(isProd)
+  ],
 };

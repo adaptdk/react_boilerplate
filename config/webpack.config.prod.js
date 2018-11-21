@@ -42,8 +42,8 @@ module.exports = function (config, isProd, settings) {
 
     //  Minify CSS Etract Plugin
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: '/static/css/[name].[hash:5].css',
+      chunkFilename: '/static/css/[id].[hash:5].css',
     }),
 
     // Use the correct index.html template.
