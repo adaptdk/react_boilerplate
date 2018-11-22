@@ -62,6 +62,7 @@ const sassLoader = isProd => ({
   ],
 });
 
+// Sass/Scss Module Loader (CSS Modules)
 const sassModuleLoader = isProd => ({
   test: sassModuleRegex,
   use: [
@@ -90,6 +91,7 @@ const cssLoader = isProd => ({
   ],
 });
 
+// CSS Module Loader (CSS Modules)
 const cssModuleLoader = isProd => ({
   test: cssModuleRegex,
   use: [
