@@ -6,6 +6,12 @@ const postcssFlexbugs = require('postcss-flexbugs-fixes');
 const postcssInlineSvg = require('postcss-inline-svg');
 const paths = require('../paths');
 
+// Style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+
 // Config
 // PostCSS Config
 const postcssConfig = [
@@ -46,7 +52,8 @@ const sassConfig = [
 // Loaders
 // Sass/Scss Loader
 const sassLoader = isProd => ({
-  test: /\.(sa|sc)ss$/,
+  test: sassRegex,
+  exclude: sassModuleRegex,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     'css-loader',
@@ -55,9 +62,8 @@ const sassLoader = isProd => ({
   ],
 });
 
-// CSS Loader (Including CSS Modules)
-const cssLoader = isProd => ({
-  test: /\.css$/,
+const sassModuleLoader = isProd => ({
+  test: sassModuleRegex,
   use: [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     {
@@ -69,7 +75,34 @@ const cssLoader = isProd => ({
       },
     },
     ...postcssConfig,
-    ...sassConfig,
+    ...sassConfig
+  ],
+});
+
+// CSS Loader (Including CSS Modules)
+const cssLoader = isProd => ({
+  test: cssRegex,
+  exclude: cssModuleRegex,
+  use: [
+    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+    'css-loader',
+    ...postcssConfig,
+  ],
+});
+
+const cssModuleLoader = isProd => ({
+  test: cssModuleRegex,
+  use: [
+    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: !isProd,
+        modules: true,
+        localIdentName: isProd ? 's[hash:base64:3]' : '[local]__[hash:base64:3]',
+      },
+    },
+    ...postcssConfig,
   ],
 });
 
@@ -77,6 +110,8 @@ const cssLoader = isProd => ({
 module.exports = {
   stylesLoaders: isProd => [
     sassLoader(isProd), 
-    cssLoader(isProd)
+    sassModuleLoader(isProd),
+    cssLoader(isProd),
+    cssModuleLoader(isProd),
   ],
 };
