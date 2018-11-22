@@ -69,7 +69,7 @@ This is the format, but needs to be updated with the right information
 | **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ |
 | **Scss** | ✅ | ✅ |
 | **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ |
-| **Critical CSS (inline)** | ✅ | ✅ |
+| **[Critical CSS (inline)](#critical-css)** | ✅ | ✅ |
 | **CSS Modules** | ✅ | ✅ |
 | **Autoprefixer** | ✅ | ✅ |
 
