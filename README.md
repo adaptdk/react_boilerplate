@@ -69,10 +69,18 @@ This is the format, but needs to be updated with the right information
 | **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ |
 | **Scss** | ✅ | ✅ |
 | **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ |
-| **Critical CSS** | ✅ | ✅ |
+| **Critical CSS (inline)** | ✅ | ✅ |
+| **CSS Modules** | ✅ | ✅ |
 | **Autoprefixer** | ✅ | ✅ |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
+
+### Feature Documentation
+
+#### Critical CSS
+If you add `.crit` before your SCSS in your sass files like `*.crit.scss`, the file will be inlined in the top of the DOM instead of bundled in the main css file.
+
+This is extremely vital to first paint, so use it for all the components, which is above the fold.
 
 ## 🎛 Configuration
 Following configs can be edited in `config-overrides.js`
