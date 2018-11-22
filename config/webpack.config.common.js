@@ -14,7 +14,10 @@ module.exports = function(config, env, settings) {
   // Resolve
   config.resolve = {
     ...config.resolve,
-    modules: [...config.resolve.modules, './src'],
+    modules: [
+      ...config.resolve.modules, 
+      './src'
+    ],
   };
 
   // Modules
