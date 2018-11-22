@@ -45,7 +45,6 @@
     "postcss-loader": "^3.0.0",
     "prompt": "1.0.0",
     "react-app-rewire-eslint": "^0.2.3",
-    "react-app-rewire-scss": "^1.0.2",
     "react-app-rewired": "^1.6.2",
     "release-it": "^7.6.2",
     "sass-loader": "^7.1.0",
