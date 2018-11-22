@@ -65,7 +65,7 @@ const cssLoader = isProd => ({
       options: {
         sourceMap: !isProd,
         modules: true,
-        localIdentName: '[local]__[hash:base64:5]',
+        localIdentName: isProd ? 's[hash:base64:3]' : '[local]__[hash:base64:3]',
       },
     },
     ...postcssConfig,
