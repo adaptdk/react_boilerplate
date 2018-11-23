@@ -2,6 +2,9 @@
 /* config-overrides.js */
 const rewireEslint = require('react-app-rewire-eslint');
 
+// Utilities
+const { isProd: isProdUtils, isDev: isDevUtils } = require('./config/utilities/utilities');
+
 // Loading Configs
 const commonConfig = require('./config/webpack.config.common');
 const prodConfig = require('./config/webpack.config.prod');
@@ -10,6 +13,8 @@ const devConfig = require('./config/webpack.config.dev');
 const eslintConfig = require('./config/loaders/eslint');
 
 module.exports = function override(config, env) {
+  const isProd = isProdUtils(env);
+  const isDev = isDevUtils(env);
 
   // Settings
   const settings = {
@@ -26,8 +31,8 @@ module.exports = function override(config, env) {
   // Loading Env Config
   config = {
     ...commonConfig(config, env, settings),
-    ...env === 'production' ? prodConfig(config, env, settings) : {},
-    ...env === 'development' ? devConfig(config, env, settings) : {},
+    ...(isProd ? prodConfig(config, isProd, settings) : {}),
+    ...(isDev ? devConfig(config, isDev, settings) : {}),
   };
 
   // Loading Eslint Rewire
