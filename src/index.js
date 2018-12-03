@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from 'utilities/serviceWorker';
 
 // Container
-import App from 'views/containers/App';
+import App from 'views/containers/App/App';
 
 // Styles
 import 'assets/styles/critical.crit.scss';

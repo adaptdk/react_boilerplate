@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Containers
-import Frontpage from 'views/containers/Frontpage';
+import Frontpage from 'views/containers/Frontpage/Frontpage';
 
 // Components
 import Header from 'views/components/Header';
