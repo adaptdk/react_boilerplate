@@ -8,7 +8,7 @@ import * as serviceWorker from 'utilities/serviceWorker';
 import { store, persistor } from 'state/store';
 
 // Container
-import App from 'views/containers/App';
+import App from 'views/containers/App/App';
 
 // Styles
 import 'assets/styles/critical.crit.scss';
