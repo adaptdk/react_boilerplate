@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "react-app",
-    "eslint-config-airbnb"
-  ],
+  "extends": ["react-app", "eslint-config-airbnb"],
   "parser": "babel-eslint",
   "settings": {
     "ecmascript": 6
@@ -30,8 +27,10 @@
     "new-cap": 0,
     "no-plusplus": 0,
     "no-return-assign": 0,
+    "no-trailing-spaces": 1,
     "prefer-promise-reject-errors": 0,
     "quote-props": 0,
+    "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-curly-spacing": 0,
     "react/jsx-filename-extension": 0,
@@ -39,12 +38,13 @@
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-tag-spacing": 0,
     "react/no-danger": 0,
+    "react/no-unused-prop-types": 1,
     "react/prefer-stateless-function": 0,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 0,
     "react/require-default-props": 0,
+    "react/self-closing-comp": 1,
     "semi": 1,
-    "no-trailing-spaces": 1,
     "template-curly-spacing": 0,
     "max-len": [
       "warn",
