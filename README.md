@@ -1,6 +1,13 @@
 # 💡 What is it?
 React Boilerplate aims to extends create-react-app with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
 
+
+## 🖇 Dependencies
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Node >=10](https://nodejs.org/en/download/)
+
+Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
+
 # 🏎 Quick Start
 ```console
 git clone git@github.com:adaptdk/react_boilerplate.git my-project
@@ -90,9 +97,3 @@ Following configs can be edited in `config-overrides.js`
 | **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product. |
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
-
-## 🖇 Dependencies
-- [Yarn](https://yarnpkg.com/en/docs/install)
-- [NodeJs](https://nodejs.org/en/download/)
-
-Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
