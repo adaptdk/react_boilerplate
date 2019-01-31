@@ -1,12 +1,11 @@
 # 💡 What is it?
-React Boilerplate aims to extends create-react-app with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
+React Boilerplate aims to extends [Create React App](https://github.com/facebook/create-react-app) with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
 
+Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
 
 ## 🖇 Dependencies
 - [Yarn](https://yarnpkg.com/en/docs/install)
 - [Node >=10](https://nodejs.org/en/download/)
-
-Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
 
 # 🏎 Quick Start
 ```console
