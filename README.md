@@ -96,3 +96,26 @@ Following configs can be edited in `config-overrides.js`
 | **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product. |
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
+
+
+## ⛺️ Maintainers
+Feel free to write any of the maintainers, or create an issue if you run into a problem.
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="90" height="90"
+        src="https://avatars0.githubusercontent.com/u/16097850?s=460&v=4">
+        </br>
+        <a href="https://github.com/https://github.com/mads-thines">Mads Thines</a>
+      </td>
+      <td align="center">
+        <img width="90" height="90"
+        src="https://avatars0.githubusercontent.com/u/6573200?s=460&v=4">
+        </br>
+        <a href="https://github.com/ChrEsb">Christian Esbensen</a>
+      </td>
+    </tr>
+  <tbody>
+</table>
