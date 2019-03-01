@@ -8,6 +8,8 @@ Check out [Create React App](https://github.com/facebook/create-react-app) for m
 - [Node >=10](https://nodejs.org/en/download/)
 
 # 🏎 Quick Start
+### We're currently one version behind, so it's important that you install and build the project using yarn!
+
 ```console
 git clone git@github.com:adaptdk/react_boilerplate.git my-project
 cd my-project
@@ -23,7 +25,7 @@ This will ask install your modules, ask you some questions and setup your projec
 
 Inside the newly created project, you can run some built-in commands:
 
-### `npm start` or `yarn start`
+### `yarn start`
 
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -35,7 +37,7 @@ You will see the build errors and lint warnings in the console.
 <img src='https://cdn.rawgit.com/marionebl/create-react-app/9f62826/screencast-error.svg' width="500" alt='Build errors'>
 </p>
 
-### `npm test` or `yarn test`
+### `yarn test`
 
 Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
