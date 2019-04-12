@@ -34,8 +34,8 @@ module.exports = function override(config, env) {
   // Loading Env Config
   config = {
     ...commonConfig(config, env, settings),
-    ...(isProd ? prodConfig(config, isProd, settings) : {}),
-    ...(isDev ? devConfig(config, isDev, settings) : {}),
+    ...(isProd ? prodConfig(config, env, settings) : {}),
+    ...(isDev ? devConfig(config, env, settings) : {}),
   };
 
   // Loading Eslint Rewire

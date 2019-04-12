@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../.",
+    "paths": {
+      "*": ["*", "generated/*"],
+      "assets/*": ["src/assets/*"],
+      "state/*": ["src/state/*"],
+      "utilities/*": ["src/utilities/*"],
+      "views/*": ["src/views/*"]
+    }
+  }
+}
