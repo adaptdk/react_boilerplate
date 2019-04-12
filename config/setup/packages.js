@@ -8,19 +8,32 @@ const {
 const packages = [
   {
     id: '1',
-    title: 'Base',
-    branch: 'base',
+    title: 'Base (TypeScript)',
+    branch: 'typescript/base',
   },
   {
     id: '2',
-    title: 'Complex',
-    branch: 'complex',
-    // If you want to ask extra questions based on features, you can add them like this, and then in the getFeatures().
-    // If the features key match one of the props in the features object below, then it'll ask an extra questions, selecting one of the variants
-    // features: [
-    //   'redux',
-    // ],
+    title: 'Complex (TypeScript)',
+    branch: 'typescript/complex',
   },
+  {
+    id: '3',
+    title: 'Base',
+    branch: 'regular/base',
+  },
+  {
+    id: '4',
+    title: 'Complex',
+    branch: 'regular/complex',
+  },
+  // {
+  //   id: '2',
+  //   title: 'Complex',
+  //   branch: 'complex',
+  //   features: [
+  //     'redux',
+  //   ],
+  // },
 ];
 
 // Features that have multiple structures
