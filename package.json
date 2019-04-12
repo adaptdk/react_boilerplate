@@ -71,6 +71,7 @@
     "prompt": "1.0.0",
     "react-app-rewire-eslint": "0.2.3",
     "react-app-rewire-hot-loader": "2.0.1",
+    "react-app-rewire-typescript": "^2.0.2",
     "react-app-rewired": "1.6.2",
     "react-hot-loader": "4.8.3",
     "release-it": "10.4.2",
