@@ -13,6 +13,10 @@ import * as reducers from './ducks/index'; // import all reducers from ducks/ind
 
 const rootReducer = combineReducers(reducers);
 
+declare global {
+  interface Window { __REDUX_DEVTOOLS_EXTENSION__: any; __INITIAL_STATE__: any; }
+}
+
 // Configure The Store
 const configureStore = (initialState = {}) => {
   const isProduction = process.env.NODE_ENV === 'production';

@@ -1,4 +1,8 @@
 {
-  "presets": ["babel-preset-react-app"],
-  "plugins": ["react-hot-loader/babel"]
+  "presets": ["babel-preset-react-app", "@babel/typescript"],
+  "plugins": [
+    "react-hot-loader/babel",
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
 }

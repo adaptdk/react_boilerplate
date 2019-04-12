@@ -17,6 +17,9 @@ module.exports = function(config, isDev, settings) {
   // Use .babelrc
   useBabelRc();
 
+  config.devtool = "source-map";
+
+  // Resolve
   config.resolve = {
     ...config.resolve,
     alias: {
@@ -25,6 +28,7 @@ module.exports = function(config, isDev, settings) {
     },
   };
 
+  // Plugins
   config.plugins = [
     ...config.plugins,
 
