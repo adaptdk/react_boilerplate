@@ -1,13 +1,16 @@
 # 💡 What is it?
+
 React Boilerplate aims to extends [Create React App](https://github.com/facebook/create-react-app) with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
 
 Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
 
 ## 🖇 Dependencies
+
 - [Yarn](https://yarnpkg.com/en/docs/install)
 - [Node >=10](https://nodejs.org/en/download/)
 
 # 🏎 Quick Start
+
 ### We're currently one version behind, so it's important that you install and build the project using yarn!
 
 ```console
@@ -15,6 +18,7 @@ git clone git@github.com:adaptdk/react_boilerplate.git my-project
 cd my-project
 yarn setup
 ```
+
 This will ask install your modules, ask you some questions and setup your project based on those answers.
 
 <p align="center">
@@ -54,6 +58,7 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed.
 
 ## 👌 Quality and Performance
+
 This project ships with an all green LightHouse audit, include PWA features.
 
 Continuously while development keep running the audit to monitor how your features are impacting your score, will help you develop great applications.
@@ -66,41 +71,44 @@ Continuously while development keep running the audit to monitor how your featur
 
 This is the format, but needs to be updated with the right information
 
-| Features       | Base | Complex |
-| :------------- | :--: | :-----: |
-| Status | **Ready** | **Ready** |
-| **Build Size Gzipped (kb)** | `~37kb` | `~55kb` |
-| **[Redux](https://github.com/reduxjs/redux)** | ❌ | ✅ |
-| **[Redux Persistor](https://github.com/rt2zz/redux-persist)** | ❌ | ✅ |
-| **[React Router](https://github.com/ReactTraining/react-router)** | ❌ | ✅ |
-| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)** | ❌ | ✅ |
-| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)** | ✅ | ✅ |
-| **Scss** | ✅ | ✅ |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** | ✅ | ✅ |
-| **[Critical CSS (inline)](#critical-css)** | ✅ | ✅ |
-| **CSS Modules** | ✅ | ✅ |
-| **Autoprefixer** | ✅ | ✅ |
+| Features                                                                                     | Base (TypeScript) | Complex (TypeScript) |   Base    |  Complex  |
+| :------------------------------------------------------------------------------------------- | :---------------: | :------------------: | :-------: | :-------: |
+| Status                                                                                       |     **Ready**     |      **Ready**       | **Ready** | **Ready** |
+| **Build Size Gzipped (kb)**                                                                  |      `~37kb`      |       `~55kb`        |  `~37kb`  |  `~55kb`  |
+| **[Redux](https://github.com/reduxjs/redux)**                                                |        ❌         |          ✅          |    ❌     |    ✅     |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)**                                |        ❌         |          ✅          |    ❌     |    ✅     |
+| **[React Router](https://github.com/ReactTraining/react-router)**                            |        ❌         |          ✅          |    ❌     |    ✅     |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |        ✅         |          ✅          |    ✅     |    ✅     |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |        ✅         |          ✅          |    ✅     |    ✅     |
+| **Scss**                                                                                     |        ✅         |          ✅          |    ✅     |    ✅     |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |        ✅         |          ✅          |    ✅     |    ✅     |
+| **[Critical CSS (inline)](#critical-css)**                                                   |        ✅         |          ✅          |    ✅     |    ✅     |
+| **CSS Modules**                                                                              |        ✅         |          ✅          |    ✅     |    ✅     |
+| **Autoprefixer**                                                                             |        ✅         |          ✅          |    ✅     |    ✅     |
+| **Typescript**                                                                               |        ✅         |          ✅          |    ❌     |    ❌     |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
 ### Feature Documentation
 
 #### Critical CSS
+
 If you add `.crit` before your SCSS in your sass files like `*.crit.scss`, the file will be inlined in the top of the DOM instead of bundled in the main css file.
 
 This is extremely vital to first paint, so use it for all the components, which is above the fold.
 
 ## 🎛 Configuration
+
 Following configs can be edited in `config-overrides.js`
 
-| Setting | Type | Description |
-| :-------- | :----: | :--------- |
-| **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product. |
-| **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
-| **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
-
+| Setting              |   Type    | Description                                                                                                                                           |
+| :------------------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product.                                                                                              |
+| **`isDevEmbedded`**  | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
+| **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
 
 ## ⛺️ Maintainers
+
 Feel free to write any of the maintainers, or create an issue if you run into a problem.
 
 <table>
