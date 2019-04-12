@@ -47,8 +47,6 @@ getProjectName(project, () => {
   getPackages(project, () => {
     // Configure Git - Removing / Adding
     setupGit(project, () => {
-      console.log(`
-Alright, we'll delete the boilerplate repository, setup with your repository and start setting up`);
       finishSetup(project, { removeGit: true, git: true });
     })
   })
