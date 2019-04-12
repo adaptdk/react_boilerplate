@@ -1,7 +1,15 @@
 # 💡 What is it?
-React Boilerplate aims to extends create-react-app with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
+React Boilerplate aims to extends [Create React App](https://github.com/facebook/create-react-app) with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
+
+Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
+
+## 🖇 Dependencies
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Node >=10](https://nodejs.org/en/download/)
 
 # 🏎 Quick Start
+### We're currently one version behind, so it's important that you install and build the project using yarn!
+
 ```console
 git clone git@github.com:adaptdk/react_boilerplate.git my-project
 cd my-project
@@ -17,7 +25,7 @@ This will ask install your modules, ask you some questions and setup your projec
 
 Inside the newly created project, you can run some built-in commands:
 
-### `npm start` or `yarn start`
+### `yarn start`
 
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -29,7 +37,7 @@ You will see the build errors and lint warnings in the console.
 <img src='https://cdn.rawgit.com/marionebl/create-react-app/9f62826/screencast-error.svg' width="500" alt='Build errors'>
 </p>
 
-### `npm test` or `yarn test`
+### `yarn test`
 
 Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
@@ -91,8 +99,25 @@ Following configs can be edited in `config-overrides.js`
 | **`isDevEmbedded`** | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 | **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
 
-## 🖇 Dependencies
-- [Yarn](https://yarnpkg.com/en/docs/install)
-- [NodeJs](https://nodejs.org/en/download/)
 
-Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
+## ⛺️ Maintainers
+Feel free to write any of the maintainers, or create an issue if you run into a problem.
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="90" height="90"
+        src="https://avatars0.githubusercontent.com/u/16097850?s=460&v=4">
+        </br>
+        <a href="https://github.com/https://github.com/mads-thines">Mads Thines</a>
+      </td>
+      <td align="center">
+        <img width="90" height="90"
+        src="https://avatars0.githubusercontent.com/u/6573200?s=460&v=4">
+        </br>
+        <a href="https://github.com/ChrEsb">Christian Esbensen</a>
+      </td>
+    </tr>
+  <tbody>
+</table>

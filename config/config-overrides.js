@@ -1,16 +1,19 @@
 /* eslint-disable */
 /* config-overrides.js */
-const rewireEslint = require('react-app-rewire-eslint');
+// const rewireEslint = require("react-app-rewire-eslint");
 
 // Utilities
-const { isProd: isProdUtils, isDev: isDevUtils } = require('./config/utilities/utilities');
+const {
+  isProd: isProdUtils,
+  isDev: isDevUtils,
+} = require("./utilities/utilities");
 
 // Loading Configs
-const commonConfig = require('./config/webpack.config.common');
-const prodConfig = require('./config/webpack.config.prod');
-const devConfig = require('./config/webpack.config.dev');
+const commonConfig = require("./webpack.config.common");
+const prodConfig = require("./webpack.config.prod");
+const devConfig = require("./webpack.config.dev");
 
-const eslintConfig = require('./config/loaders/eslint');
+const eslintConfig = require("./loaders/eslint");
 
 module.exports = function override(config, env) {
   const isProd = isProdUtils(env);
@@ -36,7 +39,7 @@ module.exports = function override(config, env) {
   };
 
   // Loading Eslint Rewire
-  config = rewireEslint(config, env, eslintConfig);
+  // config = rewireEslint(config, env, eslintConfig);
 
   return config;
 };

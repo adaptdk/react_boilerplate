@@ -8,11 +8,11 @@ import * as serviceWorker from 'utilities/serviceWorker';
 import { store, persistor } from 'state/store';
 
 // Container
-import App from 'views/containers/App/App';
+import App from "views/containers/App/App";
 
 // Styles
-import 'assets/styles/critical.crit.scss';
-import 'assets/styles/main.scss';
+import "assets/styles/critical.crit.scss";
+import "assets/styles/main.scss";
 
 ReactDOM.render(
   <Provider store={store}>

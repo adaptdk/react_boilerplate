@@ -1,36 +1,48 @@
 /* eslint-disable */
 
 // Plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackDeleteAfterEmit = require('webpack-delete-after-emit');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const htmlWebpackPlugin = require("html-webpack-plugin");
+const webpackDeleteAfterEmit = require("webpack-delete-after-emit");
+const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const rewireReactHotLoader = require("react-app-rewire-hot-loader");
+const { useBabelRc } = require("customize-cra");
 
 // Paths
-const paths = require('./paths');
+const paths = require("./paths");
 
 module.exports = function(config, isDev, settings) {
-  /*
-   * Insert your development specific configuration here.
-   */
+  // Hot Loader
+  config = rewireReactHotLoader(config, "development");
+
+  // Use .babelrc
+  useBabelRc();
+
+  config.resolve = {
+    ...config.resolve,
+    alias: {
+      ...config.resolve.alias,
+      "react-dom": "@hot-loader/react-dom",
+    },
+  };
 
   config.plugins = [
     ...config.plugins,
 
     //  Minify CSS Etract Plugin
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+    new miniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css",
     }),
 
     // Use the correct index.html template.
-    new HtmlWebpackPlugin({
+    new htmlWebpackPlugin({
       inject: !settings.isDevEmbedded,
       template: settings.isDevEmbedded ? paths.appHtml : paths.appHtmlFull,
     }),
 
     // Delete the index-full.html file after build.
-    new WebpackDeleteAfterEmit({
-      globs: ['index-full.html'],
+    new webpackDeleteAfterEmit({
+      globs: ["index-full.html"],
     }),
   ];
 

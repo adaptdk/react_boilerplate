@@ -20,7 +20,6 @@ class Frontpage extends Component {
 
     return (
       <div className="page page-frontpage">
-
         <h1>Home {clickedValue}</h1>
 
         <button type="button" onClick={() => onClick('1')}>1</button>
