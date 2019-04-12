@@ -45,7 +45,7 @@ const getProjectName = (project, func) => {
       // Save the name as a variable
       console.log(`
 
-🙌  Great! We'll call your project ${highlight(result.machine)}.`);
+  🙌  Great! We'll call your project ${highlight(result.machine)}.`);
       if (!!func) return func();
     } else {
       exited();
