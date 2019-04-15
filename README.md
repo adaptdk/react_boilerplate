@@ -1,6 +1,6 @@
 # 💡 What is it?
 
-React Boilerplate aims to extends [Create React App](https://github.com/facebook/create-react-app) with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project.
+React Boilerplate aims to extends [Create React App](https://github.com/facebook/create-react-app) with custom webpack config using [react-app-rewired](https://github.com/timarney/react-app-rewired), and adding modules we use for every project. We highly recommend that use one of the two packages including [TypeScript](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html), to make a better product.
 
 Check out [Create React App](https://github.com/facebook/create-react-app) for more documentation.
 
@@ -10,8 +10,6 @@ Check out [Create React App](https://github.com/facebook/create-react-app) for m
 - [Node >=10](https://nodejs.org/en/download/)
 
 # 🏎 Quick Start
-
-### We're currently one version behind, so it's important that you install and build the project using yarn!
 
 ```console
 git clone git@github.com:adaptdk/react_boilerplate.git my-project
