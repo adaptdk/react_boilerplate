@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loadable from "react-loadable";
 import { hot } from "react-hot-loader";
 
 // Utilities
@@ -9,7 +10,13 @@ import Frontpage from "views/containers/Frontpage/Frontpage";
 
 // Components
 import Header from "views/components/Header";
-import Footer from "views/components/Footer";
+import Loading from "views/components/Loading";
+
+// Loadables
+const Footer = Loadable({
+  loader: () => import("views/components/Footer"),
+  loading: Loading,
+});
 
 class App extends Component {
   render() {
