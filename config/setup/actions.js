@@ -14,8 +14,6 @@ const {
   dim,
   error,
   highlight,
-  isNo,
-  isYes,
   underline,
   warn,
 } = require('./utils');
@@ -62,8 +60,7 @@ const getProjectName = (project, func) => {
 const getPackages = (project, func) => {
   console.log(`
 Now, this is the available packages:
-${dim(
-    `Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
+${dim(`Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
 `);
 
   // Output Each Package
