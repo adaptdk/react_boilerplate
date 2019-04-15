@@ -14,8 +14,6 @@ const {
   dim,
   error,
   highlight,
-  isNo,
-  isYes,
   underline,
   warn,
 } = require('./utils');
@@ -62,8 +60,7 @@ const getProjectName = (project, func) => {
 const getPackages = (project, func) => {
   console.log(`
 Now, this is the available packages:
-${dim(
-    `Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
+${dim(`Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
 `);
 
   // Output Each Package
@@ -84,7 +81,6 @@ ${dim('Select it by writing it\'s key [0-9]')}`);
         exec(`git checkout ${selectedPackage.branch}`);
 
         console.log(`
-
 📦  Amazing! You've select the ${highlight(selectedPackage.title)} package.`);
 
         if (selectedPackage.hasOwnProperty('features')) {
@@ -154,40 +150,21 @@ ${dim(filteredFeature.predescription)}
  * @returns {function}
  */
 const setupGit = (project, func) => {
-  console.log(
-    `
+  console.log(`
+${bold('📄  Awesome! Let\'s setup git, shall we?')}`);
 
-${bold('📄  Awesome! Let\'s setup git, shall we?')}
-
-We'll now ask you a few questions to create the ideal start for your project.`);
+  console.log(`
+${dim('Please enter the SSH url for your empty git repository to finish up the setup? [git@github.com:user/repo.git]')}`)
 
   prompt.get(schema.git, (err, result) => {
     if (result) {
-
-      // If you don't want to remove local git.
-      if (isNo(result.removeLocal) && !isYes(result.addOwnRepo)) {
-        console.log(highlight(`
-
-Alright, we\'ll keep the boilerplate repository, and start setting up
-  `));
-        return finishSetup(project);
-      }
-
-      // If you want to remove local git, but don't want to add your own.
-      if (isYes(result.removeLocal) && isNo(result.addOwnRepo)) {
-        console.log(highlight(`
-
-Alright, we\'ll delete the boilerplate repository, and start setting up
-`));
-        return finishSetup(project, { removeGit: true });
-      }
-
-      // If you've removed local git and want to add your own
-      if (isYes(result.addOwnRepo) && result.ownRepo.length > 0) {
+      if (result.ownRepo.length > 0) {
         project.ownRepo = result.ownRepo;
+        console.log(`
+Alright, we'll delete the boilerplate repository, setup with your repository and start setting up
+`);
         return func();
       }
-
     } else {
       exited();
     }
@@ -206,13 +183,12 @@ const finishSetup = (project, variants) => {
     install: variants && variants.install || true,
     preserveFolder: variants && variants.preserveFolder || false,
     removeSetup: variants && variants.removeSetup || true,
-    removeGit: variants && variants.removeGit || false,
   };
   // Adding Timeout for comments, for a smoother experience while installing
   let delay = 0;
   const increment = 750;
   // If they don't want to add Git, but want to remove it.
-  if (executeConfig.removeGit && !executeConfig.git) {
+  if (!executeConfig.git) {
     delay += increment;
     setTimeout(() => {
       console.log(`
@@ -295,8 +271,8 @@ Loading...
 // When you've exit the setup
 const exited = () => {
   console.log(warn(`
-  
-  
+
+
 🚧   Exited without doing anything
 ${dim('If you\'re having issues, do not hesitate to contact one of the maintainers.')}
 
