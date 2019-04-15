@@ -71,21 +71,21 @@ Continuously while development keep running the audit to monitor how your featur
 
 This is the format, but needs to be updated with the right information
 
-| Features                                                                                     | Base (TypeScript) | Complex (TypeScript) |   Base    |  Complex  |
-| :------------------------------------------------------------------------------------------- | :---------------: | :------------------: | :-------: | :-------: |
-| Status                                                                                       |     **Ready**     |      **Ready**       | **Ready** | **Ready** |
-| **Build Size Gzipped (kb)**                                                                  |      `~37kb`      |       `~55kb`        |  `~37kb`  |  `~55kb`  |
-| **[Redux](https://github.com/reduxjs/redux)**                                                |        ❌         |          ✅          |    ❌     |    ✅     |
-| **[Redux Persistor](https://github.com/rt2zz/redux-persist)**                                |        ❌         |          ✅          |    ❌     |    ✅     |
-| **[React Router](https://github.com/ReactTraining/react-router)**                            |        ❌         |          ✅          |    ❌     |    ✅     |
-| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |        ✅         |          ✅          |    ✅     |    ✅     |
-| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |        ✅         |          ✅          |    ✅     |    ✅     |
-| **Scss**                                                                                     |        ✅         |          ✅          |    ✅     |    ✅     |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |        ✅         |          ✅          |    ✅     |    ✅     |
-| **[Critical CSS (inline)](#critical-css)**                                                   |        ✅         |          ✅          |    ✅     |    ✅     |
-| **CSS Modules**                                                                              |        ✅         |          ✅          |    ✅     |    ✅     |
-| **Autoprefixer**                                                                             |        ✅         |          ✅          |    ✅     |    ✅     |
-| **Typescript**                                                                               |        ✅         |          ✅          |    ❌     |    ❌     |
+| Features                                                                                     | Base (TS) | Complex (TS) |   Base    |  Complex  |
+| :------------------------------------------------------------------------------------------- | :-------: | :----------: | :-------: | :-------: |
+| Status                                                                                       | **Ready** |  **Ready**   | **Ready** | **Ready** |
+| **Build Size Gzipped (kb)**                                                                  |  `~37kb`  |   `~55kb`    |  `~37kb`  |  `~55kb`  |
+| **[Redux](https://github.com/reduxjs/redux)**                                                |    ❌     |      ✅      |    ❌     |    ✅     |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)**                                |    ❌     |      ✅      |    ❌     |    ✅     |
+| **[React Router](https://github.com/ReactTraining/react-router)**                            |    ❌     |      ✅      |    ❌     |    ✅     |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |    ✅     |      ✅      |    ✅     |    ✅     |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |    ✅     |      ✅      |    ✅     |    ✅     |
+| **Scss**                                                                                     |    ✅     |      ✅      |    ✅     |    ✅     |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |    ✅     |      ✅      |    ✅     |    ✅     |
+| **[Critical CSS (inline)](#critical-css)**                                                   |    ✅     |      ✅      |    ✅     |    ✅     |
+| **CSS Modules**                                                                              |    ✅     |      ✅      |    ✅     |    ✅     |
+| **Autoprefixer**                                                                             |    ✅     |      ✅      |    ✅     |    ✅     |
+| **Typescript**                                                                               |    ✅     |      ✅      |    ❌     |    ❌     |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
