@@ -24,18 +24,10 @@
   "dependencies": {
     "@adaptagency/fe_tools": "1.6.4",
     "node-sass": "4.9.4",
-    "react": "16.6.0",
-    "react-dom": "16.6.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "react-loadable": "^5.5.0",
-    "react-redux": "^5.0.7",
-    "react-router-config": "^4.4.0-beta.1",
-    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.0",
-    "redux": "^4.0.1",
-    "redux-actions": "^2.6.3",
-    "redux-persist": "^5.10.0",
-    "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0",
     "style-loader": "0.23.1"
   },
   "devDependencies": {

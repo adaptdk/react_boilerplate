@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { hot } from "react-hot-loader";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
 
 // Utilities
@@ -10,41 +9,36 @@ import { isDev } from "utilities/development";
 import Header from "views/components/Header";
 import Loading from "views/components/Loading";
 
-const NotFound = Loadable({
-  loader: () => import("views/containers/NotFound/NotFound"),
-  loading: () => null,
-});
-
 const Footer = Loadable({
   loader: () => import("views/components/Footer"),
   loading: Loading,
 });
 
-const Frontpage = Loadable({
-  loader: () => import("views/containers/Frontpage/Frontpage"),
-  loading: Loading,
-});
+const App = () => {
+  const [value, setValue] = useState("1");
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="app">
-          <Header />
+  return (
+    <div className="app">
+      <Header />
 
-          <main>
-            <Switch>
-              <Route path="/" component={Frontpage} exact />
-              <Route component={NotFound} />
-            </Switch>
-          </main>
+      <main>
+        <h1>Home {value}</h1>
 
-          <Footer />
-        </div>
-      </Router>
-    );
-  }
-}
+        <button type="button" onClick={() => setValue("1")}>
+          1
+        </button>
+        <button type="button" onClick={() => setValue("2")}>
+          2
+        </button>
+        <button type="button" onClick={() => setValue("3")}>
+          3
+        </button>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
 
 // export default App;
 export default (isDev() ? hot(module)(App) : App);
