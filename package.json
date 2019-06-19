@@ -6,6 +6,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "server:start": "node src/server.tsx",
     "test:types": "tsc",
     "test:unit": "react-app-rewired test --modulePaths=src",
     "presetup": "yarn install",
@@ -24,11 +25,14 @@
   "config-overrides-path": "config/config-overrides",
   "dependencies": {
     "@adaptagency/fe_tools": "1.6.4",
+    "@types/express": "^4.16.1",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.4",
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.0.6",
+    "@types/react-router-dom": "^4.3.3",
+    "express": "^4.16.4",
     "node-sass": "4.9.4",
     "react": "16.6.0",
     "react-app-rewire-typescript": "^2.0.2",
