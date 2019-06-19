@@ -10,7 +10,7 @@ const { useBabelRc } = require("customize-cra");
 // Paths
 const paths = require("./paths");
 
-module.exports = function(config, isDev, settings) {
+module.exports = function(config, settings) {
   // Hot Loader
   config = rewireReactHotLoader(config, "development");
 

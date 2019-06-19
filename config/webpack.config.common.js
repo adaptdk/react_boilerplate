@@ -1,21 +1,31 @@
-/* eslint-disable */
 // Plugins
-const rewireTypescript = require("react-app-rewire-typescript");
-const { getLoader, loaderNameMatches } = require("react-app-rewired");
+// const rewireTypescript = require("react-app-rewire-typescript");
 const paths = require("./paths");
-
-// Utils
-const { isProd: isProdUtils } = require("./utilities/utilities");
 
 // Loaders
 const { stylesLoaders } = require("./loaders/styles");
 const svgLoader = require("./loaders/svg");
 
-module.exports = function(config, env, settings) {
-  const isProd = isProdUtils(env);
+const getIndex = rules => {
+  const oneOfIndex = rules.findIndex(item => item["oneOf"]);
+
+  const oneOf = rules[oneOfIndex].oneOf;
+
+  const findLoader = loader =>
+    oneOf.find(item => {
+      return new RegExp(loader).test(item.loader);
+    });
+
+  const fileLoader = findLoader("file-loader");
+
+  return { oneOfIndex, oneOf, findLoader, fileLoader };
+};
+
+module.exports = function(config, settings) {
+  const { fileLoader, oneOf } = getIndex(config.module.rules);
 
   // Type Script
-  config = rewireTypescript(config, env);
+  // config = rewireTypescript(config, env);
 
   // Resolve
   config.resolve = {
@@ -33,22 +43,18 @@ module.exports = function(config, env, settings) {
   // Modules
   // Apply loaders
   // We need to exclude the stylesheet extensions from the file-loader, so webpack know they're styles
-  const fileLoader = getLoader(config.module.rules, rule =>
-    loaderNameMatches(rule, "file-loader")
-  );
-  fileLoader.exclude.push([/\.(sa|sc|c)ss$/, /\.crit\.(sa|sc|c)ss$/]);
+  fileLoader.exclude.push(/\.(sa|sc|c)ss$/);
 
   // Get the Style Loaders from the loader folder
-  const styles = stylesLoaders(isProd);
+  const styles = stylesLoaders(true);
 
-  // Collect the loaders
+  // // Collect the loaders
   const loaders = [svgLoader, ...styles];
 
-  // Add the Style Loaders to the config.module.rules list.
-  // Depending on whether there's a oneOf
-  const oneOfRule = config.module.rules.find(rule => !!rule.oneOf);
-  if (oneOfRule) {
-    oneOfRule.oneOf.unshift(...loaders);
+  // // Add the Style Loaders to the config.module.rules list.
+  // // Depending on whether there's a oneOf
+  if (oneOf) {
+    oneOf.unshift(...loaders);
   } else {
     config.module.rules.push(...loaders);
   }

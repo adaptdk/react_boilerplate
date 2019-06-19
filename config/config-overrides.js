@@ -1,6 +1,4 @@
-/* eslint-disable */
 /* config-overrides.js */
-// const rewireEslint = require("react-app-rewire-eslint");
 
 // Utilities
 const {
@@ -22,7 +20,6 @@ module.exports = function override(config, env) {
   // Settings
   const settings = {
     bundleAnalyzer: false,
-
     // Define if the build should contain top html elements (<html> and <body>).
     // TODO: Make this variable defineable when creating the project.
     // TODO cont.: Something like "Will project PROD/DEV environment be embedded into another site?
@@ -33,9 +30,9 @@ module.exports = function override(config, env) {
 
   // Loading Env Config
   config = {
-    ...commonConfig(config, env, settings),
-    ...(isProd ? prodConfig(config, env, settings) : {}),
-    ...(isDev ? devConfig(config, env, settings) : {}),
+    ...commonConfig(config, settings),
+    ...(isProd ? prodConfig(config, settings) : {}),
+    ...(isDev ? devConfig(config, settings) : {}),
   };
 
   // Loading Eslint Rewire

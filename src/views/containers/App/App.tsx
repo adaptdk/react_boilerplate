@@ -20,11 +20,10 @@ const App = () => {
 
   return (
     <div className="app">
+      <h1>Home {value}</h1>
       <Header />
 
       <main>
-        <h1>Home {value}</h1>
-
         <button type="button" onClick={() => setValue("1")}>
           1
         </button>
@@ -41,5 +40,5 @@ const App = () => {
   );
 };
 
-// export default App;
-export default (isDev() ? hot(module)(App) : App);
+export default App;
+// export default (isDev() ? hot(module)(App) : App);

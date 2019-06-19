@@ -8,7 +8,6 @@ import * as serviceWorker from "utilities/serviceWorker";
 import App from "views/containers/App/App";
 
 // Styles
-import "assets/styles/critical.crit.scss";
 import "assets/styles/main.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));

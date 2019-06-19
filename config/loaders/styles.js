@@ -1,10 +1,10 @@
 /* eslint-disable */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
-const postcssCalc = require('postcss-calc');
-const postcssFlexbugs = require('postcss-flexbugs-fixes');
-const postcssInlineSvg = require('postcss-inline-svg');
-const paths = require('../paths');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const autoprefixer = require("autoprefixer");
+const postcssCalc = require("postcss-calc");
+const postcssFlexbugs = require("postcss-flexbugs-fixes");
+const postcssInlineSvg = require("postcss-inline-svg");
+const paths = require("../paths");
 
 // Style files regexes
 const cssRegex = /\.css$/;
@@ -16,35 +16,28 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // PostCSS Config
 const postcssConfig = [
   {
-    loader: 'postcss-loader',
+    loader: "postcss-loader",
     options: {
-      ident: 'postcss',
+      ident: "postcss",
       plugins: () => [
-        autoprefixer({
-          browsers: [
-            '>1%',
-            'last 4 versions',
-            'Firefox ESR',
-            'not ie < 9', // React doesn't support IE8 anyway
-          ],
-        }),
+        autoprefixer(),
         postcssFlexbugs,
         postcssCalc,
         postcssInlineSvg({
-          path: paths.appSrc + '/assets/icons',
+          path: paths.appSrc + "/assets/icons",
         }),
       ],
     },
-  }
+  },
 ];
 
 // Sass/Scss Config
 const sassConfig = [
-  'sass-loader',
+  "sass-loader",
   {
-    loader: 'sass-resources-loader',
+    loader: "sass-resources-loader",
     options: {
-      resources: paths.appSrc + '/assets/styles/settings/settings.scss',
+      resources: paths.appSrc + "/assets/styles/settings/settings.scss",
     },
   },
 ];
@@ -55,10 +48,10 @@ const sassLoader = isProd => ({
   test: sassRegex,
   exclude: sassModuleRegex,
   use: [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    'css-loader',
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
+    "css-loader",
     ...postcssConfig,
-    ...sassConfig
+    ...sassConfig,
   ],
 });
 
@@ -66,17 +59,19 @@ const sassLoader = isProd => ({
 const sassModuleLoader = isProd => ({
   test: sassModuleRegex,
   use: [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
     {
-      loader: 'css-loader',
+      loader: "css-loader",
       options: {
         sourceMap: !isProd,
         modules: true,
-        localIdentName: isProd ? 's[hash:base64:3]' : '[local]__[hash:base64:3]',
+        localIdentName: isProd
+          ? "s[hash:base64:3]"
+          : "[local]__[hash:base64:3]",
       },
     },
     ...postcssConfig,
-    ...sassConfig
+    ...sassConfig,
   ],
 });
 
@@ -85,8 +80,8 @@ const cssLoader = isProd => ({
   test: cssRegex,
   exclude: cssModuleRegex,
   use: [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    'css-loader',
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
+    "css-loader",
     ...postcssConfig,
   ],
 });
@@ -95,13 +90,15 @@ const cssLoader = isProd => ({
 const cssModuleLoader = isProd => ({
   test: cssModuleRegex,
   use: [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
     {
-      loader: 'css-loader',
+      loader: "css-loader",
       options: {
         sourceMap: !isProd,
         modules: true,
-        localIdentName: isProd ? 's[hash:base64:3]' : '[local]__[hash:base64:3]',
+        localIdentName: isProd
+          ? "s[hash:base64:3]"
+          : "[local]__[hash:base64:3]",
       },
     },
     ...postcssConfig,
@@ -111,7 +108,7 @@ const cssModuleLoader = isProd => ({
 // Collect and export
 module.exports = {
   stylesLoaders: isProd => [
-    sassLoader(isProd), 
+    sassLoader(isProd),
     sassModuleLoader(isProd),
     cssLoader(isProd),
     cssModuleLoader(isProd),

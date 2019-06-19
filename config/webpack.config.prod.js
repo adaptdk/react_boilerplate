@@ -7,14 +7,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackDeleteAfterEmit = require("webpack-delete-after-emit");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const Critters = require("critters-webpack-plugin");
 
 // Paths
 const paths = require("./paths");
 
-module.exports = function(config, isProd, settings) {
+module.exports = function(config, settings) {
   /*
    * Insert your production specific configuration here.
    */
+
+  config.entry = {
+    index: config.entry[0],
+  };
 
   // Optimizations
   config.optimization = {
@@ -47,6 +52,10 @@ module.exports = function(config, isProd, settings) {
     new HtmlWebpackPlugin({
       inject: !settings.isProdEmbedded,
       template: settings.isProdEmbedded ? paths.appHtml : paths.appHtmlFull,
+    }),
+
+    new Critters({
+      preloadFonts: true,
     }),
 
     // Delete the index-full.html file after build.
