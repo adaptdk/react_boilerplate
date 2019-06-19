@@ -1,12 +1,9 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Loadable from "react-loadable";
 import { hot } from "react-hot-loader";
 
 // Utilities
 import { isDev } from "utilities/development";
-
-// Containers
-import Frontpage from "views/containers/Frontpage/Frontpage";
 
 // Components
 import Header from "views/components/Header";
@@ -18,21 +15,31 @@ const Footer = Loadable({
   loading: Loading,
 });
 
-class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <Header />
+const App = () => {
+  const [value, setValue] = useState("1");
 
-        <main>
-          <Frontpage />
-        </main>
+  return (
+    <div className="app">
+      <Header />
 
-        <Footer />
-      </div>
-    );
-  }
-}
+      <main>
+        <h1>Home {value}</h1>
+
+        <button type="button" onClick={() => setValue("1")}>
+          1
+        </button>
+        <button type="button" onClick={() => setValue("2")}>
+          2
+        </button>
+        <button type="button" onClick={() => setValue("3")}>
+          3
+        </button>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
 
 // export default App;
 export default (isDev() ? hot(module)(App) : App);
