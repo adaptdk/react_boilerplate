@@ -17,10 +17,6 @@ module.exports = function(config, settings) {
    * Insert your production specific configuration here.
    */
 
-  config.entry = {
-    index: config.entry[0],
-  };
-
   // Optimizations
   config.optimization = {
     ...config.optimization,
