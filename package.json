@@ -68,7 +68,7 @@
     "sass-resources-loader": "2.0.0",
     "uglifyjs-webpack-plugin": "2.1.2",
     "webpack": "4.29.6",
-    "webpack-bundle-analyzer": "3.0.3",
+    "webpack-bundle-analyzer": "3.3.2",
     "webpack-delete-after-emit": "1.0.5"
   }
 }
