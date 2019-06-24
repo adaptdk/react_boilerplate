@@ -2,21 +2,15 @@
 
 // Plugins
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackDeleteAfterEmit = require("webpack-delete-after-emit");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const Critters = require("critters-webpack-plugin");
 
 // Paths
 const paths = require("./paths");
 
 module.exports = function(config, settings) {
-  /*
-   * Insert your production specific configuration here.
-   */
-
   // Optimizations
   config.optimization = {
     ...config.optimization,
@@ -25,39 +19,47 @@ module.exports = function(config, settings) {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
+        sourceMap: false, // set to true if you want JS source maps
       }),
-      new OptimizeCSSAssetsPlugin({}),
     ],
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+          minChunks: 2,
+        },
+      },
+    },
   };
 
   // Plugins
   config.plugins = [
     ...config.plugins,
 
-    // Bundle Analyzer
-    ...(settings.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
-
-    //  Minify CSS Etract Plugin
-    new MiniCssExtractPlugin({
-      filename: "/static/css/[name].[hash:5].css",
-      chunkFilename: "/static/css/[id].[hash:5].css",
-    }),
-
     // Use the correct index.html template.
     new HtmlWebpackPlugin({
       inject: !settings.isProdEmbedded,
-      template: settings.isProdEmbedded ? paths.appHtml : paths.appHtmlFull,
+      template: settings.isProdEmbedded ? paths.appHtmlMini : paths.appHtml,
     }),
 
-    new Critters({
-      preloadFonts: true,
+    //  Minify CSS Etract Plugin
+    new ExtractCssChunks({
+      filename: "static/css/[name].[hash:3].css",
+      chunkFilename: "static/css/[id].[hash:3].css",
+      orderWarning: true,
     }),
 
     // Delete the index-full.html file after build.
     new WebpackDeleteAfterEmit({
-      globs: ["index-full.html"],
+      globs: ["index-mini.html"],
     }),
+
+    // Bundle Analyzer
+    ...(settings.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
   ];
 
   return config;

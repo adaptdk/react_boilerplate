@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* config-overrides.js */
 
 // Utilities
@@ -10,8 +11,6 @@ const {
 const commonConfig = require("./webpack.config.common");
 const prodConfig = require("./webpack.config.prod");
 const devConfig = require("./webpack.config.dev");
-
-const eslintConfig = require("./loaders/eslint");
 
 module.exports = function override(config, env) {
   const isProd = isProdUtils(env);
@@ -30,13 +29,10 @@ module.exports = function override(config, env) {
 
   // Loading Env Config
   config = {
-    ...commonConfig(config, settings),
+    ...commonConfig(config, isProd, settings),
     ...(isProd ? prodConfig(config, settings) : {}),
     ...(isDev ? devConfig(config, settings) : {}),
   };
-
-  // Loading Eslint Rewire
-  // config = rewireEslint(config, env, eslintConfig);
 
   return config;
 };

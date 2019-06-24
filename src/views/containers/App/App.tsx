@@ -16,21 +16,21 @@ const Footer = Loadable({
 });
 
 const App = () => {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState(0);
 
   return (
     <div className="app">
-      <h1>Home {value}</h1>
       <Header />
 
       <main>
-        <button type="button" onClick={() => setValue("1")}>
+        <h1>Home {value}</h1>
+        <button type="button" onClick={() => setValue(1)}>
           1
         </button>
-        <button type="button" onClick={() => setValue("2")}>
+        <button type="button" onClick={() => setValue(2)}>
           2
         </button>
-        <button type="button" onClick={() => setValue("3")}>
+        <button type="button" onClick={() => setValue(3)}>
           3
         </button>
       </main>
@@ -40,5 +40,4 @@ const App = () => {
   );
 };
 
-export default App;
-// export default (isDev() ? hot(module)(App) : App);
+export default (isDev() ? hot(module)(App) : App);

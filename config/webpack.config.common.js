@@ -1,31 +1,17 @@
+/* eslint-disable */
+
 // Plugins
-// const rewireTypescript = require("react-app-rewire-typescript");
 const paths = require("./paths");
+
+// Utils
+const { loaderUtil } = require("./utilities/utilities");
 
 // Loaders
 const { stylesLoaders } = require("./loaders/styles");
 const svgLoader = require("./loaders/svg");
 
-const getIndex = rules => {
-  const oneOfIndex = rules.findIndex(item => item["oneOf"]);
-
-  const oneOf = rules[oneOfIndex].oneOf;
-
-  const findLoader = loader =>
-    oneOf.find(item => {
-      return new RegExp(loader).test(item.loader);
-    });
-
-  const fileLoader = findLoader("file-loader");
-
-  return { oneOfIndex, oneOf, findLoader, fileLoader };
-};
-
-module.exports = function(config, settings) {
-  const { fileLoader, oneOf } = getIndex(config.module.rules);
-
-  // Type Script
-  // config = rewireTypescript(config, env);
+module.exports = function(config, isProd, settings) {
+  const { fileLoader, oneOf } = loaderUtil(config.module.rules);
 
   // Resolve
   config.resolve = {
@@ -46,7 +32,7 @@ module.exports = function(config, settings) {
   fileLoader.exclude.push(/\.(sa|sc|c)ss$/);
 
   // Get the Style Loaders from the loader folder
-  const styles = stylesLoaders(true);
+  const styles = stylesLoaders(isProd);
 
   // // Collect the loaders
   const loaders = [svgLoader, ...styles];

@@ -1,5 +1,6 @@
 {
   "extends": ["react-app", "eslint-config-airbnb"],
+  "plugins": ["react-hooks"],
   "parser": "babel-eslint",
   "settings": {
     "ecmascript": 6
@@ -37,6 +38,8 @@
     "react/jsx-indent": 1,
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-tag-spacing": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/no-danger": 0,
     "react/no-unused-prop-types": 1,
     "react/prefer-stateless-function": 0,
