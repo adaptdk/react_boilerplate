@@ -47,7 +47,7 @@ module.exports = function(config, settings) {
       inject: !settings.embedded,
       template: settings.embedded ? paths.appHtmlMini : paths.appHtml,
       favicon: `${paths.appPublic}/favicons/favicon.ico`,
-      manifest: `${process.env.PUBLIC_URL}/manifest.json`,
+      manifest: `/manifest.json`,
     }),
 
     // Creating Critical CSS
