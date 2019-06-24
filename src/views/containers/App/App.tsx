@@ -16,7 +16,7 @@ const Footer = Loadable({
 });
 
 const App = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("1");
 
   return (
     <div className="app">
@@ -24,13 +24,13 @@ const App = () => {
 
       <main>
         <h1>Home {value}</h1>
-        <button type="button" onClick={() => setValue(1)}>
+        <button type="button" onClick={() => setValue("1")}>
           1
         </button>
-        <button type="button" onClick={() => setValue(2)}>
+        <button type="button" onClick={() => setValue("2")}>
           2
         </button>
-        <button type="button" onClick={() => setValue(3)}>
+        <button type="button" onClick={() => setValue("3")}>
           3
         </button>
       </main>

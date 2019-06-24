@@ -12,9 +12,3 @@
 
 // Elements
 @import "abstractions/abstractions";
-
-@for $i from 0 through 1000 {
-  #{$i} {
-    background-repeat: no-repeat;
-  }
-}

@@ -102,8 +102,7 @@ Following configs can be edited in `config-overrides.js`
 | Setting              |   Type    | Description                                                                                                                                           |
 | :------------------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product.                                                                                              |
-| **`isDevEmbedded`**  | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
-| **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
+| **`embedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
 
 ## ⛺️ Maintainers
 

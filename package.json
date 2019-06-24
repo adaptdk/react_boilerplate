@@ -51,7 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "html-webpack-plugin": "4.0.0-alpha.2",
+    "html-webpack-plugin": "^3.2.0",
     "postcss-calc": "^7.0.1",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-inline-svg": "^4.0.0",

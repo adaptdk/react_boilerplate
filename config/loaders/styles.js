@@ -8,7 +8,6 @@ const postcssInlineSvg = require("postcss-inline-svg");
 const paths = require("../paths");
 
 // Style files regexes
-const cssSassRegex = /\.(scss|sass|css)$/;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
@@ -117,9 +116,4 @@ module.exports = {
     cssLoader(isProd),
     cssModuleLoader(isProd),
   ],
-  cssRegex,
-  cssModuleRegex,
-  sassRegex,
-  sassModuleRegex,
-  cssSassRegex,
 };

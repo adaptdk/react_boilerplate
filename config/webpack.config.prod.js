@@ -6,6 +6,7 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackDeleteAfterEmit = require("webpack-delete-after-emit");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const Critters = require("critters-webpack-plugin");
 
 // Paths
 const paths = require("./paths");
@@ -16,6 +17,7 @@ module.exports = function(config, settings) {
     ...config.optimization,
     minimizer: [
       ...config.optimization.minimizer,
+      // Minify and compress Js
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
@@ -42,18 +44,25 @@ module.exports = function(config, settings) {
 
     // Use the correct index.html template.
     new HtmlWebpackPlugin({
-      inject: !settings.isProdEmbedded,
-      template: settings.isProdEmbedded ? paths.appHtmlMini : paths.appHtml,
+      inject: !settings.embedded,
+      template: settings.embedded ? paths.appHtmlMini : paths.appHtml,
+      favicon: `${paths.appPublic}/favicons/favicon.ico`,
+      manifest: `${process.env.PUBLIC_URL}/manifest.json`,
     }),
 
-    //  Minify CSS Etract Plugin
+    // Creating Critical CSS
+    new Critters({
+      preloadFonts: true,
+    }),
+
+    // Adding CSS Extract Plugin
     new ExtractCssChunks({
       filename: "static/css/[name].[hash:3].css",
       chunkFilename: "static/css/[id].[hash:3].css",
       orderWarning: true,
     }),
 
-    // Delete the index-full.html file after build.
+    // Delete files in build folder after build
     new WebpackDeleteAfterEmit({
       globs: ["index-mini.html"],
     }),

@@ -23,8 +23,7 @@ module.exports = function override(config, env) {
     // TODO: Make this variable defineable when creating the project.
     // TODO cont.: Something like "Will project PROD/DEV environment be embedded into another site?
     // TODO cont.: (Choosing "no" will generate index.html without <html>, <head> and <body> tags.)"
-    isDevEmbedded: false,
-    isProdEmbedded: false,
+    embedded: false,
   };
 
   // Loading Env Config
