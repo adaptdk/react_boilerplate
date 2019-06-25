@@ -22,8 +22,10 @@ module.exports = function(config, isProd, settings) {
   // Use the local .babelrc file
   useBabelRc();
 
+  // Use custom .eslintrc file
   useEslintRc();
 
+  // Enables Eslint Typescript
   enableEslintTypescript();
 
   // Resolve
