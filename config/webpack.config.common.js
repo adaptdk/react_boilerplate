@@ -1,16 +1,17 @@
 /* eslint-disable */
 
+// Plugins
+const CircularDependencyPlugin = require("circular-dependency-plugin");
 const {
   useBabelRc,
   useEslintRc,
   enableEslintTypescript,
 } = require("customize-cra");
-
-// Plugins
-const paths = require("./paths");
-
 // Utils
 const { loaderUtil } = require("./utilities/utilities");
+
+// Paths
+const paths = require("./paths");
 
 // Loaders
 const { stylesLoaders } = require("./loaders/styles");
@@ -41,24 +42,29 @@ module.exports = function(config, isProd, settings) {
     },
   };
 
-  // Modules
-  // Apply loaders
-  // We need to exclude the stylesheet extensions from the file-loader, so webpack know they're styles
+  // Exclude the new file from the file loader, so we can add custom loader for them.
   fileLoader.exclude.push(/\.(sa|sc|c)ss$/);
 
-  // Get the Style Loaders from the loader folder
-  const styles = stylesLoaders(isProd);
-
-  // // Collect the loaders
-  const loaders = [svgLoader, ...styles];
-
-  // // Add the Style Loaders to the config.module.rules list.
-  // // Depending on whether there's a oneOf
+  // // Extend with the extra loaders
+  const loaders = [svgLoader, ...stylesLoaders(isProd)];
   if (oneOf) {
     oneOf.unshift(...loaders);
   } else {
     config.module.rules.push(...loaders);
   }
+
+  // Plugins
+  config.plugins = [
+    ...config.plugins,
+    new CircularDependencyPlugin({
+      // exclude detection of files based on a RegExp
+      exclude: /a\.js|node_modules/,
+      // add errors to webpack instead of warnings
+      failOnError: true,
+      // set the current working directory for displaying module paths
+      cwd: process.cwd(),
+    }),
+  ];
 
   return config;
 };
