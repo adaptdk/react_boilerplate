@@ -13,6 +13,7 @@ module.exports = {
   appHtmlMini: resolveApp('public/index-mini.html'),
   appHtml: resolveApp('public/index.html'),
   appPublic: resolveApp('public'),
+  appIndex: resolveApp('src/index.tsx'),
   appSrc: resolveApp('src'),
   dotenv: resolveApp('.env'),
 };

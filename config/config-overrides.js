@@ -18,7 +18,12 @@ module.exports = function override(config, env) {
 
   // Settings
   const settings = {
+    // Analyze the bundle including node_modules
     bundleAnalyzer: false,
+    // Run a profiler and get the stats from the build
+    profile: false,
+    // TODO: Prerender the SPA, and get a blazing fast first load.
+    prerender: false,
     // Define if the build should contain top html elements (<html> and <body>).
     // TODO: Make this variable defineable when creating the project.
     // TODO cont.: Something like "Will project PROD/DEV environment be embedded into another site?

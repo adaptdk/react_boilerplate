@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackDeleteAfterEmit = require("webpack-delete-after-emit");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const Critters = require("critters-webpack-plugin");
+const WebpackBar = require("webpackbar");
 
 // Paths
 const paths = require("./paths");
@@ -42,6 +43,23 @@ module.exports = function(config, settings) {
   config.plugins = [
     ...config.plugins,
 
+    // Webpack Bar with profiler
+    new WebpackBar({
+      ...(settings.profile
+        ? {
+            profile: true,
+            reporters: ["profile"],
+          }
+        : {}),
+    }),
+
+    // Adding CSS Extract Plugin
+    new ExtractCssChunks({
+      filename: "static/css/[name].[hash:3].css",
+      chunkFilename: "static/css/[id].[hash:3].css",
+      orderWarning: true,
+    }),
+
     // Use the correct index.html template.
     new HtmlWebpackPlugin({
       inject: !settings.embedded,
@@ -53,13 +71,6 @@ module.exports = function(config, settings) {
     // Creating Critical CSS
     new Critters({
       preloadFonts: true,
-    }),
-
-    // Adding CSS Extract Plugin
-    new ExtractCssChunks({
-      filename: "static/css/[name].[hash:3].css",
-      chunkFilename: "static/css/[id].[hash:3].css",
-      orderWarning: true,
     }),
 
     // Delete files in build folder after build
