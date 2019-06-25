@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Loadable from "react-loadable";
 import { hot } from "react-hot-loader";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Utilities
 import { isDev } from "utilities/development";
@@ -9,35 +10,36 @@ import { isDev } from "utilities/development";
 import Header from "views/components/Header";
 import Loading from "views/components/Loading";
 
-// Loadables
+const NotFound = Loadable({
+  loader: (): Promise<any> => import("views/containers/NotFound/NotFound"),
+  loading: (): null => null,
+});
+
 const Footer = Loadable({
   loader: (): Promise<any> => import("views/components/Footer"),
   loading: Loading,
 });
 
-const App = (): JSX.Element => {
-  const [value, setValue] = useState("1");
+const Frontpage = Loadable({
+  loader: (): Promise<any> => import("views/containers/Frontpage/Frontpage"),
+  loading: Loading,
+});
 
-  return (
+const App = (): JSX.Element => (
+  <Router>
     <div className="app">
       <Header />
 
       <main>
-        <h1>Home {value}</h1>
-        <button type="button" onClick={(): void => setValue("1")}>
-          1
-        </button>
-        <button type="button" onClick={(): void => setValue("2")}>
-          2
-        </button>
-        <button type="button" onClick={(): void => setValue("3")}>
-          3
-        </button>
+        <Switch>
+          <Route path="/" component={Frontpage} exact />
+          <Route component={NotFound} />
+        </Switch>
       </main>
 
       <Footer />
     </div>
-  );
-};
+  </Router>
+);
 
-export default (isDev() ? hot(module)(App) : App);
+export default (isDev ? hot(module)(App) : App);
