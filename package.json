@@ -80,7 +80,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-push": "test:lint"
+      "pre-push": "yarn test:lint"
     }
   },
   "config-overrides-path": "config/config-overrides"
