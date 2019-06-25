@@ -102,6 +102,7 @@ Following configs can be edited in `config-overrides.js`
 | Setting              |   Type    | Description                                                                                                                                           |
 | :------------------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product.                                                                                              |
+| **`profile`** | `boolean` | Get a profile of your build stats |
 | **`embedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
 
 ## ⛺️ Maintainers
