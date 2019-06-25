@@ -3,28 +3,18 @@
 // Plugins
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const rewireReactHotLoader = require("react-app-rewire-hot-loader");
-const { useBabelRc, enableEslintTypescript } = require("customize-cra");
 
 module.exports = function(config, settings) {
   // Hot Loader
   config = rewireReactHotLoader(config, "development");
 
-  // enable Typescript Eslint
-  enableEslintTypescript();
-
-  // Use the local .babelrc file
-  useBabelRc();
-
   // Set Source Map
   config.devtool = "source-map";
 
   // Resolve
-  config.resolve = {
-    ...config.resolve,
-    alias: {
-      ...config.resolve.alias,
-      "react-dom": "@hot-loader/react-dom",
-    },
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    "react-dom": "@hot-loader/react-dom",
   };
 
   // Plugins

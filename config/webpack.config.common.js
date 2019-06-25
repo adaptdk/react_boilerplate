@@ -1,5 +1,11 @@
 /* eslint-disable */
 
+const {
+  useBabelRc,
+  useEslintRc,
+  enableEslintTypescript,
+} = require("customize-cra");
+
 // Plugins
 const paths = require("./paths");
 
@@ -12,6 +18,13 @@ const svgLoader = require("./loaders/svg");
 
 module.exports = function(config, isProd, settings) {
   const { fileLoader, oneOf } = loaderUtil(config.module.rules);
+
+  // Use the local .babelrc file
+  useBabelRc();
+
+  useEslintRc();
+
+  enableEslintTypescript();
 
   // Resolve
   config.resolve = {

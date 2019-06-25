@@ -1,5 +1,5 @@
 import React from "react";
 
-const Loading = () => <span>Loading</span>;
+const Loading = (): JSX.Element => <span>Loading</span>;
 
 export default Loading;

@@ -11,11 +11,11 @@ import Loading from "views/components/Loading";
 
 // Loadables
 const Footer = Loadable({
-  loader: () => import("views/components/Footer"),
+  loader: (): Promise<any> => import("views/components/Footer"),
   loading: Loading,
 });
 
-const App = () => {
+const App = (): JSX.Element => {
   const [value, setValue] = useState("1");
 
   return (
@@ -24,13 +24,13 @@ const App = () => {
 
       <main>
         <h1>Home {value}</h1>
-        <button type="button" onClick={() => setValue("1")}>
+        <button type="button" onClick={(): void => setValue("1")}>
           1
         </button>
-        <button type="button" onClick={() => setValue("2")}>
+        <button type="button" onClick={(): void => setValue("2")}>
           2
         </button>
-        <button type="button" onClick={() => setValue("3")}>
+        <button type="button" onClick={(): void => setValue("3")}>
           3
         </button>
       </main>

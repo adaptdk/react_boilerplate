@@ -1,14 +1,27 @@
 {
-  "extends": ["react-app", "eslint-config-airbnb"],
-  "plugins": ["react-hooks"],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react-hooks", "@typescript-eslint"],
+  "extends": [
+    "eslint-config-airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "settings": {
     "ecmascript": 6
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
+    "@typescript-eslint/indent": [
+      "warn",
+      2,
+      {
+        "ignoreComments": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
     "arrow-body-style": 0,
     "arrow-parens": 0,
     "autoFix": true,
@@ -20,7 +33,6 @@
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
-    "indent": 1,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-autofocus": 0,
     "jsx-quotes": 0,
@@ -31,6 +43,8 @@
     "no-trailing-spaces": 1,
     "prefer-promise-reject-errors": 0,
     "quote-props": 0,
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
     "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-curly-spacing": 0,
@@ -38,8 +52,6 @@
     "react/jsx-indent": 1,
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-tag-spacing": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/no-danger": 0,
     "react/no-unused-prop-types": 1,
     "react/prefer-stateless-function": 0,
@@ -75,5 +87,5 @@
         "functions": "never"
       }
     ]
-  }
+  },
 }

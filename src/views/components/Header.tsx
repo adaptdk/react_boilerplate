@@ -1,5 +1,5 @@
 import React from "react";
 
-const Header = () => <header className="header" />;
+const Header = (): JSX.Element => <header className="header" />;
 
 export default Header;
