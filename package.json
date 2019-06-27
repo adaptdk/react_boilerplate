@@ -82,7 +82,10 @@
     "webpack-delete-after-emit": "^1.0.5",
     "webpackbar": "^3.2.0"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
