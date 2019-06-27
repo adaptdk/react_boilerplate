@@ -24,10 +24,12 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "typings"
   ],
   "exclude": [
-    "./node_modules/**/*"
+    "./node_modules/**/*",
+    "src/**/*.spec.*"
   ],
   "extends": "./config/tsconfig.paths.json"
 }
