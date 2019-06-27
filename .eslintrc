@@ -1,11 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-hooks", "@typescript-eslint"],
-  "extends": [
-    "eslint-config-airbnb",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["eslint-config-airbnb", "plugin:@typescript-eslint/recommended", "prettier"],
   "settings": {
     "ecmascript": 6
   },
@@ -22,6 +18,8 @@
       }
     ],
     "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-object-literal-type-assertion": 0,
     "arrow-body-style": 0,
     "arrow-parens": 0,
     "autoFix": true,
@@ -43,9 +41,10 @@
     "no-trailing-spaces": 1,
     "prefer-promise-reject-errors": 0,
     "quote-props": 0,
+    "no-underscore-dangle": 0,
+    "react/prop-types": 0,
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
-    "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-curly-spacing": 0,
     "react/jsx-filename-extension": 0,
@@ -53,11 +52,8 @@
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-tag-spacing": 0,
     "react/no-danger": 0,
-    "react/no-unused-prop-types": 1,
     "react/prefer-stateless-function": 0,
-    "react/prop-types": 1,
     "react/react-in-jsx-scope": 0,
-    "react/require-default-props": 0,
     "react/self-closing-comp": 1,
     "semi": 1,
     "template-curly-spacing": 0,
@@ -87,5 +83,5 @@
         "functions": "never"
       }
     ]
-  },
+  }
 }

@@ -1,7 +1,10 @@
+// Each expors multiple functions
+import * as actions from "./actions";
+import * as epics from "./epics";
+import * as types from "./models";
+
+// Reducer only exports default function
 import reducer from "./reducer";
 
-export { default as actions } from "./actions";
-export { default as reducer } from "./reducer";
-export { default as fooTypes } from "./types";
-
-export default reducer;
+// Export as default object
+export default { ...actions, ...epics, ...types, reducer };
