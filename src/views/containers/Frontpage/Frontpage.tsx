@@ -31,10 +31,14 @@ const Frontpage: React.FC<Props> = ({
     <div className="page page-frontpage">
       <h1>Home {title}</h1>
 
-      <input
-        type="text"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateTitle(e.target.value)}
-      />
+      <label htmlFor="idChanger">
+        Change the title
+        <input
+          type="text"
+          id="idChanger"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateTitle(e.target.value)}
+        />
+      </label>
 
       <button type="button" onClick={() => addElement("1")}>
         1
