@@ -214,7 +214,7 @@ const finishSetup = (project, variants) => {
     {
       match: '%project_title%',
       replace: project.title,
-      file: 'public/index-full.html',
+      file: 'public/index.html',
     },
     // Renames Titles and setup script from package.json
     {
