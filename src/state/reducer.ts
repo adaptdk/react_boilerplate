@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import fooReducer from "state/ducks/foo/reducer";
+import foo from "state/ducks/foo";
 
 const rootReducer = combineReducers({
-  foo: fooReducer,
+  foo: foo.reducer,
 });
 
 export default rootReducer;

@@ -2,10 +2,15 @@ import { RootAction, RootState, Services } from "RootTypes";
 import { createStore, applyMiddleware } from "redux";
 import { createEpicMiddleware } from "redux-observable";
 
+// Utils
 import { composeEnhancers } from "utilities/store";
-import services from "services";
+
+// State
 import rootReducer from "state/reducer";
 import rootEpic from "state/epic";
+
+// Services
+import services from "services";
 
 declare global {
   interface Window {

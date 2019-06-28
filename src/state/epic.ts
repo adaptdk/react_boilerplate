@@ -1,5 +1,5 @@
 import { combineEpics } from "redux-observable";
 
-import * as fooEpics from "state/ducks/foo/epics";
+import foo from "state/ducks/foo";
 
-export default combineEpics(...Object.values(fooEpics));
+export default combineEpics(...Object.values(foo.epics));

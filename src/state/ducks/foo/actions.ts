@@ -1,12 +1,21 @@
 import cuid from "cuid";
 import { action } from "typesafe-actions";
 
-import { Foo } from "./models";
-import { ADD } from "./constants";
+// State
+import * as models from "./models";
+import * as constants from "./constants";
 
-export const add = (title: string): { type: any; payload: Foo } =>
-  action(ADD, {
+/** Update the title */
+export const updateTitle = (title: string) =>
+  action(constants.UPDATE_TITLE, title);
+
+/** Add a new element to the element list */
+export const addElement = (title: string) =>
+  action(constants.ADD_ELEMENT, {
     title,
     id: cuid(),
     completed: false,
-  });
+  } as models.Element);
+
+/** Delete the last element from the element list */
+export const deleteElement = () => action(constants.DELETE_LAST);

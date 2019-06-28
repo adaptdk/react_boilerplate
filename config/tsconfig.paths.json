@@ -5,6 +5,8 @@
       "*": ["*", "generated/*"],
       "assets": ["src/assets"],
       "assets/*": ["src/assets/*"],
+      "redux": ["src/typings/redux"],
+      "redux-thunk": ["src/typings/redux-thunk"],
       "services": ["src/services"],
       "services/*": ["src/services/*"],
       "state": ["src/state"],

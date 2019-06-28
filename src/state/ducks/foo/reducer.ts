@@ -1,28 +1,43 @@
 import { combineReducers } from "redux";
 import { ActionType } from "typesafe-actions";
 
+// State
 import * as actions from "./actions";
-import { Foo } from "./models";
-import { ADD } from "./constants";
+import * as models from "./models";
+import * as constants from "./constants";
 
+// Actions type
 export type FooAction = ActionType<typeof actions>;
 
+// State type
 export interface FooState {
-  readonly foo: Foo[];
+  readonly elements: models.Element[];
+  readonly title: string;
 }
 
 // The initial state
 const initialState: FooState = {
-  foo: [],
+  elements: [],
+  title: "",
 };
 
 // Create a combined reducer and export it
 export default combineReducers<FooState, FooAction>({
-  foo: (state = initialState.foo, action) => {
+  title: (state = initialState.title, action) => {
     switch (action.type) {
-    case ADD:
+    case constants.UPDATE_TITLE:
+      return action.payload;
+    default:
+      return state;
+    }
+  },
+  elements: (state = initialState.elements, action) => {
+    switch (action.type) {
+    case constants.ADD_ELEMENT:
       return [...state, action.payload];
-
+    case constants.DELETE_LAST:
+      if (state.length < 1) return state;
+      return state.slice(0, -1);
     default:
       return state;
     }

@@ -1,44 +1,61 @@
 import React from "react";
 import Types from "RootTypes";
-import { Dispatch } from "redux";
+// import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // Actions
-import * as fooActions from "state/ducks/foo/actions";
-
-const add = value => async (dispatch: Dispatch): Promise<void> => {
-  setTimeout(() => dispatch(fooActions.add(value)), 1000);
-};
+import { actions as fooActions } from "state/ducks/foo";
 
 const mapStateToProps = (state: Types.RootState) => ({
-  foos: state.foo.foo,
+  title: state.foo.title,
+  elements: state.foo.elements,
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateFoo: (value: string) => dispatch(fooActions.add(value)),
-  // updateFoo: (value: string) => dispatch(add(value)),
+  addElement: (value: string) => dispatch(fooActions.addElement(value)),
+  updateTitle: (value: string) => dispatch(fooActions.updateTitle(value)),
+  deleteElement: () => dispatch(fooActions.deleteElement()),
 });
 
-type Props = ReturnType<typeof mapStateToProps> &
-ReturnType<typeof mapDispatchToProps> & {
-  label: string;
-  updateFoo: Function;
-};
+// Collecting the props into one type you can refer to.
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
-const Frontpage: React.FC<Props> = ({ foos, updateFoo }) => {
+const Frontpage: React.FC<Props> = ({
+  elements,
+  title,
+  updateTitle,
+  addElement,
+  deleteElement,
+}) => {
   return (
     <div className="page page-frontpage">
-      <h1>Home</h1>
+      <h1>Home {title}</h1>
 
-      <button type="button" onClick={() => updateFoo("1")}>
+      <input
+        type="text"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateTitle(e.target.value)}
+      />
+
+      <button type="button" onClick={() => addElement("1")}>
         1
       </button>
-      <button type="button" onClick={() => updateFoo("2")}>
+      <button type="button" onClick={() => addElement("2")}>
         2
       </button>
-      <button type="button" onClick={() => updateFoo("3")}>
+      <button type="button" onClick={() => addElement("3")}>
         3
       </button>
+
+      <button type="button" onClick={deleteElement}>
+        Delete the last added
+      </button>
+
+      {elements &&
+        elements.map(e => (
+          <p key={e.id}>
+            {e.title} {e.id}
+          </p>
+        ))}
     </div>
   );
 };
