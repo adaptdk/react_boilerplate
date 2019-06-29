@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { ActionType } from "typesafe-actions";
+import { persistReducer } from "redux-persist";
 
 // State
 import * as actions from "./actions";
@@ -22,24 +23,27 @@ const initialState: FooState = {
 };
 
 // Create a combined reducer and export it
-export default combineReducers<FooState, FooAction>({
-  title: (state = initialState.title, action) => {
-    switch (action.type) {
-    case constants.UPDATE_TITLE:
-      return action.payload;
-    default:
-      return state;
-    }
-  },
-  elements: (state = initialState.elements, action) => {
-    switch (action.type) {
-    case constants.ADD_ELEMENT:
-      return [...state, action.payload];
-    case constants.DELETE_LAST:
-      if (state.length < 1) return state;
-      return state.slice(0, -1);
-    default:
-      return state;
-    }
-  },
-});
+export default persistReducer(
+  constants.persistConfig,
+  combineReducers<FooState, FooAction>({
+    title: (state = initialState.title, action) => {
+      switch (action.type) {
+      case constants.UPDATE_TITLE:
+        return action.payload;
+      default:
+        return state;
+      }
+    },
+    elements: (state = initialState.elements, action) => {
+      switch (action.type) {
+      case constants.ADD_ELEMENT:
+        return [...state, action.payload];
+      case constants.DELETE_LAST:
+        if (state.length < 1) return state;
+        return state.slice(0, -1);
+      default:
+        return state;
+      }
+    },
+  })
+);
