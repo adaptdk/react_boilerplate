@@ -11,7 +11,7 @@
     "test:lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "presetup": "yarn install",
     "setup": "node config/setup/setup.js",
-    "release": "release-it"
+    "release": "release-it -c config/.release-it.json"
   },
   "dependencies": {
     "@adaptagency/fe_tools": "^1.6.4",
