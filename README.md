@@ -12,8 +12,8 @@ Check out [Create React App](https://github.com/facebook/create-react-app) for m
 # 🏎 Quick Start
 
 ```console
-git clone git@github.com:adaptdk/react_boilerplate.git my-project
-cd my-project
+git clone git@github.com:adaptdk/react_boilerplate.git {my-project}
+cd {my-project}
 yarn setup
 ```
 
