@@ -22,22 +22,22 @@ const actions = {
   setupFeatures: async project => {
     project.features.forEach(feature => {
       switch (feature.name) {
-        case "proxy":
-          filesReadWriteAsync([
-            {
-              match: '%yourLocalEnvUrl%',
-              replace: feature.proxy,
-              file: ".env",
-            },
-            {
-              match: "useProxy: false",
-              replace: `useProxy: true`,
-              file: "config/config-overrides.js",
-            },
-          ]);
-          break;
-        default:
-          break;
+      case "proxy":
+        filesReadWriteAsync([
+          {
+            match: "%yourLocalEnvUrl%",
+            replace: feature.proxy,
+            file: ".env",
+          },
+          {
+            match: "useProxy: false",
+            replace: `useProxy: true`,
+            file: "config/config-overrides.js",
+          },
+        ]);
+        break;
+      default:
+        break;
       }
     });
   },
