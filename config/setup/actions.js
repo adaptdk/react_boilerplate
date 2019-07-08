@@ -1,288 +1,318 @@
 /* eslint-disable */
 
-const prompt = require('prompt');
-const { exec } = require('child_process');
+const prompt = require("prompt");
+const { Spinner } = require("cli-spinner");
 
-// Constants
-const { packages, features } = require('./packages');
-const { schema } = require('./schema');
+const { packages, features } = require("./packages");
+const { schema } = require("./schema");
+const { print, bold, dim, highlight, underline, actions, runActions, isYes } = require("./utilities");
 
-// Utilities
-const {
-  filesReadWriteAsync,
-  bold,
-  dim,
-  error,
-  highlight,
-  underline,
-  warn,
-} = require('./utils');
+const spinner = new Spinner("%s Installing the new modules...").setSpinnerString(18);
+
+/**
+ * Introduction
+ * @param {object} project      The project data
+ * @returns {Promise}
+ */
+const startPrompt = project =>
+  new Promise((res, rej) => {
+    print(
+      `${dim(`${bold("Thanks for using React Boilerplate.")}
+If you run into trouble, don't hesitate to write an issue or contact one of the maintainers.
+
+Make sure that you don't have any uncommited changes before running the yarn setup.
+
+${bold("Github Link")}
+${underline("https://github.com/adaptdk/react_boilerplate/issues")}
+
+${bold("Maintainers")}
+[mads-thines] Mads Thines - mads.thines@adaptagency.com
+[ChrEsb] Christian Esbensen - ces@adaptagency.com`)}`,
+      null,
+      [2, 0]
+    );
+    // Resolve the promise
+    res(project);
+  });
 
 /**
  * Get Project Name
  * @param {object} project      The project data
- * @param {function} func       The function you want to be executed if successful.
- * @returns {function}
+ * @returns {Promise}
  */
-const getProjectName = (project, func) => {
-  console.log(bold('What\'s the name of your project?'));
+const getProjectName = project =>
+  new Promise((res, rej) => {
+    print("✏️   What should we call the project?", "bold", [2, 0]);
 
-  prompt.get(schema.name, (err, result) => {
-    if (result) {
+    try {
+      prompt.get(schema.name, (err, result) => {
+        if (result) {
+          // Save the machine name in the Project object
+          if (result.machine) project.machine = result.machine;
 
-      if (result.machine) {
-        // Save the machine name in the Project object
-        project.machine = result.machine;
-      }
+          // Save the project title in the Project object
+          if (result.title) project.title = result.title;
 
-      if (result.title) {
-        // Save the project title in the Project object
-        project.title = result.title;
-      }
+          // Save the name as a variable
+          print(`We'll call your project ${highlight(result.machine)}.`, "bold", [2, 0]);
 
-      // Save the name as a variable
-      console.log(`
-
-  🙌  Great! We'll call your project ${highlight(result.machine)}.`);
-      if (!!func) return func();
-    } else {
-      exited();
+          // Resolve the promise
+          res(project);
+        } else {
+          rej(err);
+        }
+      });
+    } catch (err) {
+      rej(err);
     }
   });
-};
 
 /**
  * Get Packages
  * @param {object} [project]    The project data
- * @param {function} func       The function you want to be executed if successful.
- * @returns {function}
+ * @returns {Promise}
  */
-const getPackages = (project, func) => {
-  console.log(`
-Now, this is the available packages:
-${dim(`Read more about the different packages at ${underline('https://github.com/adaptdk/react_boilerplate#-packages')}`)}
-`);
+const getPackages = project =>
+  new Promise((res, rej) => {
+    print("------", "dim", [2, 0]);
+    print(`🌲   Now, this is the available packages:`, null, [2, 0]);
+    print(
+      `Read more about the different packages at ${underline(
+        "https://github.com/adaptdk/react_boilerplate#-packages"
+      )}`,
+      "dim",
+      [0, 1]
+    );
 
-  // Output Each Package
-  packages.forEach(variant => {
-    console.log(`${variant.id} ${variant.title}`);
-  });
+    // Output Each Package
+    packages.forEach(variant => {
+      print(`${variant.id} ${variant.title}`);
+    });
 
-  console.log(`
-${bold('Which package do you want to install?')}
-${dim('Select it by writing it\'s key [0-9]')}`);
+    print(`${bold("📦   Which package do you want to install?")}`, null, [2, 0]);
 
-  prompt.get(schema.packages, (err, result) => {
-    if (result && result.package) {
-      const selectedPackage = packages.find(variant => variant.id === result.package);
-      if (!!selectedPackage && !!func) {
+    try {
+      prompt.get(schema.packages, (err, result) => {
+        if (result && result.package) {
+          const selectedPackage = packages.find(variant => variant.id === result.package);
+          project.package = selectedPackage;
 
-        // Checkout the selected branch
-        exec(`git checkout ${selectedPackage.branch}`);
+          // Checkout the selected branch and install any new modules
+          if (!project.debug) actions.setupPackage(selectedPackage, spinner);
 
-        console.log(`
-📦  Amazing! You've select the ${highlight(selectedPackage.title)} package.`);
+          if (!!selectedPackage) {
+            print(`You've selected ${highlight(selectedPackage.title)}.`, null, [2, 0]);
 
-        if (selectedPackage.hasOwnProperty('features')) {
-          getFeatures(project, selectedPackage.features, func);
+            if (selectedPackage.hasOwnProperty("features")) {
+              project.features = selectedPackage.features;
+            }
+
+            res(project);
+          } else {
+            // If the key you've entered doesn't exist. Try again.
+            print("🚫   The key you've entered doesn't exists", "error");
+            res(getPackages(project));
+          }
         } else {
-          if (!!func) return func();
+          rej(err);
         }
-      } else {
-        // If the key you've entered doesn't exist. Try again.
-        console.log(error('The key you\'ve entered doesn\'t exists'));
-        getPackages(project, func);
-      }
-    } else {
-      exited();
+      });
+    } catch (err) {
+      rej(err);
     }
   });
-};
 
 /**
  * Get Packages
  * @param {object} project            The project data
- * @param {array} selectedFeatures    The features of the selected package
- * @param {function} func             The function you want to be executed if successful.
- * @returns {function}
+ * @returns {Promise}
  */
-const getFeatures = (project, selectedFeatures, func) => {
-  selectedFeatures.forEach((question, index) => {
+const getFeatures = project =>
+  new Promise((res, rej) => {
+    print("------", "dim", [2, 0]);
+    print(`💎   Do you want to customize your packages feature?`, null, [2, 0]);
+    print(`The package you've selected have features with options.`, "dim");
 
-    const filteredFeature = Object.entries(features)
-      .find(feature => feature[0] === question)[1];
+    try {
+      prompt.get(schema.features, (err, result) => {
+        if (result) {
+          if (isYes(result.features)) {
+            const { features: selectedFeatures } = project;
 
-    // Then output each variant
-    console.log(`
-${bold('This is the features available variants')}
-${dim(filteredFeature.predescription)}
-`);
+            selectedFeatures.forEach(async (selectedFeature, featuresIndex) => {
+              let activeFeatureIndex;
+              const activeFeature = features.find((feature, featureIndex) => {
+                activeFeatureIndex = featureIndex;
+                return feature.name === selectedFeature.name;
+              });
 
-    filteredFeature.variants.forEach(variant => {
-      console.log(`${variant.id} ${variant.title}`);
-    });
-    console.log('');
+              if (activeFeature && activeFeature.hasOwnProperty("schema")) {
+                print(activeFeature.title, "bold", [2, 0]);
+                print(activeFeature.description);
 
-    prompt.get(filteredFeature, (err, result) => {
-      if (result) {
-        if (result.question) {
-          // Save the selected variant to the global project object so we can handle on it later in the finish func.
-          project.features[question] = filteredFeature.variants.find(variant => variant.id === result.question);
+                prompt.get(activeFeature.schema, (err, result) => {
+                  // Save the feature options
+                  project.features[activeFeatureIndex] = {
+                    ...project.features[activeFeatureIndex],
+                    ...result,
+                  };
 
-          if (selectedFeatures.length === index + 1 && !!func) {
-            return func();
+                  // If it's the last feature, then continue
+                  if (featuresIndex === selectedFeatures.length - 1) {
+                    print(`You're finished with features `, null, [2, 0]);
+                    res(project);
+                  }
+                });
+              }
+            });
+          } else {
+            res(project);
           }
+        } else {
+          rej(err);
         }
-      }
-    });
-
-    if (selectedFeatures.length !== index + 1 && !!func) {
-      // If this is not the last feature then add an empty line
-      console.log('');
+      });
+    } catch (err) {
+      rej(err);
     }
   });
-};
 
 /**
  * Setup the git configuration
  * @param {object} [project]    The project data
  * @param {function} func       The function you want to be executed if successful.
- * @returns {function}
+ * @returns {Promise}
  */
-const setupGit = (project, func) => {
-  console.log(`
-${bold('📄  Awesome! Let\'s setup git, shall we?')}`);
+const setupGit = project =>
+  new Promise((res, rej) => {
+    print("------", "dim", [2, 0]);
+    print(`🌲   Lets setup git, shall we?`, null, [2, 0]);
+    print("Keep empty to get an empty repo or enter a valid git repository SSH URL", "dim");
 
-  console.log(`
-${dim('Please enter the SSH url for your empty git repository to finish up the setup? [git@github.com:user/repo.git]')}`)
+    try {
+      prompt.get(schema.git, (err, result) => {
+        if (result && result.ownRepo.length > 0) {
+          project.ownRepo = result.ownRepo;
 
-  prompt.get(schema.git, (err, result) => {
-    if (result) {
-      if (result.ownRepo.length > 0) {
-        project.ownRepo = result.ownRepo;
-        console.log(`
-Alright, we'll delete the boilerplate repository, setup with your repository and start setting up
-`);
-        return func();
-      }
-    } else {
-      exited();
+          // If empty, then delete repository and don't add custom Git
+          if (result.ownRepo === "no") {
+            project.deleteRepo = true;
+            return res(project);
+          }
+
+          print(
+            `Alright, we'll delete the boilerplate repository, setup with your repository and start setting up`,
+            null,
+            [1, 1]
+          );
+
+          res(project);
+        } else {
+          rej(err);
+        }
+      });
+    } catch (err) {
+      rej(err);
     }
   });
-};
 
 /**
  * The finalizing step, when you finish up the setup
  * @param {object} project      The project data
  * @param {object} [variants]   The different variants based on what you've selected, or preconfigured
- * @returns {function}
+ * @returnss {function}
  */
-const finishSetup = (project, variants) => {
-  const executeConfig = {
-    git: variants && variants.git || false,
-    install: variants && variants.install || true,
-    preserveFolder: variants && variants.preserveFolder || false,
-    removeSetup: variants && variants.removeSetup || true,
+const finishSetup = project => {
+  print("------", "dim", [2, 1]);
+  const { debug, deleteRepo, features: selectedFeatures } = project;
+
+  const setupConf = {
+    hasRepo: project.ownRepo.length > 0 && project.ownRepo !== "no",
+    hasFeatures: selectedFeatures.length > 0,
   };
-  // Adding Timeout for comments, for a smoother experience while installing
-  let delay = 0;
-  const increment = 750;
-  // If they don't want to add Git, but want to remove it.
-  if (!executeConfig.git) {
-    delay += increment;
-    setTimeout(() => {
-      console.log(`
-☑️  Removing the boilerplate git...`);
-    }, delay);
-    exec('rm -rf .git');
-  }
-  // If they want to add git, then clone it down and replace the Boilerplates git.
-  if (executeConfig.git && project && project.ownRepo) {
-    delay += increment;
-    setTimeout(() => {
-      console.log(`
-☑️  Removing the boilerplate git and cloning down your repository...`);
-    }, delay);
-    exec(`rm -rf .git &&
-    git clone --no-checkout ${project.ownRepo} .gitTemp &&
-    mv ./.gitTemp/.git ./.git &&
-    rm -rf .gitTemp`);
-  }
-  // Strings to replace in the project. like Project Title and Machine name in Like package.json / index.html
-  filesReadWriteAsync([
-    // Renames Titles in Index.html
-    {
-      match: '%project_title%',
-      replace: project.title,
-      file: 'public/index.html',
+
+  runActions([
+    setupConf.hasFeatures
+      ? () => {
+          print(`☑️  Configuring settings from features...`, null, [1, 1]);
+          !debug && actions.setupFeatures(project);
+        }
+      : null,
+    deleteRepo
+      ? () => {
+          // If they don't want to add Git, but want to remove it.
+          print(`☑️  Removing the boilerplate git...`, null, [1, 1]);
+          !debug && actions.removeGit();
+        }
+      : () => {
+          // If they want to add git, then clone it down and replace the Boilerplates git.
+          print(`☑️  Removing the boilerplate git and cloning down your repository...`, null, [1, 1]);
+          !debug && actions.setupGit(project.ownRepo);
+        },
+    () => {
+      // Rename the project
+      print(`☑️  Renaming the project ...`, null, [1, 1]);
+      !debug && actions.renameWithTitle(project);
     },
-    // Renames Titles and setup script from package.json
-    {
-      match: ['project_title', `
-    "presetup": "yarn install",
-    "setup": "node config/setup/setup.js",`],
-      replace: [project.machine, ''],
-      file: 'package.json',
+    () => {
+      // Remve the setup files
+      print(`☑️  Finally, removing the setup files...`, null, [1, 1]);
+      !debug && actions.removeSetup();
     },
-  ]);
+    () => {
+      print("------", "dim", [2, 2]);
+      print(`❤️   Your project is ready.
+Thank you for using the boilerplate for your React project. 💪`);
 
-  function promiseFromChildProcess(child) {
-    return new Promise(function (resolve, reject) {
-      child.addListener("error", reject);
-      child.addListener("exit", resolve);
-    });
-  }
-  // Remove setup folders
-  if (executeConfig.removeSetup) {
-    delay += increment;
-    setTimeout(() => {
-      console.log(`
-☑️  Finally, removing the setup files...`);
-    }, delay);
-    exec('rm -rf ./config/setup');
-  }
-  // If the selected package have specific modules, make sure we'll install those
-  if (executeConfig.install) {
-    delay += increment;
-    setTimeout(() => {
-      console.log(`
-☑️  Install the modules needed for the selected package...`);
-    }, delay);
-    exec('yarn install');
-  }
+      print(
+        `
+  ${bold("Project overview:")}
+  ${bold("✏️  Title:")}           ${project.title}
+  ${bold("✏️  Machine name:")}    ${project.machine}
+  ${bold("📦  Package:")}         ${project.package.branch}`,
+        null,
+        [1, 0]
+      );
+      if (setupConf.hasRepo) {
+        print(`  ${bold("🌲  Repo Url:")}        ${project.ownRepo}`);
+      }
 
-  setTimeout(() => {
-    console.log(`
-❤️   We'll start setting up your project.
-Thank you for using the boilerplate for your React project.
-
-${bold('Here\'s some quick commands to get you started.')}
-${underline('Development')}
+      print(
+        `${bold("Here's some quick commands to get you started.")}
+${underline("Development")}
 yarn start 
 
-${underline('Production Build')}
-yarn build
+${underline("Production Build")}
+yarn build`,
+        null,
+        [2, 2]
+      );
 
-Loading...
-`);
-  }, delay + increment);
+      !debug && spinner.start();
+    },
+  ]);
 };
 
 // When you've exit the setup
-const exited = () => {
-  console.log(warn(`
+const exited = err => {
+  print(
+    `🚧   Exited without doing anything 
 
+${err}
 
-🚧   Exited without doing anything
-${dim('If you\'re having issues, do not hesitate to contact one of the maintainers.')}
-
-`));
+${dim("If you're having issues, do not hesitate to contact one of the maintainers.")}`,
+    "warn",
+    [2, 1]
+  );
 };
 
 // Exporting
 module.exports = {
+  exited,
   finishSetup,
+  getFeatures,
   getPackages,
   getProjectName,
   setupGit,
+  startPrompt,
 };

@@ -1,53 +1,34 @@
 /* eslint-disable */
-const prompt = require('prompt');
+const prompt = require("prompt");
 
 // Actions
-const {
-  finishSetup,
-  getPackages,
-  getProjectName,
-  setupGit,
-} = require('./actions');
+const { startPrompt, finishSetup, getPackages, getFeatures, getProjectName, setupGit, exited } = require("./actions");
 
-// Utilities
-const {
-  bold,
-  dim,
-  underline,
-} = require('./utils');
+const project = {
+  debug: true,
+  branch: null,
+  deleteRepo: false,
+  features: [],
+  machine: null,
+  ownRepo: null,
+  package: null,
+  title: null,
+};
 
 // Initialize the Install process
 prompt.start();
 
-// Pre Documentation
-console.log(`${dim(`${bold('Thanks for using React Boilerplate.')}
-If you run into trouble, don't hesitate to write an issue or contact one of the maintainers.
-
-Make sure that you don't have any uncommited changes before running the yarn setup.
-
-${bold('Github Link')}
-${underline('https://github.com/adaptdk/react_boilerplate/issues')}
-
-${bold('Maintainers')}
-[mads-thines] Mads Thines - mads.thines@adaptagency.com
-[ChrEsb] Christian Esbensen - ces@adaptagency.com
-`)}`);
-
-const project = {
-  machine: null,
-  title: null,
-  ownRepo: null,
-  branch: null,
-  features: [],
-};
-
-// Get Project Name
-getProjectName(project, () => {
+// Start the Prompt
+startPrompt(project)
+  // // Get Project Name
+  .then(getProjectName)
   // Then Get Packages
-  getPackages(project, () => {
-    // Configure Git - Removing / Adding
-    setupGit(project, () => {
-      finishSetup(project, { removeGit: true, git: true });
-    })
-  })
-});
+  .then(getPackages)
+  // If there's features in the selected package, load them
+  .then(() => project.features.length > 0 && getFeatures(project))
+  // Configure Git - Removing / Adding
+  .then(setupGit)
+  // Then finish up the setup
+  .then(finishSetup)
+  // If something goes wrong, do a smooth exit ❤️
+  .catch(exited);

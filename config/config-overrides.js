@@ -24,11 +24,8 @@ module.exports = function override(config, env) {
     profile: false,
     // TODO: Prerender the SPA, and get a blazing fast first load.
     prerender: false,
-    // Define if the build should contain top html elements (<html> and <body>).
-    // TODO: Make this variable defineable when creating the project.
-    // TODO cont.: Something like "Will project PROD/DEV environment be embedded into another site?
-    // TODO cont.: (Choosing "no" will generate index.html without <html>, <head> and <body> tags.)"
-    embedded: false,
+    // Embed your React app onto a proxied site
+    useProxy: false,
   };
 
   // Loading Env Config
