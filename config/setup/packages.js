@@ -3,7 +3,7 @@
 // Utilities
 const { dim } = require("./utilities");
 
-const urlRegExp = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+const urlRegExp = /htt(ps|p).*(:|.)/;
 
 // Read more about the different packages here: https://github.com/adaptdk/react_boilerplate
 const packages = [
