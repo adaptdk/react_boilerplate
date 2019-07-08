@@ -9,6 +9,7 @@ const project = {
   branch: null,
   deleteRepo: false,
   features: [],
+  finished: false,
   machine: null,
   ownRepo: null,
   package: null,

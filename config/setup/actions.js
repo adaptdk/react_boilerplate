@@ -98,7 +98,7 @@ const getPackages = project =>
           project.package = selectedPackage;
 
           // Checkout the selected branch and install any new modules
-          if (!project.debug) actions.setupPackage(selectedPackage, spinner);
+          if (!project.debug) actions.setupPackage(selectedPackage, project, spinner);
 
           if (!!selectedPackage) {
             print(`You've selected ${highlight(selectedPackage.title)}.`, null, [2, 0]);
@@ -288,7 +288,7 @@ yarn build`,
         [2, 2]
       );
 
-      !debug && spinner.start();
+      !debug && !project.finished && spinner.start();
     },
   ]);
 };

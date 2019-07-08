@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const util = require("util");
 const { exec } = require("child_process");
 
@@ -14,9 +16,10 @@ const actions = {
     mv ./.gitTemp/.git ./.git &&
     rm -rf .gitTemp`);
   },
-  setupPackage: async (selectedPackage, spinner) => {
+  setupPackage: async (selectedPackage, project, spinner) => {
     await asyncExec(`git stash && git checkout ${selectedPackage.branch}`);
     await asyncExec("yarn install");
+    project.finished = true;
     spinner.stop(false);
   },
   setupFeatures: async project => {
