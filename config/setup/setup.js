@@ -5,8 +5,9 @@ const prompt = require("prompt");
 const { startPrompt, finishSetup, getPackages, getFeatures, getProjectName, setupGit, exited } = require("./actions");
 
 const project = {
-  debug: false,
+  debug: true,
   branch: null,
+  customizeFeature: false,
   deleteRepo: false,
   features: [],
   finished: false,

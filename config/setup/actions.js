@@ -5,7 +5,7 @@ const { Spinner } = require("cli-spinner");
 
 const { packages, features } = require("./packages");
 const { schema } = require("./schema");
-const { print, bold, dim, highlight, underline, actions, runActions, isYes } = require("./utilities");
+const { print, bold, dim, highlight, underline, actions, runActions, isYes, printFeatureConf } = require("./utilities");
 
 const spinner = new Spinner("%s Installing the new modules...").setSpinnerString(18);
 
@@ -17,12 +17,12 @@ const spinner = new Spinner("%s Installing the new modules...").setSpinnerString
 const startPrompt = project =>
   new Promise((res, rej) => {
     print(
-      `${dim(`${bold("Thanks for using React Boilerplate.")}
+      `${bold("Thanks for using React Boilerplate. ❤️")}
 If you run into trouble, don't hesitate to write an issue or contact one of the maintainers.
 
-Make sure that you don't have any uncommited changes before running the yarn setup.
+Make sure you don't have any uncommited changes before running, as it will stage any changes.
 
-${bold("Github Link")}
+${dim(`${bold("Github Link")}
 ${underline("https://github.com/adaptdk/react_boilerplate/issues")}
 
 ${bold("Maintainers")}
@@ -75,7 +75,7 @@ const getProjectName = project =>
 const getPackages = project =>
   new Promise((res, rej) => {
     print("------", "dim", [2, 0]);
-    print(`🌲   Now, this is the available packages:`, null, [2, 0]);
+    print(`Available packages:`, "bold", [2, 0]);
     print(
       `Read more about the different packages at ${underline(
         "https://github.com/adaptdk/react_boilerplate#-packages"
@@ -86,7 +86,14 @@ const getPackages = project =>
 
     // Output Each Package
     packages.forEach(variant => {
-      print(`${variant.id} ${variant.title}`);
+      switch (variant.type) {
+        case "break":
+          print(variant.title, "bold", [1, 0]);
+          break;
+        default:
+          print(`  ${variant.id} ${variant.title}`);
+          break;
+      }
     });
 
     print(`${bold("📦   Which package do you want to install?")}`, null, [2, 0]);
@@ -137,8 +144,9 @@ const getFeatures = project =>
       prompt.get(schema.features, (err, result) => {
         if (result) {
           if (isYes(result.features)) {
+            // If they want to customize and change the options
+            project.customizeFeature = true;
             const { features: selectedFeatures } = project;
-
             selectedFeatures.forEach(async (selectedFeature, featuresIndex) => {
               let activeFeatureIndex;
               const activeFeature = features.find((feature, featureIndex) => {
@@ -267,14 +275,18 @@ Thank you for using the boilerplate for your React project. 💪`);
       print(
         `
   ${bold("Project overview:")}
-  ${bold("✏️  Title:")}           ${project.title}
   ${bold("✏️  Machine name:")}    ${project.machine}
+  ${bold("✏️  Title:")}           ${project.title}
   ${bold("📦  Package:")}         ${project.package.branch}`,
         null,
         [1, 0]
       );
       if (setupConf.hasRepo) {
         print(`  ${bold("🌲  Repo Url:")}        ${project.ownRepo}`);
+      }
+      if (setupConf.hasFeatures && project.customizeFeature) {
+        print("  💎  Features:", "bold", [0, 1]);
+        printFeatureConf(project.features);
       }
 
       print(
