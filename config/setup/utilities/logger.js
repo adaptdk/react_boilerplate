@@ -41,8 +41,19 @@ const print = (string, variant, space = [0, 0]) => {
   spacer(space[1]);
 };
 
+const printFeatureConf = features => {
+  features.forEach(feature => {
+    print(`     {`);
+    Object.entries(feature).forEach(([key, value]) => {
+      print(`       ${color.bold(`${key}:`)} ${value}`);
+    });
+    print(`     }`, null, [0, 1]);
+  });
+};
+
 module.exports = {
   ...color,
   spacer,
   print,
+  printFeatureConf,
 };
