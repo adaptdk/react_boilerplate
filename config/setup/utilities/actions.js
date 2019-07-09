@@ -75,10 +75,10 @@ const actions = {
  * @param {array} actions - Each action you want to execute
  * @return {void}
  */
-const runActions = (actions, increment = 750, delay = 0) => {
+const runActions = (actions, increment = 1000, delay = 0) => {
   actions.forEach(async action => {
     delay += increment;
-    return await setTimeout(action, delay);
+    await setTimeout(action, delay);
   });
 };
 
