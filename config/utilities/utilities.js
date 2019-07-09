@@ -1,20 +1,5 @@
 /* eslint-disable */
 
-// Environments Checks
-/**
- * Checks whether it's the production env.
- * @param {string} env - The env variable
- * @return {boolean}
- */
-const isProd = env => env === "production";
-
-/**
- * Checks whether it's the production env.
- * @param {string} env - The env variable
- * @return {boolean}
- */
-const isDev = env => env === "development";
-
 /**
  * Helper functions and variables for the loaders
  * @param {Array} rules - The rules array coming from the config.modules.rules,
@@ -48,8 +33,14 @@ const loaderUtil = rules => {
   };
 };
 
+// Environment variables
+const envs = {
+  profiler: process.env.PROFILER === "true",
+  embedded: process.env.EMBEDDED === "true",
+  bundleAnalyzer: process.env.BUNDLE_ANALYZER === "true",
+};
+
 module.exports = {
-  isProd,
-  isDev,
+  envs,
   loaderUtil,
 };
