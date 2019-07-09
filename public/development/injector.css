@@ -1,0 +1,59 @@
+@keyframes injectorLoaderIn {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(-50%, -70px, 0);
+    opacity: 0.93;
+  }
+}
+
+@keyframes injectorLoaderOut {
+  0% {
+    transform: translate(-50%, -70px);
+    opacity: 0.93;
+  }
+
+  85% {
+    transform: translate(-50%, -70px) scale(1);
+    opacity: 0.93;
+  }
+
+  95% {
+    transform: translate(-50%, -75px) scale(1.1);
+    opacity: 0.93;
+  }
+
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+.injector-loader-element {
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.15);
+}
+
+.injector-loader-element:hover {
+  opacity: 1;
+}
+
+body:not(.injector--loading) .injector-loader-element {
+  animation: injectorLoaderOut 2.3s ease forwards;
+}
+
+body.injector--loading .injector-loader-element {
+  animation: injectorLoaderIn 2s ease forwards;
+}

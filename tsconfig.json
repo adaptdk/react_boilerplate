@@ -24,10 +24,13 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "typings"
   ],
   "exclude": [
-    "./node_modules/**/*"
+    "./node_modules/**/*",
+    "src/**/*.spec.*",
+    "src/setupProxy.js"
   ],
   "extends": "./config/tsconfig.paths.json"
 }

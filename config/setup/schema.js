@@ -1,7 +1,3 @@
-const prompt = require("prompt");
-
-const { isYes } = require("./utils");
-
 // The Questions
 const schema = {
   name: {
@@ -13,8 +9,8 @@ const schema = {
         required: true,
       },
       title: {
-        description: "Project title [only letters]",
-        message: "Name must be only letters",
+        description: "Project title [letters and spaces]",
+        message: "Name must be only letters and spaces, and no foreign characters",
         pattern: /^[a-zA-Z-\s]+$/,
         required: true,
       },
@@ -31,14 +27,25 @@ const schema = {
       },
     },
   },
+  features: {
+    properties: {
+      features: {
+        message: "Do you want customize the package?",
+        description: "yes|y or no|n",
+        pattern: /(y|yes|n|no)/,
+        default: "no",
+        required: true,
+      },
+    },
+  },
   git: {
     properties: {
       ownRepo: {
-        description:
-          "SSH Url",
-        pattern: /^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$/,
         message:
-          "You need to enter a valid git repository URL. like [git@github.com:user/repo.git]",
+          "Keep empty to get an empty repo or enter a valid git repository SSH URL. like [git@github.com:user/repo.git]",
+        description: "SSH Url",
+        default: "no",
+        pattern: /^(no|(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git)$/,
       },
     },
   },

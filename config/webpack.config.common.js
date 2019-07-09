@@ -17,7 +17,7 @@ const paths = require("./paths");
 const { stylesLoaders } = require("./loaders/styles");
 const svgLoader = require("./loaders/svg");
 
-module.exports = function(config, isProd, settings) {
+module.exports = function(config, isProd) {
   const { fileLoader, oneOf } = loaderUtil(config.module.rules);
 
   // Use the local .babelrc file
