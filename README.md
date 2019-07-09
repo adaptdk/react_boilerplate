@@ -78,11 +78,12 @@ This is the format, but needs to be updated with the right information
 | **[React Router](https://github.com/ReactTraining/react-router)**                            |    ❌     |      ✅      |    ❌     |    ✅     |
 | **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |    ✅     |      ✅      |    ✅     |    ✅     |
 | **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |    ✅     |      ✅      |    ✅     |    ✅     |
-| **Scss**                                                                                     |    ✅     |      ✅      |    ✅     |    ✅     |
 | **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |    ✅     |      ✅      |    ✅     |    ✅     |
-| **[Critical CSS (inline)](#critical-css)**                                                   |    ✅     |      ✅      |    ✅     |    ✅     |
+| **Proxy (Widgets)**                                                                          |    ✅     |      ✅      |    ✅     |    ✅     |
+| **Scss**                                                                                     |    ✅     |      ✅      |    ✅     |    ✅     |
 | **CSS Modules**                                                                              |    ✅     |      ✅      |    ✅     |    ✅     |
 | **Autoprefixer**                                                                             |    ✅     |      ✅      |    ✅     |    ✅     |
+| **[Critical CSS (inline)](#critical-css)**                                                   |    ✅     |      ✅      |    ✅     |    ✅     |
 | **Typescript**                                                                               |    ✅     |      ✅      |    ❌     |    ❌     |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
@@ -97,13 +98,14 @@ This is extremely vital to first paint, so use it for all the components, which 
 
 ## 🎛 Configuration
 
-Following configs can be edited in `config-overrides.js`
+Following options can be changed in the `.env` file
 
-| Setting              |   Type    | Description                                                                                                                                           |
-| :------------------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product.                                                                                              |
-| **`profile`** | `boolean` | Get a profile of your build stats |
-| **`embedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
+| Setting | Type | Description |
+| :------ | :----: | :-------- |
+| **`BUNDLE_ANALYZER`** | `boolean` | Analyze the Node Packages included in the build. |
+| **`PROFILER`** | `boolean` | Get a profile of your build stats |
+| **`EMBEDDED`** | `boolean` | Embed your React app and proxy against the local env. with the `PUBLIC_URL` as the URL. |
+| **`PUBLIC_URL`** | `string` | The URL address that we'll proxy against |
 
 ## ⛺️ Maintainers
 
