@@ -3,6 +3,8 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 
 import { isDev } from "utilities/development";
 
+export const ofType = type => action =>  action.type === type;
+
 export const composeEnhancers =
   (isDev && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 

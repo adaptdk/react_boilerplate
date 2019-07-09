@@ -11,21 +11,21 @@ import Header from "views/components/Header";
 import Loading from "views/components/Loading";
 
 const NotFound = Loadable({
-  loader: (): Promise<any> => import("views/containers/NotFound/NotFound"),
-  loading: (): null => null,
+  loader: () => import("views/containers/NotFound/NotFound"),
+  loading: () => null,
 });
 
 const Footer = Loadable({
-  loader: (): Promise<any> => import("views/components/Footer"),
+  loader: () => import("views/components/Footer"),
   loading: Loading,
 });
 
 const Frontpage = Loadable({
-  loader: (): Promise<any> => import("views/containers/Frontpage/Frontpage"),
+  loader: () => import("views/containers/Frontpage/Frontpage"),
   loading: Loading,
 });
 
-const App = (): JSX.Element => (
+const App = () => (
   <Router>
     <div className="app">
       <Header />

@@ -1,43 +1,28 @@
 import React from "react";
-import Types from "RootTypes";
-// import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // Actions
 import { actions as fooActions } from "state/ducks/foo";
 
-const mapStateToProps = (state: Types.RootState) => ({
+const mapStateToProps = state => ({
   title: state.foo.title,
   elements: state.foo.elements,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addElement: (value: string) => dispatch(fooActions.addElement(value)),
-  updateTitle: (value: string) => dispatch(fooActions.updateTitle(value)),
+  addElement: value => dispatch(fooActions.addElement(value)),
+  updateTitle: value => dispatch(fooActions.updateTitle(value)),
   deleteElement: () => dispatch(fooActions.deleteElement()),
 });
 
-// Collecting the props into one type you can refer to.
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
-
-const Frontpage: React.FC<Props> = ({
-  elements,
-  title,
-  updateTitle,
-  addElement,
-  deleteElement,
-}) => {
+const Frontpage = ({ elements, title, updateTitle, addElement, deleteElement }) => {
   return (
     <div className="page page-frontpage">
       <h1>Home {title}</h1>
 
       <label htmlFor="idChanger">
         Change the title
-        <input
-          type="text"
-          id="idChanger"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateTitle(e.target.value)}
-        />
+        <input type="text" id="idChanger" onChange={e => updateTitle(e.target.value)} />
       </label>
 
       <button type="button" onClick={() => addElement("1")}>

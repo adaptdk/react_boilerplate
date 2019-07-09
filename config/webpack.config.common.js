@@ -2,7 +2,7 @@
 
 // Plugins
 const CircularDependencyPlugin = require("circular-dependency-plugin");
-const { useBabelRc, useEslintRc, enableEslintTypescript } = require("customize-cra");
+const { useBabelRc, useEslintRc } = require("customize-cra");
 // Utils
 const { loaderUtil } = require("./utilities/utilities");
 
@@ -21,9 +21,6 @@ module.exports = function(config, isProd) {
 
   // Use custom .eslintrc file
   useEslintRc();
-
-  // Enables Eslint Typescript
-  enableEslintTypescript();
 
   // Resolve
   config.resolve = {

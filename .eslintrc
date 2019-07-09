@@ -1,7 +1,7 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react-hooks", "@typescript-eslint"],
-  "extends": ["eslint-config-airbnb", "plugin:@typescript-eslint/recommended", "prettier"],
+  "parser": "babel-eslint",
+  "plugins": ["react-hooks"],
+  "extends": ["eslint-config-airbnb", "prettier"],
   "settings": {
     "ecmascript": 6
   },
@@ -10,16 +10,6 @@
     "jest": true
   },
   "rules": {
-    "@typescript-eslint/indent": [
-      "warn",
-      2,
-      {
-        "ignoreComments": true
-      }
-    ],
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-object-literal-type-assertion": 0,
     "arrow-body-style": 0,
     "arrow-parens": 0,
     "autoFix": true,
@@ -43,7 +33,6 @@
     "quote-props": 0,
     "no-underscore-dangle": 0,
     "no-param-reassign": 0,
-    "react/prop-types": 0,
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-boolean-value": 0,
