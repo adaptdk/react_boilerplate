@@ -2,11 +2,12 @@
 
 const util = require("util");
 const { exec } = require("child_process");
+const { print, underline } = require("./logger");
 
 // Asynchronous Node Execution
 const asyncExec = util.promisify(require("child_process").exec);
 
-const { filesReadWriteAsync, fileReadWriteAsync } = require("./file");
+const { filesReadWriteAsync } = require("./file");
 
 const actions = {
   removeGit: () => exec("rm -rf .git"),
@@ -26,6 +27,11 @@ const actions = {
     project.features.forEach(feature => {
       switch (feature.name) {
         case "proxy":
+          print(
+            `  ℹ️   Remember to change the querySelector inside of the ${underline('index.tsx')} file, so it finds an element that exists on your site 😇`,
+            'bold',
+            [1, 1]
+          );
           filesReadWriteAsync([
             {
               match: ["%yourLocalEnvUrl%", "EMBEDDED=false"],

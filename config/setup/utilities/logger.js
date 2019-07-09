@@ -17,21 +17,24 @@ const print = (string, variant, space = [0, 0]) => {
   spacer(space[0]);
 
   switch (variant) {
-    case "bold":
-      console.log(color.bold(string));
-      break;
-    case "dim":
-      console.log(color.dim(string));
-      break;
-    case "error":
-      console.log(color.error(string));
-      break;
-    case "warn":
-      console.log(color.warn(string));
-      break;
-    default:
-      console.log(string);
-      break;
+  case "bold":
+    console.log(color.bold(string));
+    break;
+  case "dim":
+    console.log(color.dim(string));
+    break;
+  case "error":
+    console.log(color.error(string));
+    break;
+  case "warn":
+    console.log(color.warn(string));
+    break;
+  case "underline":
+    console.log(color.underline(string));
+    break;
+  default:
+    console.log(string);
+    break;
   }
 
   // Post String Space

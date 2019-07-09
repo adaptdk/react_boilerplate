@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-// import { PersistGate } from "redux-persist/integration/react";
 
 // Utils
 import * as serviceWorker from "utilities/serviceWorker";
@@ -17,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
+  document.querySelector("#root")
 );
 
 // If you want your app to work offline and load faster, you can change
