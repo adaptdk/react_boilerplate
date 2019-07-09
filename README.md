@@ -71,21 +71,23 @@ Continuously while development keep running the audit to monitor how your featur
 
 This is the format, but needs to be updated with the right information
 
-| Features                                                                                     | Base (TS) | Complex (TS) |   Base    |  Complex  |
-| :------------------------------------------------------------------------------------------- | :-------: | :----------: | :-------: | :-------: |
-| Status                                                                                       | **Ready** |  **Ready**   | **Ready** | **Ready** |
-| **Build Size Gzipped (kb)**                                                                  |  `~37kb`  |   `~55kb`    |  `~37kb`  |  `~55kb`  |
-| **[Redux](https://github.com/reduxjs/redux)**                                                |    ❌     |      ✅      |    ❌     |    ✅     |
-| **[Redux Persistor](https://github.com/rt2zz/redux-persist)**                                |    ❌     |      ✅      |    ❌     |    ✅     |
-| **[React Router](https://github.com/ReactTraining/react-router)**                            |    ❌     |      ✅      |    ❌     |    ✅     |
-| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |    ✅     |      ✅      |    ✅     |    ✅     |
-| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |    ✅     |      ✅      |    ✅     |    ✅     |
-| **Scss**                                                                                     |    ✅     |      ✅      |    ✅     |    ✅     |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |    ✅     |      ✅      |    ✅     |    ✅     |
-| **[Critical CSS (inline)](#critical-css)**                                                   |    ✅     |      ✅      |    ✅     |    ✅     |
-| **CSS Modules**                                                                              |    ✅     |      ✅      |    ✅     |    ✅     |
-| **Autoprefixer**                                                                             |    ✅     |      ✅      |    ✅     |    ✅     |
-| **Typescript**                                                                               |    ✅     |      ✅      |    ❌     |    ❌     |
+| Features                                                                                     | Base (TS) | Complex (TS) |  Widgets (TS)  |   Base    |  Complex  |
+| :------------------------------------------------------------------------------------------- | :-------: | :----------: | :------------: | :-------: | :-------: |
+| Status                                                                                       | **Ready** |  **Ready**   |    **Ready**   | **Ready** | **Ready** |
+| **Build Size Gzipped (kb)**                                                                  |  `~41kb`  |   `~63kb`    |     `~40kb`    |  `~41kb`  |  `~62kb`  |
+| **[Redux](https://github.com/reduxjs/redux)**                                                |    ❌     |      ✅      |      ✅       |    ❌     |    ✅    |
+| **[Redux Persistor](https://github.com/rt2zz/redux-persist)**                                |    ❌     |      ✅      |      ✅       |    ❌     |    ✅    |
+| **[React Router](https://github.com/ReactTraining/react-router)**                            |    ❌     |      ✅      |      ✅       |    ❌     |    ✅    |
+| **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **Scss**                                                                                     |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **CSS Modules**                                                                              |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **Autoprefixer**                                                                             |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **[Critical CSS (inline)](#critical-css)**                                                   |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **Typescript**                                                                               |    ✅     |      ✅      |      ✅       |    ❌     |    ❌    |
+| **Proxy local env**                                                                          |    ⚡     |      ⚡      |      ⚡       |    ⚡     |    ⚡    |
+| **Multiple Widget**                                                                          |    ❌     |      ❌      |      ✅       |    ❌     |    ❌    |
 
 ✅ Full support ⚡ Supported (Needs configuration) ❌ No Support
 
@@ -101,11 +103,12 @@ This is extremely vital to first paint, so use it for all the components, which 
 
 Following configs can be edited in `config-overrides.js`
 
-| Setting              |   Type    | Description                                                                                                                                           |
-| :------------------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`bundleAnalyzer`** | `boolean` | Analyze the Node Packages included in the build product.                                                                                              |
-| **`isDevEmbedded`**  | `boolean` | Set this to true if the development build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags. |
-| **`isProdEmbedded`** | `boolean` | Set this to true if the production build is embedded into another site. This will generate a index.html file without <html>, <head> and <body> tags.  |
+| Setting | Type | Description |
+| :------ | :----: | :-------- |
+| **`BUNDLE_ANALYZER`** | `boolean` | Analyze the Node Packages included in the build. |
+| **`PROFILER`** | `boolean` | Get a profile of your build stats |
+| **`EMBEDDED`** | `boolean` | Embed your React app and proxy against the local env. with the `PUBLIC_URL` as the URL. |
+| **`PROXY_URL`** | `string` | The URL address that we'll proxy against |
 
 ## ⛺️ Maintainers
 
