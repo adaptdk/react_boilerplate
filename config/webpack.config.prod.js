@@ -2,57 +2,86 @@
 
 // Plugins
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackDeleteAfterEmit = require("webpack-delete-after-emit");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const Critters = require("critters-webpack-plugin");
+const WebpackBar = require("webpackbar");
+
+const { envs } = require("./utilities/utilities");
 
 // Paths
 const paths = require("./paths");
 
-module.exports = function(config, isProd, settings) {
-  /*
-   * Insert your production specific configuration here.
-   */
-
+module.exports = function(config) {
   // Optimizations
   config.optimization = {
     ...config.optimization,
     minimizer: [
       ...config.optimization.minimizer,
+      // Minify and compress Js
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
+        sourceMap: false, // set to true if you want JS source maps
       }),
-      new OptimizeCSSAssetsPlugin({}),
     ],
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+          minChunks: 2,
+        },
+      },
+    },
   };
 
   // Plugins
   config.plugins = [
     ...config.plugins,
 
-    // Bundle Analyzer
-    ...(settings.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
+    // Webpack Bar with profiler
+    new WebpackBar({
+      ...(envs.profiler
+        ? {
+            profile: true,
+            reporters: ["profile"],
+          }
+        : {}),
+    }),
 
-    //  Minify CSS Etract Plugin
-    new MiniCssExtractPlugin({
-      filename: "/static/css/[name].[hash:5].css",
-      chunkFilename: "/static/css/[id].[hash:5].css",
+    // Adding CSS Extract Plugin
+    new ExtractCssChunks({
+      filename: "static/css/[name].[hash:3].css",
+      chunkFilename: "static/css/[id].[hash:3].css",
+      orderWarning: true,
     }),
 
     // Use the correct index.html template.
+    !envs.embedded &&
     new HtmlWebpackPlugin({
-      inject: !settings.isProdEmbedded,
-      template: settings.isProdEmbedded ? paths.appHtml : paths.appHtmlFull,
+      template: paths.appHtml,
+      favicon: `${paths.appPublic}/favicons/favicon.ico`,
+      manifest: `/manifest.json`,
     }),
 
-    // Delete the index-full.html file after build.
-    new WebpackDeleteAfterEmit({
-      globs: ["index-full.html"],
+    // Creating Critical CSS
+    new Critters({
+      preloadFonts: true,
     }),
+
+    // Delete files in build folder after build
+    new WebpackDeleteAfterEmit({
+      globs: ["index-mini.html"],
+    }),
+
+    // Bundle Analyzer
+    ...(envs.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
   ];
 
   return config;

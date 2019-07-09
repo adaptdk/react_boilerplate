@@ -1,63 +1,62 @@
+/* eslint-disable */
+
 // Utilities
-const { underline } = require("./utils");
+const { dim } = require("./utilities");
+
+const urlRegExp = /htt(ps|p).*(:|.)/;
 
 // Read more about the different packages here: https://github.com/adaptdk/react_boilerplate
-// The different packages
 const packages = [
   {
-    id: '1',
-    title: 'Base (TypeScript)',
-    branch: 'typescript/base',
+    id: "1",
+    title: "Base (TypeScript)",
+    branch: "typescript/base",
+    features: [{ name: "proxy" }],
   },
   {
-    id: '2',
-    title: 'Complex (TypeScript)',
-    branch: 'typescript/complex',
+    id: "2",
+    title: "Complex (TypeScript)",
+    branch: "typescript/complex",
+    features: [{ name: "proxy" }],
   },
   {
-    id: '3',
-    title: 'Base',
-    branch: 'regular/base',
+    id: "3",
+    title: "Base",
+    branch: "regular/base",
+    features: [{ name: "proxy" }],
   },
   {
-    id: '4',
-    title: 'Complex',
-    branch: 'regular/complex',
+    id: "4",
+    title: "Complex",
+    branch: "regular/complex",
+    features: [{ name: "proxy" }],
   },
-  // {
-  //   id: '2',
-  //   title: 'Complex',
-  //   branch: 'complex',
-  //   features: [
-  //     'redux',
-  //   ],
-  // },
 ];
 
 // Features that have multiple structures
 // This will not be used, if none of the packages includes one of it's features.
-const features = {
-  redux: {
-    predescription: `Read more about code structure here ${underline(
-      "https://redux.js.org/faq/codestructure#code-structure"
+const features = [
+  {
+    name: "proxy",
+    title: "Proxy another site?",
+    description: `Do you want to proxy the site onto another local environment? ${dim(
+      "You can always enable later in config/config-overrides.js"
     )}`,
-    description: "Which code structure of Redux do you want?",
-    pattern: /[0-9]/,
-    message: "The key you've entered doesn't exists",
-    variants: [
-      {
-        id: "1",
-        title: "Ducks",
-        name: "ducks",
+    schema: {
+      properties: {
+        proxy: {
+          message: `Add URL or keep empty to continue without proxying. ${dim(
+            "You can always enable later in config/config-overrides.js"
+          )}`,
+          description: "Local Env. URL",
+          pattern: urlRegExp,
+          default: "no",
+          required: true,
+        },
       },
-      {
-        id: "2",
-        title: "Function",
-        name: "function",
-      },
-    ],
+    },
   },
-};
+];
 
 module.exports = {
   packages,
