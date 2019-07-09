@@ -240,7 +240,7 @@ const finishSetup = project => {
   };
 
   runActions([
-    customizeFeature
+    setupConf.customizeFeature
       ? () => {
           print(`☑️  Configuring settings from features...`, null, [1, 1]);
           !debug && actions.setupFeatures(project);
