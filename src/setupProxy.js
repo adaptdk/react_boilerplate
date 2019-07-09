@@ -14,7 +14,7 @@ module.exports = app => {
   // Setup Proxy
   app.use(
     proxy(`!(${excludes.join("|")})`, {
-      target: process.env.PUBLIC_URL,
+      target: process.env.PROXY_URL,
       changeOrigin: true,
       selfHandleResponse: true,
       preserveHeaderKeyCase: true,
