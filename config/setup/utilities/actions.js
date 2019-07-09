@@ -28,8 +28,10 @@ const actions = {
       switch (feature.name) {
         case "proxy":
           print(
-            `ℹ️   Remember to change the querySelector inside of the ${underline('index.tsx')} file, so it finds an element that exists on your site 😇`,
-            'bold',
+            `ℹ️   Remember to change the querySelector inside of the ${underline(
+              "index.tsx"
+            )} file, so it finds an element that exists on your site 😇`,
+            "bold",
             [1, 1]
           );
           filesReadWriteAsync([
@@ -75,11 +77,13 @@ const actions = {
  * @param {array} actions - Each action you want to execute
  * @return {void}
  */
-const runActions = (actions, increment = 1000, delay = 0) => {
-  actions.forEach(async action => {
-    delay += increment;
-    await setTimeout(action, delay);
-  });
+const runActions = (actions, increment = 750, delay = 0) => {
+  actions
+    .filter(i => !!i)
+    .forEach(async action => {
+      delay += increment;
+      await setTimeout(action, delay);
+    });
 };
 
 module.exports = {
