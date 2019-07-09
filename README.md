@@ -80,7 +80,7 @@ This is the format, but needs to be updated with the right information
 | **[React Router](https://github.com/ReactTraining/react-router)**                            |    ❌     |      ✅      |      ✅       |    ❌     |    ✅    |
 | **[React-Loadable](https://github.com/jamiebuilds/react-loadable)**                          |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
 | **[Polyfills](https://reactjs.org/docs/react-dom.html#browser-support)**                     |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
-| **[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers)** |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
+| **[PWA (SW)](https://developers.google.com/web/fundamentals/primers/service-workers)**       |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
 | **Scss**                                                                                     |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
 | **CSS Modules**                                                                              |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
 | **Autoprefixer**                                                                             |    ✅     |      ✅      |      ✅       |    ✅     |    ✅    |
