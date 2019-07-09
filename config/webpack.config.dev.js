@@ -4,7 +4,7 @@
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const rewireReactHotLoader = require("react-app-rewire-hot-loader");
 
-module.exports = function(config, settings) {
+module.exports = function(config) {
   // Hot Loader
   config = rewireReactHotLoader(config, "development");
 

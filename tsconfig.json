@@ -29,7 +29,8 @@
   ],
   "exclude": [
     "./node_modules/**/*",
-    "src/**/*.spec.*"
+    "src/**/*.spec.*",
+    "src/setupProxy.js"
   ],
   "extends": "./config/tsconfig.paths.json"
 }

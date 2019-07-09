@@ -9,10 +9,12 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const Critters = require("critters-webpack-plugin");
 const WebpackBar = require("webpackbar");
 
+const { envs } = require("./utilities/utilities");
+
 // Paths
 const paths = require("./paths");
 
-module.exports = function(config, settings) {
+module.exports = function(config) {
   // Optimizations
   config.optimization = {
     ...config.optimization,
@@ -45,7 +47,7 @@ module.exports = function(config, settings) {
 
     // Webpack Bar with profiler
     new WebpackBar({
-      ...(settings.profile
+      ...(envs.profiler
         ? {
             profile: true,
             reporters: ["profile"],
@@ -61,12 +63,12 @@ module.exports = function(config, settings) {
     }),
 
     // Use the correct index.html template.
-    new HtmlWebpackPlugin({
-      inject: !settings.embedded,
-      template: settings.embedded ? paths.appHtmlMini : paths.appHtml,
-      favicon: `${paths.appPublic}/favicons/favicon.ico`,
-      manifest: `/manifest.json`,
-    }),
+    !envs.embedded &&
+      new HtmlWebpackPlugin({
+        template: paths.appHtml,
+        favicon: `${paths.appPublic}/favicons/favicon.ico`,
+        manifest: `/manifest.json`,
+      }),
 
     // Creating Critical CSS
     new Critters({
@@ -79,7 +81,7 @@ module.exports = function(config, settings) {
     }),
 
     // Bundle Analyzer
-    ...(settings.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
+    ...(envs.bundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
   ];
 
   return config;
