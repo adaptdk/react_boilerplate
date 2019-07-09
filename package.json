@@ -6,6 +6,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "test:unit": "react-app-rewired test --modulePaths=src",
     "test:lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "presetup": "yarn install",
     "setup": "node config/setup/setup.js",
