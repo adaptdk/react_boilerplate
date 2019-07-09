@@ -34,8 +34,8 @@ const actions = {
           );
           filesReadWriteAsync([
             {
-              match: ["%yourLocalEnvUrl%", "EMBEDDED=false"],
-              replace: [feature.proxy, "EMBEDDED=true"],
+              match: ['PROXY_URL="http://yourLocal.env"', "EMBEDDED=false"],
+              replace: [`PROXY_URL="${feature.proxy}"`, "EMBEDDED=true"],
               file: ".env",
             },
           ]);
