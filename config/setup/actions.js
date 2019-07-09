@@ -232,15 +232,15 @@ const setupGit = project =>
  */
 const finishSetup = project => {
   print("------", "dim", [2, 1]);
-  const { debug, deleteRepo, features: selectedFeatures } = project;
+  const { debug, deleteRepo } = project;
 
   const setupConf = {
     hasRepo: project.ownRepo.length > 0 && project.ownRepo !== "no",
-    hasFeatures: selectedFeatures.length > 0,
+    customizeFeature: project.customizeFeature,
   };
 
   runActions([
-    setupConf.hasFeatures
+    customizeFeature
       ? () => {
           print(`☑️  Configuring settings from features...`, null, [1, 1]);
           !debug && actions.setupFeatures(project);
@@ -284,7 +284,7 @@ Thank you for using the boilerplate for your React project. 💪`);
       if (setupConf.hasRepo) {
         print(`  ${bold("🌲  Repo Url:")}        ${project.ownRepo}`);
       }
-      if (setupConf.hasFeatures && project.customizeFeature) {
+      if (setupConf.customizeFeature) {
         print("  💎  Features:", "bold", [0, 1]);
         printFeatureConf(project.features);
       }
