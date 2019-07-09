@@ -28,7 +28,7 @@ const actions = {
       switch (feature.name) {
         case "proxy":
           print(
-            `  ℹ️   Remember to change the querySelector inside of the ${underline('index.tsx')} file, so it finds an element that exists on your site 😇`,
+            `ℹ️ Remember to change the querySelector inside of the ${underline('index.tsx')} file, so it finds an element that exists on your site 😇`,
             'bold',
             [1, 1]
           );
