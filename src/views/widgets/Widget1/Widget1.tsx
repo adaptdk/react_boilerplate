@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import Loadable from "react-loadable";
-import { hot } from "react-hot-loader";
-
-// Utilities
-import { isDev } from "utilities/development";
 
 // Components
 import Header from "views/components/Header";
@@ -15,11 +11,11 @@ const Footer = Loadable({
   loading: Loading,
 });
 
-const App = (): JSX.Element => {
+const Widget1 = (): JSX.Element => {
   const [value, setValue] = useState("1");
 
   return (
-    <div className="app">
+    <div className="widget1">
       <Header />
 
       <main>
@@ -40,4 +36,4 @@ const App = (): JSX.Element => {
   );
 };
 
-export default (isDev() ? hot(module)(App) : App);
+export default Widget1;

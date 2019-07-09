@@ -38,6 +38,7 @@ module.exports = function(config, isProd) {
       assets: `${paths.appSrc}/assets`,
       state: `${paths.appSrc}/state`,
       utilities: `${paths.appSrc}/utilities`,
+      typings: `${paths.appSrc}/typings`,
       views: `${paths.appSrc}/views`,
     },
   };

@@ -3,9 +3,13 @@
     "baseUrl": "../.",
     "paths": {
       "*": ["*", "generated/*"],
+      "assets": ["src/assets"],
       "assets/*": ["src/assets/*"],
-      "state/*": ["src/state/*"],
+      "typings": ["src/typings"],
+      "typings/*": ["src/typings/*"],
+      "utilities": ["src/utilities"],
       "utilities/*": ["src/utilities/*"],
+      "views": ["src/views"],
       "views/*": ["src/views/*"]
     }
   }
