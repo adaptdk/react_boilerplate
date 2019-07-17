@@ -17,9 +17,7 @@ module.exports = app => {
       target: process.env.PROXY_URL,
       changeOrigin: true,
       selfHandleResponse: true,
-      preserveHeaderKeyCase: true,
-      headers: { "Access-Control-Allow-Origin": "*" },
-      ws: true,
+      headers: { "Access-Control-Allow-Origin": "*", "accept-encoding": "gzip;q=0,deflate,sdch" },
       onProxyRes: appendToProxyResponse([
         '<link rel="stylesheet" type="text/css" href="/development/injector.css">',
         '<script src="/development/injector.js" defer></script>',
