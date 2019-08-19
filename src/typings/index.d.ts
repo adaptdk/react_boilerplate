@@ -4,7 +4,8 @@ interface Window {
   __INITIAL_STATE__: any;
 }
 
-declare module "*.svg" {
-  const content: any;
-  export default content;
+// CSS Modules Styling
+declare module "*.scss" {
+  const styles: { [className: string]: string };
+  export default styles;
 }
