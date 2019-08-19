@@ -10,6 +10,9 @@ import { isDev } from "utilities/development";
 import Header from "views/components/Header";
 import Loading from "views/components/Loading";
 
+// Icons
+import Logo from "assets/icons/logo.svg";
+
 const NotFound = Loadable({
   loader: (): Promise<any> => import("views/containers/NotFound/NotFound"),
   loading: (): null => null,
@@ -36,6 +39,8 @@ const App = (): JSX.Element => (
           <Route component={NotFound} />
         </Switch>
       </main>
+
+      <Logo style={{ height: 200, width: 200 }} />
 
       <Footer />
     </div>
