@@ -24,6 +24,7 @@
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-autofocus": 0,
     "jsx-quotes": 0,
+    "quotes": 0,
     "linebreak-style": 0,
     "new-cap": 0,
     "no-plusplus": 0,

@@ -1,18 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import Loadable from "react-loadable";
+import { hot } from "react-hot-loader";
 
-// Utils
-import * as serviceWorker from 'utilities/serviceWorker';
+// Utilities
+import { isDev } from "utilities/development";
 
-// Container
-import App from 'views/containers/App/App';
+const widgets = [
+  {
+    query: "#query1",
+    widget: Loadable({
+      loader: () => import("views/widgets/Widget1/Widget1" /* webpackChunkName: "Widget1" */),
+      loading: () => null,
+    }),
+  },
+  {
+    query: "#query2",
+    widget: Loadable({
+      loader: () => import("views/widgets/Widget2/Widget2" /* webpackChunkName: "Widget2" */),
+      loading: () => null,
+    }),
+  },
+];
 
-// Styles
-import 'assets/styles/main.scss';
+// Initialize the Widgets
+widgets.forEach(widget => {
+  const { query, widget: component } = widget;
+  // let {  } = widget;
+  const querySelector = document.querySelector(query);
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+  if (!querySelector) {
+    // eslint-disable-next-line
+    console.warn(`The query selector doesn't exist: ${query}`);
+    return;
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.register();
+  // Setting up React Hot Loader
+  const Component = isDev ? hot(module)(component) : component;
+
+  // Setting ReactDOM.render for each widget.
+  ReactDOM.render(<Component />, document.querySelector(query));
+});
