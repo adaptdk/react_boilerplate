@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Utils
-import * as serviceWorker from "utilities/serviceWorker";
+import * as serviceWorker from "utils/serviceWorker";
 
 // Container
 import App from "views/containers/App/App";

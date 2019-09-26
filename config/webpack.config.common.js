@@ -8,7 +8,7 @@ const {
   enableEslintTypescript,
 } = require("customize-cra");
 // Utils
-const { loaderUtil } = require("./utilities/utilities");
+const { loaderUtil } = require("./utils");
 
 // Paths
 const paths = require("./paths");
@@ -36,8 +36,10 @@ module.exports = function(config, isProd) {
     extensions: [...config.resolve.extensions, ".ts", ".tsx", ".js"],
     alias: {
       assets: `${paths.appSrc}/assets`,
+      constants: `${paths.appSrc}/constants`,
       state: `${paths.appSrc}/state`,
-      utilities: `${paths.appSrc}/utilities`,
+      utils: `${paths.appSrc}/utils`,
+      typings: `${paths.appSrc}/typings`,
       views: `${paths.appSrc}/views`,
     },
   };

@@ -2,12 +2,12 @@
 
 const proxy = require("http-proxy-middleware");
 
-const { envs } = require("../config/utilities/utilities");
-const { appendToProxyResponse } = require("../config/utilities/proxy");
+const { envs } = require("../config/utils");
+const { appendToProxyResponse } = require("../config/utils/proxy");
 
 module.exports = app => {
-  // If you're not using the app as embedded, then just ignore this file.
-  if (!envs.embedded) return;
+  // If you're not proxying to another site, just ignore this file.
+  if (!envs.proxy) return;
   // Exclude specific URL's which shouldn't be proxied to the target URL,
   // but use the Webpack Dev Server. Like static files, hot module reloader and development script
   const excludes = ["/static/**", "/sockjs-node/**", "/asset-manifest.json", "/development/**"];

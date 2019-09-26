@@ -5,7 +5,7 @@ const { Spinner } = require("cli-spinner");
 
 const { packages, features } = require("./packages");
 const { schema } = require("./schema");
-const { print, bold, dim, highlight, underline, actions, runActions, isYes, printFeatureConf } = require("./utilities");
+const { print, bold, dim, highlight, underline, actions, runActions, isYes, printFeatureConf } = require("./utils");
 
 const spinner = new Spinner("%s Installing the new modules...").setSpinnerString(18);
 

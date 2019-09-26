@@ -3,9 +3,17 @@
     "baseUrl": "../.",
     "paths": {
       "*": ["*", "generated/*"],
+      "assets": ["src/assets"],
       "assets/*": ["src/assets/*"],
+      "constants": ["src/constants"],
+      "constants/*": ["src/constants/*"],
+      "state": ["src/state"],
       "state/*": ["src/state/*"],
-      "utilities/*": ["src/utilities/*"],
+      "typings": ["src/typings"],
+      "typings/*": ["src/typings/*"],
+      "utils": ["src/utils"],
+      "utils/*": ["src/utils/*"],
+      "views": ["src/views"],
       "views/*": ["src/views/*"]
     }
   }
