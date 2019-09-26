@@ -130,12 +130,6 @@ Feel free to write any of the maintainers, or create an issue if you run into a 
         </br>
         <a href="https://github.com/https://github.com/mads-thines">Mads Thines</a>
       </td>
-      <td align="center">
-        <img width="90" height="90"
-        src="https://avatars0.githubusercontent.com/u/6573200?s=460&v=4">
-        </br>
-        <a href="https://github.com/ChrEsb">Christian Esbensen</a>
-      </td>
     </tr>
   <tbody>
 </table>
