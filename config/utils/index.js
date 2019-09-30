@@ -35,9 +35,14 @@ const loaderUtil = rules => {
 
 // Environment variables
 const envs = {
-  profiler: process.env.PROFILER === "true",
-  embedded: process.env.EMBEDDED === "true",
   bundleAnalyzer: process.env.BUNDLE_ANALYZER === "true",
+  criticalCSS: process.env.CRIT_CSS === "true",
+  gzip: process.env.GZIP === "true",
+  hashBuild: process.env.HASH_BUILD === "true",
+  polyfill: process.env.POLYFILL === "true",
+  profiler: process.env.PROFILER === "true",
+  proxy: process.env.PROXY === "true",
+  sourceMap: process.env.SOURCE_MAP === "true",
 };
 
 module.exports = {

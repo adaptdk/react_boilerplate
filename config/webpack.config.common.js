@@ -4,7 +4,7 @@
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 const { useBabelRc, useEslintRc, enableEslintTypescript } = require("customize-cra");
 // Utils
-const { loaderUtil } = require("./utilities/utilities");
+const { loaderUtil } = require("./utils");
 
 // Paths
 const paths = require("./paths");
@@ -32,9 +32,11 @@ module.exports = function(config, isProd) {
     extensions: [...config.resolve.extensions, ".ts", ".tsx", ".js"],
     alias: {
       assets: `${paths.appSrc}/assets`,
+      constants: `${paths.appSrc}/constants`,
       services: `${paths.appSrc}/services`,
       state: `${paths.appSrc}/state`,
-      utilities: `${paths.appSrc}/utilities`,
+      typings: `${paths.appSrc}/typings`,
+      utils: `${paths.appSrc}/utils`,
       views: `${paths.appSrc}/views`,
     },
   };

@@ -22,7 +22,7 @@ prompt.start();
 
 // Start the Prompt
 startPrompt(project)
-  // // Get Project Name
+  // Get Project Name
   .then(getProjectName)
   // Then Get Packages
   .then(getPackages)

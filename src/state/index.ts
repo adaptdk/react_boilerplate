@@ -1,24 +1,19 @@
-import { RootAction, RootState, Services } from "RootTypes";
-import { createStore, applyMiddleware } from "redux";
-import { createEpicMiddleware } from "redux-observable";
-import { persistReducer, persistStore } from "redux-persist";
+import { RootAction, RootState, Services } from 'RootTypes';
+import { createStore, applyMiddleware } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
+import { persistReducer, persistStore } from 'redux-persist';
 
 // Utils
-import { composeEnhancers, persistConfig } from "utilities/store";
+import { composeEnhancers, persistConfig } from 'utils/store';
 
 // State
-import rootReducer from "state/reducer";
-import rootEpic from "state/epic";
+import rootReducer from 'state/reducer';
+import rootEpic from 'state/epic';
 
 // Services
-import services from "services";
+import services from 'services';
 
-export const epicMiddleware = createEpicMiddleware<
-RootAction,
-RootAction,
-RootState,
-Services
->({
+export const epicMiddleware = createEpicMiddleware<RootAction, RootAction, RootState, Services>({
   dependencies: services,
 });
 

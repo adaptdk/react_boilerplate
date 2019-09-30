@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 // Utilities
-const { dim } = require("./utilities");
+const { dim } = require("./utils");
 
 // Read more about the different packages here: https://github.com/adaptdk/react_boilerplate
 const packages = [

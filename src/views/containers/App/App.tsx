@@ -1,31 +1,25 @@
-import React from "react";
-import Loadable from "react-loadable";
-import { hot } from "react-hot-loader";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import loadable from '@loadable/component';
+import { hot } from 'react-hot-loader';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Utilities
-import { isDev } from "utilities/development";
+import { isDev } from 'utils/development';
 
 // Components
-import Header from "views/components/Header";
-import Loading from "views/components/Loading";
+import Header from 'views/components/Header';
+import Loading from 'views/components/Loading';
 
 // Icons
-import Logo from "assets/icons/logo.svg";
+import Logo from 'assets/icons/logo.svg';
 
-const NotFound = Loadable({
-  loader: (): Promise<any> => import("views/containers/NotFound/NotFound"),
-  loading: (): null => null,
+// Loadables
+const NotFound = loadable((): Promise<any> => import('views/containers/NotFound/NotFound'));
+const Footer = loadable((): Promise<any> => import('views/components/Footer'), {
+  fallback: <Loading />,
 });
-
-const Footer = Loadable({
-  loader: (): Promise<any> => import("views/components/Footer"),
-  loading: Loading,
-});
-
-const Frontpage = Loadable({
-  loader: (): Promise<any> => import("views/containers/Frontpage/Frontpage"),
-  loading: Loading,
+const Frontpage = loadable((): Promise<any> => import('views/containers/Frontpage/Frontpage'), {
+  fallback: <Loading />,
 });
 
 const App = (): JSX.Element => (
@@ -35,8 +29,8 @@ const App = (): JSX.Element => (
 
       <main>
         <Switch>
-          <Route path="/" component={Frontpage} exact />
-          <Route component={NotFound} />
+          <Route path="/" component={(props): JSX.Element => <Frontpage {...props} />} exact />
+          <Route component={(props): JSX.Element => <NotFound {...props} />} />
         </Switch>
       </main>
 
@@ -47,4 +41,4 @@ const App = (): JSX.Element => (
   </Router>
 );
 
-export default (isDev ? hot(module)(App) : App);
+export default isDev ? hot(module)(App) : App;

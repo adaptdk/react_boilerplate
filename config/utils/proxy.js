@@ -2,10 +2,10 @@ const cssRegExp = RegExp(/(\.css$)/);
 const jsRegExp = RegExp(/(\.js$)/);
 const gzipRegExp = RegExp(/gzip/);
 
-const settingHeaders = (proxyRes, res) => {
-  if (jsRegExp.test(res.req.path)) res.setHeader("Content-Type", "application/javascript");
+const settingHeaders = (proxyRes, req, res) => {
+  if (jsRegExp.test(req.path)) res.setHeader("Content-Type", "application/javascript");
 
-  if (cssRegExp.test(res.req.path)) res.setHeader("Content-Type", "text/css");
+  if (cssRegExp.test(req.path)) res.setHeader("Content-Type", "text/css");
 
   if (gzipRegExp.test(proxyRes.headers["content-encoding"])) res.setHeader("Content-Encoding", "gzip");
 };
@@ -13,8 +13,14 @@ const settingHeaders = (proxyRes, res) => {
 const appendToProxyResponse = inject => (proxyRes, req, res) => {
   if (Array.isArray(inject)) inject = inject.join("");
 
+  // Handle error codes
+  if (proxyRes.statusCode === 404) {
+    res.sendStatus(proxyRes.statusCode);
+    return;
+  }
+
   // Setting Headers
-  settingHeaders(proxyRes, res);
+  settingHeaders(proxyRes, req, res);
 
   if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].indexOf("text/html") >= 0) {
     let body = Buffer.from("");

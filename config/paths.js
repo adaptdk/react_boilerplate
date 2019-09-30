@@ -8,12 +8,12 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
   appBuild: resolveApp('build'),
+  appHtml: resolveApp('public/index.html'),
+  appIndex: resolveApp('src/index.tsx'),
   appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
-  appHtmlMini: resolveApp('public/index-mini.html'),
-  appHtml: resolveApp('public/index.html'),
   appPublic: resolveApp('public'),
-  appIndex: resolveApp('src/index.tsx'),
   appSrc: resolveApp('src'),
+  appStatic: resolveApp('build/static'),
   dotenv: resolveApp('.env'),
 };
