@@ -61,7 +61,7 @@ const actions = {
         match: [
           "project_title",
           `
-    "presetup": "yarn install",
+    "presetup": "npm install cli-spinner prompt colors --no-optional && cp .env.sample .env",
     "setup": "node config/setup/setup.js",`,
         ],
         replace: [project.machine, ""],
