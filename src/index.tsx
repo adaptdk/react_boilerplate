@@ -1,16 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Utils
-import * as serviceWorker from "utils/serviceWorker";
+import * as serviceWorker from 'utils/serviceWorker';
 
 // Container
-import App from "views/containers/App/App";
+import App from 'views/containers/App/App';
 
 // Styles
-import "assets/styles/main.scss";
+import 'assets/styles/main.scss';
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<App />, document.querySelector('#root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
