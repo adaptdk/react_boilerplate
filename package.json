@@ -8,8 +8,9 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --modulePaths=src",
     "test:lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "presetup": "npm install cli-spinner prompt colors --no-optional && cp .env.sample .env",
+    "presetup": "npm install cli-spinner prompt colors --no-optional",
     "setup": "node config/setup/setup.js",
+    "preinstall": "cp .env.sample .env",
     "release": "release-it -c config/.release-it.json"
   },
   "dependencies": {
