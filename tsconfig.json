@@ -17,10 +17,25 @@
     "sourceMap": true,
     "strict": true,
     "target": "es6",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "baseUrl": "./src",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
   },
-  "include": ["src", "typings"],
-  "exclude": ["./node_modules/**/*", "src/**/*.spec.*", "src/**/*.test.*", "src/setupProxy.js"],
+  "include": [
+    "src",
+    "typings"
+  ],
+  "exclude": [
+    "./node_modules/**/*",
+    "src/**/*.spec.*",
+    "src/**/*.test.*",
+    "src/setupProxy.js"
+  ],
   "extends": "./config/tsconfig.paths.json"
 }

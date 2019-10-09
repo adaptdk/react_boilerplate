@@ -1,5 +1,6 @@
-import { actions as fooActions } from 'state/ducks/foo';
+// Actions
+import foo from 'state/ducks/foo';
 
 export default {
-  foo: fooActions,
+  foo: foo.actions,
 };

@@ -1,24 +1,23 @@
-import { RootAction, RootState, Services } from 'RootTypes';
-import { createStore, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
-
-// Utils
-import { composeEnhancers, persistConfig } from 'utils/store';
-
+import storage from 'redux-persist/lib/storage';
 // State
 import rootReducer from 'state/reducer';
 import rootEpic from 'state/epic';
-
 // Services
-import services from 'services';
+import { isDev } from 'utils/development';
+import middlewares, { epicMiddleware } from 'state/middlewares';
 
-export const epicMiddleware = createEpicMiddleware<RootAction, RootAction, RootState, Services>({
-  dependencies: services,
-});
+// Constants
+export const composeEnhancers =
+  (isDev && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-// Setup middlewares
-const middlewares = [epicMiddleware];
+// Redux Persist Settings
+export const persistConfig = {
+  key: 'root',
+  whitelist: [''],
+  storage,
+};
 
 // Compose Enhancers
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));

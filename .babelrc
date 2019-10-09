@@ -1,7 +1,13 @@
 {
   "presets": [
-    ["@babel/preset-env", { "useBuiltIns": "entry" } ],
-    "babel-preset-react-app"
+    ["@babel/preset-env", { "useBuiltIns": "entry" }],
+    "babel-preset-react-app",
+    "@babel/typescript"
   ],
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    "react-hot-loader/babel",
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
 }

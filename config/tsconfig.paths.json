@@ -3,22 +3,22 @@
     "baseUrl": "../.",
     "paths": {
       "*": ["*", "generated/*"],
-      "assets": ["src/assets"],
-      "assets/*": ["src/assets/*"],
-      "constants": ["src/constants"],
-      "constants/*": ["src/constants/*"],
-      "redux-thunk": ["src/typings/redux-thunk"],
-      "redux": ["src/typings/redux"],
-      "services": ["src/services"],
-      "services/*": ["src/services/*"],
-      "state": ["src/state"],
-      "state/*": ["src/state/*"],
-      "typings": ["src/typings"],
-      "typings/*": ["src/typings/*"],
-      "utils": ["src/utils"],
-      "utils/*": ["src/utils/*"],
-      "views": ["src/views"],
-      "views/*": ["src/views/*"]
+      "assets": ["./assets"],
+      "assets/*": ["./assets/*"],
+      "constants": ["./constants"],
+      "constants/*": ["./constants/*"],
+      "redux-thunk": ["./typings/redux-thunk"],
+      "redux": ["./typings/redux"],
+      "services": ["./services"],
+      "services/*": ["./services/*"],
+      "state": ["./state"],
+      "state/*": ["./state/*"],
+      "typings": ["./typings"],
+      "typings/*": ["./typings/*"],
+      "utils": ["./utils"],
+      "utils/*": ["./utils/*"],
+      "views": ["./views"],
+      "views/*": ["./views/*"]
     }
   }
 }

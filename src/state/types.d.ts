@@ -7,7 +7,7 @@ declare module 'RootTypes' {
 }
 
 declare module 'typesafe-actions' {
-  interface Types {
+  type Types = {
     RootAction: ActionType<typeof import('./actions').default>;
-  }
+  };
 }
