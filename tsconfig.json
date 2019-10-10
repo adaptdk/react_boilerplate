@@ -25,7 +25,7 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ],
+    ]
   },
   "include": [
     "src",
@@ -35,7 +35,8 @@
     "./node_modules/**/*",
     "src/**/*.spec.*",
     "src/**/*.test.*",
-    "src/setupProxy.js"
+    "src/setupProxy.js",
+    "src/utils/polyfills"
   ],
   "extends": "./config/tsconfig.paths.json"
 }

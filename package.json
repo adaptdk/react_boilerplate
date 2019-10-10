@@ -29,6 +29,8 @@
     "circular-dependency-plugin": "^5.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^3.0.0",
+    "connected-react-router": "^6.5.2",
+    "core-js": "^3.2.1",
     "critters-webpack-plugin": "^2.4.0",
     "css-loader": "^3.2.0",
     "cuid": "^2.1.6",
@@ -37,6 +39,7 @@
     "extract-css-chunks-webpack-plugin": "^4.6.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.20.0",
+    "intl": "^1.2.5",
     "node-sass": "^4.12.0",
     "postcss-calc": "^7.0.1",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -61,11 +64,14 @@
     "style-loader": "^1.0.0",
     "typesafe-actions": "^4.4.2",
     "typescript": "3.6.3",
-    "webpack": "^4.41.0"
+    "url-polyfill": "^1.1.7",
+    "webpack": "^4.41.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "16.9.0",
     "@svgr/webpack": "^4.3.3",
+    "@types/webpack-env": "^1.14.0",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^6.5.1",

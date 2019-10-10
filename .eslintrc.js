@@ -34,6 +34,7 @@ module.exports = {
     'import/no-named-as-default-member': 0,
     'import/no-unresolved': [2, { ignore: ['RootTypes'] }],
     'import/prefer-default-export': 0,
+    'no-underscore-dangle': 0,
     'operator-linebreak': [1, 'after'],
     'padded-blocks': 1,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],

@@ -1,12 +1,15 @@
+import storage from 'redux-persist/lib/storage';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+
 // State
-import rootReducer from 'state/reducer';
+import middlewares, { epicMiddleware } from 'state/middlewares';
 import rootEpic from 'state/epic';
+import rootReducer from 'state/reducer';
+import { connectedHistory } from 'constants/state';
+
 // Services
 import { isDev } from 'utils/development';
-import middlewares, { epicMiddleware } from 'state/middlewares';
 
 // Constants
 export const composeEnhancers =
@@ -26,7 +29,7 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 const initialState = {};
 
 // Create the Persisted Reducer, for storing states in localStorage
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer(connectedHistory));
 
 // Creating the store
 export const store = createStore(persistedReducer, initialState, enhancer);

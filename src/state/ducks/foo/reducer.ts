@@ -9,7 +9,7 @@ import * as models from './models';
 import * as consts from './constants';
 
 // Actions type
-export type FooAction = ActionType<typeof actions>;
+export type Action = ActionType<typeof actions>;
 
 // Redux Persistor Config
 export const persistConfig = {
@@ -18,14 +18,8 @@ export const persistConfig = {
   storage,
 };
 
-// State type
-export type FooState = {
-  readonly elements: models.Element[];
-  readonly title: string;
-};
-
 // The initial state
-const initialState: FooState = {
+const initialState: models.State = {
   elements: [],
   title: '',
 };
@@ -33,7 +27,7 @@ const initialState: FooState = {
 // Create a combined reducer and export it
 export default persistReducer(
   persistConfig,
-  combineReducers<FooState, FooAction>({
+  combineReducers<models.State, Action>({
     title: (state = initialState.title, action) => {
       switch (action.type) {
         case consts.UPDATE_TITLE:

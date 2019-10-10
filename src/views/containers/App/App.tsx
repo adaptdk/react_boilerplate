@@ -1,10 +1,6 @@
 import React from 'react';
 import loadable from '@loadable/component';
-import { hot } from 'react-hot-loader';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-// Utilities
-import { isDev } from 'utils/development';
+import { Route, Switch } from 'react-router-dom';
 
 // Components
 import Header from 'views/components/Header';
@@ -23,22 +19,20 @@ const Frontpage = loadable((): Promise<any> => import('views/containers/Frontpag
 });
 
 const App = (): JSX.Element => (
-  <Router>
-    <div className="app">
-      <Header />
+  <div className="app">
+    <Header />
 
-      <main>
-        <Switch>
-          <Route path="/" component={(props): JSX.Element => <Frontpage {...props} />} exact />
-          <Route component={(props): JSX.Element => <NotFound {...props} />} />
-        </Switch>
-      </main>
+    <main>
+      <Switch>
+        <Route path="/" component={(props): JSX.Element => <Frontpage {...props} />} exact />
+        <Route component={(props): JSX.Element => <NotFound {...props} />} />
+      </Switch>
+    </main>
 
-      <Logo style={{ height: 200, width: 200 }} />
+    <Logo style={{ height: 200, width: 200 }} />
 
-      <Footer />
-    </div>
-  </Router>
+    <Footer />
+  </div>
 );
 
-export default isDev ? hot(module)(App) : App;
+export default App;
