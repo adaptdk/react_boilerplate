@@ -35,6 +35,7 @@ const loaderUtil = rules => {
 
 // Environment variables
 const envs = {
+  browserSync: process.env.BROWSER_SYNC === 'true',
   bundleAnalyzer: process.env.BUNDLE_ANALYZER === "true",
   criticalCSS: process.env.CRIT_CSS === "true",
   gzip: process.env.GZIP === "true",

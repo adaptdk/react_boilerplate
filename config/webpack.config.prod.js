@@ -83,12 +83,6 @@ module.exports = function(config) {
     }),
 
     // Use the correct index.html template.
-    !envs.embedded &&
-      new HtmlWebpackPlugin({
-        template: paths.appHtml,
-        favicon: `${paths.appPublic}/favicons/favicon.ico`,
-        manifest: `/manifest.json`,
-      }),
     new HtmlWebpackPlugin({
       template: paths.appHtml,
       favicon: `${paths.appPublic}/favicons/favicon.ico`,

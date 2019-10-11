@@ -7,10 +7,11 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --modulePaths=src",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:styles": "stylelint '**/*.scss' '!**/vendor/**' --fix",
     "presetup": "npm install cli-spinner prompt colors --no-optional",
     "setup": "node config/setup/setup.js",
-    "preinstall": "test -f .env || cp .env.sample .env",
+    "preinstall": "test -f .env || cp .env.sample .env && test -f .vscode/launch.json || cp .vscode/launch.json.sample .vscode/launch.json",
     "release": "release-it -c config/.release-it.json"
   },
   "dependencies": {
@@ -74,6 +75,9 @@
     "@types/webpack-env": "^1.14.0",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "concurrently": "^5.0.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
@@ -90,6 +94,7 @@
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-hot-loader": "^4.12.15",
     "release-it": "^12.4.2",
+    "stylelint-config-rational-order": "^0.1.2",
     "webpack-bundle-analyzer": "^3.5.2",
     "webpackbar": "^4.0.0"
   },
@@ -104,7 +109,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint"
+      "pre-push": "concurrently 'yarn lint' 'yarn lint:styles'"
     }
   },
   "config-overrides-path": "config/config-overrides"
