@@ -19,10 +19,11 @@ const _cssModuleLoader = isProd => [
     loader: "css-loader",
     options: {
       sourceMap: !isProd,
-      modules: true,
-      localIdentName: isProd
-        ? "s[hash:base64:3]"
-        : "[name]__[local]--[hash:base64:3]",
+      modules: {
+        localIdentName: isProd
+          ? "s[hash:base64:3]"
+          : "[name]__[local]--[hash:base64:3]",
+      }
     },
   },
 ];
