@@ -48,7 +48,8 @@ You will see the build errors and lint warnings in the console.
 Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
 
-[Read more about testing.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+[Read more about testing.]
+https://reactjs.org/docs/testing.html
 
 ### `npm run build` or `yarn build`
 
